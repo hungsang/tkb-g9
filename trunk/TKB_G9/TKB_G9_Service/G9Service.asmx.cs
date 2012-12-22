@@ -22,5 +22,13 @@ namespace TKB_G9_Service
         {
             return "Hello World";
         }
+
+        [WebMethod]
+        public List<Lop> GetDanhSachLop()
+        {
+            TKBEntities db = new TKBEntities();
+            var list = db.Lops.OrderBy(sort => sort.MaLop).ToList();
+            return list;
+        }
     }
 }

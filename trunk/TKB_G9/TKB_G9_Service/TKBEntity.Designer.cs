@@ -11,14 +11,15 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TKBModel", "FK_ChiTietTKB_GiaoVien", "GiaoVien", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TKB_G9_Service.GiaoVien), "ChiTietTKB", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TKB_G9_Service.ChiTietTKB))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TKBModel", "FK_ChiTietTKB_MonHoc", "MonHoc", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TKB_G9_Service.MonHoc), "ChiTietTKB", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TKB_G9_Service.ChiTietTKB))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TKBModel", "FK_ChiTietTKB_Phong", "Phong", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TKB_G9_Service.Phong), "ChiTietTKB", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TKB_G9_Service.ChiTietTKB))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TKBModel", "FK_ChiTietTKB_ThoiKhoaBieu", "ThoiKhoaBieu", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TKB_G9_Service.ThoiKhoaBieu), "ChiTietTKB", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TKB_G9_Service.ChiTietTKB))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TKBModel", "FK_GiaoVien_LoaiGiaoVien", "LoaiGiaoVien", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TKB_G9_Service.LoaiGiaoVien), "GiaoVien", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TKB_G9_Service.GiaoVien))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TKBModel", "FK_GiaoVien_MonHoc", "MonHoc", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TKB_G9_Service.MonHoc), "GiaoVien", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TKB_G9_Service.GiaoVien))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TKBModel", "FK_HocSinh_LOP", "LOP", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TKB_G9_Service.LOP), "HocSinh", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TKB_G9_Service.HocSinh))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TKBModel", "FK_ThoiKhoaBieu_LOP", "LOP", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TKB_G9_Service.LOP), "ThoiKhoaBieu", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TKB_G9_Service.ThoiKhoaBieu))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TKBModel", "FK_MonHoc_LoaiMonHoc", "LoaiMonHoc", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TKB_G9_Service.LoaiMonHoc), "MonHoc", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TKB_G9_Service.MonHoc))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TKBModel", "FK_Phong_LoaiPhong", "LoaiPhong", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TKB_G9_Service.LoaiPhong), "Phong", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TKB_G9_Service.Phong))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TKBModel", "FK_ThoiKhoaBieu_Lop", "Lop", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TKB_G9_Service.Lop), "ThoiKhoaBieu", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TKB_G9_Service.ThoiKhoaBieu))]
 
 // Original file name:
-// Generation date: 12/19/2012 2:55:52 PM
+// Generation date: 12/22/2012 11:56:13 PM
 namespace TKB_G9_Service
 {
     
@@ -87,56 +88,56 @@ namespace TKB_G9_Service
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         private global::System.Data.Objects.ObjectQuery<GiaoVien> _GiaoViens;
         /// <summary>
-        /// There are no comments for HocSinhs in the schema.
+        /// There are no comments for LoaiMonHocs in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<HocSinh> HocSinhs
+        public global::System.Data.Objects.ObjectQuery<LoaiMonHoc> LoaiMonHocs
         {
             get
             {
-                if ((this._HocSinhs == null))
+                if ((this._LoaiMonHocs == null))
                 {
-                    this._HocSinhs = base.CreateQuery<HocSinh>("[HocSinhs]");
+                    this._LoaiMonHocs = base.CreateQuery<LoaiMonHoc>("[LoaiMonHocs]");
                 }
-                return this._HocSinhs;
+                return this._LoaiMonHocs;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<HocSinh> _HocSinhs;
+        private global::System.Data.Objects.ObjectQuery<LoaiMonHoc> _LoaiMonHocs;
         /// <summary>
-        /// There are no comments for LoaiGiaoViens in the schema.
+        /// There are no comments for LoaiPhongs in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<LoaiGiaoVien> LoaiGiaoViens
+        public global::System.Data.Objects.ObjectQuery<LoaiPhong> LoaiPhongs
         {
             get
             {
-                if ((this._LoaiGiaoViens == null))
+                if ((this._LoaiPhongs == null))
                 {
-                    this._LoaiGiaoViens = base.CreateQuery<LoaiGiaoVien>("[LoaiGiaoViens]");
+                    this._LoaiPhongs = base.CreateQuery<LoaiPhong>("[LoaiPhongs]");
                 }
-                return this._LoaiGiaoViens;
+                return this._LoaiPhongs;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<LoaiGiaoVien> _LoaiGiaoViens;
+        private global::System.Data.Objects.ObjectQuery<LoaiPhong> _LoaiPhongs;
         /// <summary>
-        /// There are no comments for LOPs in the schema.
+        /// There are no comments for Lops in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<LOP> LOPs
+        public global::System.Data.Objects.ObjectQuery<Lop> Lops
         {
             get
             {
-                if ((this._LOPs == null))
+                if ((this._Lops == null))
                 {
-                    this._LOPs = base.CreateQuery<LOP>("[LOPs]");
+                    this._Lops = base.CreateQuery<Lop>("[Lops]");
                 }
-                return this._LOPs;
+                return this._Lops;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<LOP> _LOPs;
+        private global::System.Data.Objects.ObjectQuery<Lop> _Lops;
         /// <summary>
         /// There are no comments for MonHocs in the schema.
         /// </summary>
@@ -154,6 +155,40 @@ namespace TKB_G9_Service
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         private global::System.Data.Objects.ObjectQuery<MonHoc> _MonHocs;
+        /// <summary>
+        /// There are no comments for Phongs in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Data.Objects.ObjectQuery<Phong> Phongs
+        {
+            get
+            {
+                if ((this._Phongs == null))
+                {
+                    this._Phongs = base.CreateQuery<Phong>("[Phongs]");
+                }
+                return this._Phongs;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Data.Objects.ObjectQuery<Phong> _Phongs;
+        /// <summary>
+        /// There are no comments for sysdiagrams in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Data.Objects.ObjectQuery<sysdiagram> sysdiagrams
+        {
+            get
+            {
+                if ((this._sysdiagrams == null))
+                {
+                    this._sysdiagrams = base.CreateQuery<sysdiagram>("[sysdiagrams]");
+                }
+                return this._sysdiagrams;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Data.Objects.ObjectQuery<sysdiagram> _sysdiagrams;
         /// <summary>
         /// There are no comments for ThoiKhoaBieux in the schema.
         /// </summary>
@@ -188,28 +223,28 @@ namespace TKB_G9_Service
             base.AddObject("GiaoViens", giaoVien);
         }
         /// <summary>
-        /// There are no comments for HocSinhs in the schema.
+        /// There are no comments for LoaiMonHocs in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddToHocSinhs(HocSinh hocSinh)
+        public void AddToLoaiMonHocs(LoaiMonHoc loaiMonHoc)
         {
-            base.AddObject("HocSinhs", hocSinh);
+            base.AddObject("LoaiMonHocs", loaiMonHoc);
         }
         /// <summary>
-        /// There are no comments for LoaiGiaoViens in the schema.
+        /// There are no comments for LoaiPhongs in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddToLoaiGiaoViens(LoaiGiaoVien loaiGiaoVien)
+        public void AddToLoaiPhongs(LoaiPhong loaiPhong)
         {
-            base.AddObject("LoaiGiaoViens", loaiGiaoVien);
+            base.AddObject("LoaiPhongs", loaiPhong);
         }
         /// <summary>
-        /// There are no comments for LOPs in the schema.
+        /// There are no comments for Lops in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddToLOPs(LOP lOP)
+        public void AddToLops(Lop lop)
         {
-            base.AddObject("LOPs", lOP);
+            base.AddObject("Lops", lop);
         }
         /// <summary>
         /// There are no comments for MonHocs in the schema.
@@ -218,6 +253,22 @@ namespace TKB_G9_Service
         public void AddToMonHocs(MonHoc monHoc)
         {
             base.AddObject("MonHocs", monHoc);
+        }
+        /// <summary>
+        /// There are no comments for Phongs in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public void AddToPhongs(Phong phong)
+        {
+            base.AddObject("Phongs", phong);
+        }
+        /// <summary>
+        /// There are no comments for sysdiagrams in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public void AddTosysdiagrams(sysdiagram sysdiagram)
+        {
+            base.AddObject("sysdiagrams", sysdiagram);
         }
         /// <summary>
         /// There are no comments for ThoiKhoaBieux in the schema.
@@ -232,7 +283,7 @@ namespace TKB_G9_Service
     /// There are no comments for TKBModel.ChiTietTKB in the schema.
     /// </summary>
     /// <KeyProperties>
-    /// id
+    /// MaChiTietTKB
     /// </KeyProperties>
     [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="TKBModel", Name="ChiTietTKB")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
@@ -242,95 +293,122 @@ namespace TKB_G9_Service
         /// <summary>
         /// Create a new ChiTietTKB object.
         /// </summary>
-        /// <param name="id">Initial value of id.</param>
+        /// <param name="maChiTietTKB">Initial value of MaChiTietTKB.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static ChiTietTKB CreateChiTietTKB(string id)
+        public static ChiTietTKB CreateChiTietTKB(int maChiTietTKB)
         {
             ChiTietTKB chiTietTKB = new ChiTietTKB();
-            chiTietTKB.id = id;
+            chiTietTKB.MaChiTietTKB = maChiTietTKB;
             return chiTietTKB;
         }
         /// <summary>
-        /// There are no comments for property id in the schema.
+        /// There are no comments for property MaChiTietTKB in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string id
+        public int MaChiTietTKB
         {
             get
             {
-                return this._id;
+                return this._MaChiTietTKB;
             }
             set
             {
-                this.OnidChanging(value);
-                this.ReportPropertyChanging("id");
-                this._id = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("id");
-                this.OnidChanged();
+                this.OnMaChiTietTKBChanging(value);
+                this.ReportPropertyChanging("MaChiTietTKB");
+                this._MaChiTietTKB = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("MaChiTietTKB");
+                this.OnMaChiTietTKBChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _id;
+        private int _MaChiTietTKB;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnidChanging(string value);
+        partial void OnMaChiTietTKBChanging(int value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnidChanged();
+        partial void OnMaChiTietTKBChanged();
         /// <summary>
-        /// There are no comments for property GioBatDau in the schema.
+        /// There are no comments for property TietBatDau in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string GioBatDau
+        public global::System.Nullable<int> TietBatDau
         {
             get
             {
-                return this._GioBatDau;
+                return this._TietBatDau;
             }
             set
             {
-                this.OnGioBatDauChanging(value);
-                this.ReportPropertyChanging("GioBatDau");
-                this._GioBatDau = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("GioBatDau");
-                this.OnGioBatDauChanged();
+                this.OnTietBatDauChanging(value);
+                this.ReportPropertyChanging("TietBatDau");
+                this._TietBatDau = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("TietBatDau");
+                this.OnTietBatDauChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _GioBatDau;
+        private global::System.Nullable<int> _TietBatDau;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnGioBatDauChanging(string value);
+        partial void OnTietBatDauChanging(global::System.Nullable<int> value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnGioBatDauChanged();
+        partial void OnTietBatDauChanged();
         /// <summary>
-        /// There are no comments for property GioKetThuc in the schema.
+        /// There are no comments for property TietKetThuc in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string GioKetThuc
+        public global::System.Nullable<int> TietKetThuc
         {
             get
             {
-                return this._GioKetThuc;
+                return this._TietKetThuc;
             }
             set
             {
-                this.OnGioKetThucChanging(value);
-                this.ReportPropertyChanging("GioKetThuc");
-                this._GioKetThuc = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("GioKetThuc");
-                this.OnGioKetThucChanged();
+                this.OnTietKetThucChanging(value);
+                this.ReportPropertyChanging("TietKetThuc");
+                this._TietKetThuc = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("TietKetThuc");
+                this.OnTietKetThucChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _GioKetThuc;
+        private global::System.Nullable<int> _TietKetThuc;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnGioKetThucChanging(string value);
+        partial void OnTietKetThucChanging(global::System.Nullable<int> value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnGioKetThucChanged();
+        partial void OnTietKetThucChanged();
+        /// <summary>
+        /// There are no comments for property Thu in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Nullable<int> Thu
+        {
+            get
+            {
+                return this._Thu;
+            }
+            set
+            {
+                this.OnThuChanging(value);
+                this.ReportPropertyChanging("Thu");
+                this._Thu = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Thu");
+                this.OnThuChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Nullable<int> _Thu;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnThuChanging(global::System.Nullable<int> value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnThuChanged();
         /// <summary>
         /// There are no comments for GiaoVien in the schema.
         /// </summary>
@@ -410,6 +488,45 @@ namespace TKB_G9_Service
             }
         }
         /// <summary>
+        /// There are no comments for Phong in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TKBModel", "FK_ChiTietTKB_Phong", "Phong")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public Phong Phong
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Phong>("TKBModel.FK_ChiTietTKB_Phong", "Phong").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Phong>("TKBModel.FK_ChiTietTKB_Phong", "Phong").Value = value;
+            }
+        }
+        /// <summary>
+        /// There are no comments for Phong in the schema.
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<Phong> PhongReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Phong>("TKBModel.FK_ChiTietTKB_Phong", "Phong");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Phong>("TKBModel.FK_ChiTietTKB_Phong", "Phong", value);
+                }
+            }
+        }
+        /// <summary>
         /// There are no comments for ThoiKhoaBieu in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TKBModel", "FK_ChiTietTKB_ThoiKhoaBieu", "ThoiKhoaBieu")]
@@ -453,7 +570,7 @@ namespace TKB_G9_Service
     /// There are no comments for TKBModel.GiaoVien in the schema.
     /// </summary>
     /// <KeyProperties>
-    /// id
+    /// MaGiaoVien
     /// </KeyProperties>
     [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="TKBModel", Name="GiaoVien")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
@@ -463,41 +580,41 @@ namespace TKB_G9_Service
         /// <summary>
         /// Create a new GiaoVien object.
         /// </summary>
-        /// <param name="id">Initial value of id.</param>
+        /// <param name="maGiaoVien">Initial value of MaGiaoVien.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static GiaoVien CreateGiaoVien(string id)
+        public static GiaoVien CreateGiaoVien(int maGiaoVien)
         {
             GiaoVien giaoVien = new GiaoVien();
-            giaoVien.id = id;
+            giaoVien.MaGiaoVien = maGiaoVien;
             return giaoVien;
         }
         /// <summary>
-        /// There are no comments for property id in the schema.
+        /// There are no comments for property MaGiaoVien in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string id
+        public int MaGiaoVien
         {
             get
             {
-                return this._id;
+                return this._MaGiaoVien;
             }
             set
             {
-                this.OnidChanging(value);
-                this.ReportPropertyChanging("id");
-                this._id = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("id");
-                this.OnidChanged();
+                this.OnMaGiaoVienChanging(value);
+                this.ReportPropertyChanging("MaGiaoVien");
+                this._MaGiaoVien = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("MaGiaoVien");
+                this.OnMaGiaoVienChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _id;
+        private int _MaGiaoVien;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnidChanging(string value);
+        partial void OnMaGiaoVienChanging(int value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnidChanged();
+        partial void OnMaGiaoVienChanged();
         /// <summary>
         /// There are no comments for property TenGiaoVien in the schema.
         /// </summary>
@@ -526,32 +643,140 @@ namespace TKB_G9_Service
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnTenGiaoVienChanged();
         /// <summary>
-        /// There are no comments for property ChuNhiem in the schema.
+        /// There are no comments for property GioiTinh in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string ChuNhiem
+        public string GioiTinh
         {
             get
             {
-                return this._ChuNhiem;
+                return this._GioiTinh;
             }
             set
             {
-                this.OnChuNhiemChanging(value);
-                this.ReportPropertyChanging("ChuNhiem");
-                this._ChuNhiem = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("ChuNhiem");
-                this.OnChuNhiemChanged();
+                this.OnGioiTinhChanging(value);
+                this.ReportPropertyChanging("GioiTinh");
+                this._GioiTinh = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("GioiTinh");
+                this.OnGioiTinhChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _ChuNhiem;
+        private string _GioiTinh;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnChuNhiemChanging(string value);
+        partial void OnGioiTinhChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnChuNhiemChanged();
+        partial void OnGioiTinhChanged();
+        /// <summary>
+        /// There are no comments for property NgaySinh in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Nullable<global::System.DateTime> NgaySinh
+        {
+            get
+            {
+                return this._NgaySinh;
+            }
+            set
+            {
+                this.OnNgaySinhChanging(value);
+                this.ReportPropertyChanging("NgaySinh");
+                this._NgaySinh = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("NgaySinh");
+                this.OnNgaySinhChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Nullable<global::System.DateTime> _NgaySinh;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnNgaySinhChanging(global::System.Nullable<global::System.DateTime> value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnNgaySinhChanged();
+        /// <summary>
+        /// There are no comments for property DiaChi in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string DiaChi
+        {
+            get
+            {
+                return this._DiaChi;
+            }
+            set
+            {
+                this.OnDiaChiChanging(value);
+                this.ReportPropertyChanging("DiaChi");
+                this._DiaChi = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("DiaChi");
+                this.OnDiaChiChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _DiaChi;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDiaChiChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDiaChiChanged();
+        /// <summary>
+        /// There are no comments for property DienThoai in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string DienThoai
+        {
+            get
+            {
+                return this._DienThoai;
+            }
+            set
+            {
+                this.OnDienThoaiChanging(value);
+                this.ReportPropertyChanging("DienThoai");
+                this._DienThoai = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("DienThoai");
+                this.OnDienThoaiChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _DienThoai;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDienThoaiChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDienThoaiChanged();
+        /// <summary>
+        /// There are no comments for property Email in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string Email
+        {
+            get
+            {
+                return this._Email;
+            }
+            set
+            {
+                this.OnEmailChanging(value);
+                this.ReportPropertyChanging("Email");
+                this._Email = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Email");
+                this.OnEmailChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _Email;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnEmailChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnEmailChanged();
         /// <summary>
         /// There are no comments for ChiTietTKBs in the schema.
         /// </summary>
@@ -571,45 +796,6 @@ namespace TKB_G9_Service
                 if ((value != null))
                 {
                     ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<ChiTietTKB>("TKBModel.FK_ChiTietTKB_GiaoVien", "ChiTietTKB", value);
-                }
-            }
-        }
-        /// <summary>
-        /// There are no comments for LoaiGiaoVien in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TKBModel", "FK_GiaoVien_LoaiGiaoVien", "LoaiGiaoVien")]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
-        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public LoaiGiaoVien LoaiGiaoVien
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<LoaiGiaoVien>("TKBModel.FK_GiaoVien_LoaiGiaoVien", "LoaiGiaoVien").Value;
-            }
-            set
-            {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<LoaiGiaoVien>("TKBModel.FK_GiaoVien_LoaiGiaoVien", "LoaiGiaoVien").Value = value;
-            }
-        }
-        /// <summary>
-        /// There are no comments for LoaiGiaoVien in the schema.
-        /// </summary>
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<LoaiGiaoVien> LoaiGiaoVienReference
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<LoaiGiaoVien>("TKBModel.FK_GiaoVien_LoaiGiaoVien", "LoaiGiaoVien");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<LoaiGiaoVien>("TKBModel.FK_GiaoVien_LoaiGiaoVien", "LoaiGiaoVien", value);
                 }
             }
         }
@@ -654,377 +840,252 @@ namespace TKB_G9_Service
         }
     }
     /// <summary>
-    /// There are no comments for TKBModel.HocSinh in the schema.
+    /// There are no comments for TKBModel.LoaiMonHoc in the schema.
     /// </summary>
     /// <KeyProperties>
-    /// id
+    /// MaLoaiMonHoc
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="TKBModel", Name="HocSinh")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="TKBModel", Name="LoaiMonHoc")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class HocSinh : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class LoaiMonHoc : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new HocSinh object.
+        /// Create a new LoaiMonHoc object.
         /// </summary>
-        /// <param name="id">Initial value of id.</param>
+        /// <param name="maLoaiMonHoc">Initial value of MaLoaiMonHoc.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static HocSinh CreateHocSinh(string id)
+        public static LoaiMonHoc CreateLoaiMonHoc(int maLoaiMonHoc)
         {
-            HocSinh hocSinh = new HocSinh();
-            hocSinh.id = id;
-            return hocSinh;
+            LoaiMonHoc loaiMonHoc = new LoaiMonHoc();
+            loaiMonHoc.MaLoaiMonHoc = maLoaiMonHoc;
+            return loaiMonHoc;
         }
         /// <summary>
-        /// There are no comments for property id in the schema.
+        /// There are no comments for property MaLoaiMonHoc in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string id
+        public int MaLoaiMonHoc
         {
             get
             {
-                return this._id;
+                return this._MaLoaiMonHoc;
             }
             set
             {
-                this.OnidChanging(value);
-                this.ReportPropertyChanging("id");
-                this._id = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("id");
-                this.OnidChanged();
+                this.OnMaLoaiMonHocChanging(value);
+                this.ReportPropertyChanging("MaLoaiMonHoc");
+                this._MaLoaiMonHoc = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("MaLoaiMonHoc");
+                this.OnMaLoaiMonHocChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _id;
+        private int _MaLoaiMonHoc;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnidChanging(string value);
+        partial void OnMaLoaiMonHocChanging(int value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnidChanged();
+        partial void OnMaLoaiMonHocChanged();
         /// <summary>
-        /// There are no comments for property TenHocSinh in the schema.
+        /// There are no comments for property TenLoaiMonHoc in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string TenHocSinh
+        public string TenLoaiMonHoc
         {
             get
             {
-                return this._TenHocSinh;
+                return this._TenLoaiMonHoc;
             }
             set
             {
-                this.OnTenHocSinhChanging(value);
-                this.ReportPropertyChanging("TenHocSinh");
-                this._TenHocSinh = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("TenHocSinh");
-                this.OnTenHocSinhChanged();
+                this.OnTenLoaiMonHocChanging(value);
+                this.ReportPropertyChanging("TenLoaiMonHoc");
+                this._TenLoaiMonHoc = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("TenLoaiMonHoc");
+                this.OnTenLoaiMonHocChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _TenHocSinh;
+        private string _TenLoaiMonHoc;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnTenHocSinhChanging(string value);
+        partial void OnTenLoaiMonHocChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnTenHocSinhChanged();
+        partial void OnTenLoaiMonHocChanged();
         /// <summary>
-        /// There are no comments for property NgayNhapHoc in the schema.
+        /// There are no comments for MonHocs in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string NgayNhapHoc
-        {
-            get
-            {
-                return this._NgayNhapHoc;
-            }
-            set
-            {
-                this.OnNgayNhapHocChanging(value);
-                this.ReportPropertyChanging("NgayNhapHoc");
-                this._NgayNhapHoc = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("NgayNhapHoc");
-                this.OnNgayNhapHocChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _NgayNhapHoc;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnNgayNhapHocChanging(string value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnNgayNhapHocChanged();
-        /// <summary>
-        /// There are no comments for property DiaChi in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string DiaChi
-        {
-            get
-            {
-                return this._DiaChi;
-            }
-            set
-            {
-                this.OnDiaChiChanging(value);
-                this.ReportPropertyChanging("DiaChi");
-                this._DiaChi = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("DiaChi");
-                this.OnDiaChiChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _DiaChi;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnDiaChiChanging(string value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnDiaChiChanged();
-        /// <summary>
-        /// There are no comments for LOP in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TKBModel", "FK_HocSinh_LOP", "LOP")]
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TKBModel", "FK_MonHoc_LoaiMonHoc", "MonHoc")]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public LOP LOP
+        public global::System.Data.Objects.DataClasses.EntityCollection<MonHoc> MonHocs
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<LOP>("TKBModel.FK_HocSinh_LOP", "LOP").Value;
-            }
-            set
-            {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<LOP>("TKBModel.FK_HocSinh_LOP", "LOP").Value = value;
-            }
-        }
-        /// <summary>
-        /// There are no comments for LOP in the schema.
-        /// </summary>
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<LOP> LOPReference
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<LOP>("TKBModel.FK_HocSinh_LOP", "LOP");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<MonHoc>("TKBModel.FK_MonHoc_LoaiMonHoc", "MonHoc");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<LOP>("TKBModel.FK_HocSinh_LOP", "LOP", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<MonHoc>("TKBModel.FK_MonHoc_LoaiMonHoc", "MonHoc", value);
                 }
             }
         }
     }
     /// <summary>
-    /// There are no comments for TKBModel.LoaiGiaoVien in the schema.
+    /// There are no comments for TKBModel.LoaiPhong in the schema.
     /// </summary>
     /// <KeyProperties>
-    /// id
+    /// MaLoaiPhong
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="TKBModel", Name="LoaiGiaoVien")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="TKBModel", Name="LoaiPhong")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class LoaiGiaoVien : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class LoaiPhong : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new LoaiGiaoVien object.
+        /// Create a new LoaiPhong object.
         /// </summary>
-        /// <param name="id">Initial value of id.</param>
+        /// <param name="maLoaiPhong">Initial value of MaLoaiPhong.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static LoaiGiaoVien CreateLoaiGiaoVien(string id)
+        public static LoaiPhong CreateLoaiPhong(int maLoaiPhong)
         {
-            LoaiGiaoVien loaiGiaoVien = new LoaiGiaoVien();
-            loaiGiaoVien.id = id;
-            return loaiGiaoVien;
+            LoaiPhong loaiPhong = new LoaiPhong();
+            loaiPhong.MaLoaiPhong = maLoaiPhong;
+            return loaiPhong;
         }
         /// <summary>
-        /// There are no comments for property id in the schema.
+        /// There are no comments for property MaLoaiPhong in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string id
+        public int MaLoaiPhong
         {
             get
             {
-                return this._id;
+                return this._MaLoaiPhong;
             }
             set
             {
-                this.OnidChanging(value);
-                this.ReportPropertyChanging("id");
-                this._id = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("id");
-                this.OnidChanged();
+                this.OnMaLoaiPhongChanging(value);
+                this.ReportPropertyChanging("MaLoaiPhong");
+                this._MaLoaiPhong = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("MaLoaiPhong");
+                this.OnMaLoaiPhongChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _id;
+        private int _MaLoaiPhong;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnidChanging(string value);
+        partial void OnMaLoaiPhongChanging(int value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnidChanged();
+        partial void OnMaLoaiPhongChanged();
         /// <summary>
-        /// There are no comments for property TenLoaiGiaoVien in the schema.
+        /// There are no comments for property TenLoaiPhong in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string TenLoaiGiaoVien
+        public string TenLoaiPhong
         {
             get
             {
-                return this._TenLoaiGiaoVien;
+                return this._TenLoaiPhong;
             }
             set
             {
-                this.OnTenLoaiGiaoVienChanging(value);
-                this.ReportPropertyChanging("TenLoaiGiaoVien");
-                this._TenLoaiGiaoVien = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("TenLoaiGiaoVien");
-                this.OnTenLoaiGiaoVienChanged();
+                this.OnTenLoaiPhongChanging(value);
+                this.ReportPropertyChanging("TenLoaiPhong");
+                this._TenLoaiPhong = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("TenLoaiPhong");
+                this.OnTenLoaiPhongChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _TenLoaiGiaoVien;
+        private string _TenLoaiPhong;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnTenLoaiGiaoVienChanging(string value);
+        partial void OnTenLoaiPhongChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnTenLoaiGiaoVienChanged();
+        partial void OnTenLoaiPhongChanged();
         /// <summary>
-        /// There are no comments for property ThoiHanHopDong in the schema.
+        /// There are no comments for Phongs in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string ThoiHanHopDong
-        {
-            get
-            {
-                return this._ThoiHanHopDong;
-            }
-            set
-            {
-                this.OnThoiHanHopDongChanging(value);
-                this.ReportPropertyChanging("ThoiHanHopDong");
-                this._ThoiHanHopDong = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("ThoiHanHopDong");
-                this.OnThoiHanHopDongChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _ThoiHanHopDong;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnThoiHanHopDongChanging(string value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnThoiHanHopDongChanged();
-        /// <summary>
-        /// There are no comments for property NgayNhanViec in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string NgayNhanViec
-        {
-            get
-            {
-                return this._NgayNhanViec;
-            }
-            set
-            {
-                this.OnNgayNhanViecChanging(value);
-                this.ReportPropertyChanging("NgayNhanViec");
-                this._NgayNhanViec = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("NgayNhanViec");
-                this.OnNgayNhanViecChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _NgayNhanViec;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnNgayNhanViecChanging(string value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnNgayNhanViecChanged();
-        /// <summary>
-        /// There are no comments for GiaoViens in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TKBModel", "FK_GiaoVien_LoaiGiaoVien", "GiaoVien")]
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TKBModel", "FK_Phong_LoaiPhong", "Phong")]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<GiaoVien> GiaoViens
+        public global::System.Data.Objects.DataClasses.EntityCollection<Phong> Phongs
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<GiaoVien>("TKBModel.FK_GiaoVien_LoaiGiaoVien", "GiaoVien");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Phong>("TKBModel.FK_Phong_LoaiPhong", "Phong");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<GiaoVien>("TKBModel.FK_GiaoVien_LoaiGiaoVien", "GiaoVien", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Phong>("TKBModel.FK_Phong_LoaiPhong", "Phong", value);
                 }
             }
         }
     }
     /// <summary>
-    /// There are no comments for TKBModel.LOP in the schema.
+    /// There are no comments for TKBModel.Lop in the schema.
     /// </summary>
     /// <KeyProperties>
-    /// id
+    /// MaLop
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="TKBModel", Name="LOP")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="TKBModel", Name="Lop")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class LOP : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class Lop : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new LOP object.
+        /// Create a new Lop object.
         /// </summary>
-        /// <param name="id">Initial value of id.</param>
+        /// <param name="maLop">Initial value of MaLop.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static LOP CreateLOP(string id)
+        public static Lop CreateLop(int maLop)
         {
-            LOP lOP = new LOP();
-            lOP.id = id;
-            return lOP;
+            Lop lop = new Lop();
+            lop.MaLop = maLop;
+            return lop;
         }
         /// <summary>
-        /// There are no comments for property id in the schema.
+        /// There are no comments for property MaLop in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string id
+        public int MaLop
         {
             get
             {
-                return this._id;
+                return this._MaLop;
             }
             set
             {
-                this.OnidChanging(value);
-                this.ReportPropertyChanging("id");
-                this._id = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("id");
-                this.OnidChanged();
+                this.OnMaLopChanging(value);
+                this.ReportPropertyChanging("MaLop");
+                this._MaLop = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("MaLop");
+                this.OnMaLopChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _id;
+        private int _MaLop;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnidChanging(string value);
+        partial void OnMaLopChanging(int value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnidChanged();
+        partial void OnMaLopChanged();
         /// <summary>
         /// There are no comments for property TenLop in the schema.
         /// </summary>
@@ -1053,31 +1114,117 @@ namespace TKB_G9_Service
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnTenLopChanged();
         /// <summary>
-        /// There are no comments for HocSinhs in the schema.
+        /// There are no comments for property KhoiLop in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TKBModel", "FK_HocSinh_LOP", "HocSinh")]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
-        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<HocSinh> HocSinhs
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string KhoiLop
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<HocSinh>("TKBModel.FK_HocSinh_LOP", "HocSinh");
+                return this._KhoiLop;
             }
             set
             {
-                if ((value != null))
-                {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<HocSinh>("TKBModel.FK_HocSinh_LOP", "HocSinh", value);
-                }
+                this.OnKhoiLopChanging(value);
+                this.ReportPropertyChanging("KhoiLop");
+                this._KhoiLop = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("KhoiLop");
+                this.OnKhoiLopChanged();
             }
         }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _KhoiLop;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnKhoiLopChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnKhoiLopChanged();
+        /// <summary>
+        /// There are no comments for property CaHoc in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string CaHoc
+        {
+            get
+            {
+                return this._CaHoc;
+            }
+            set
+            {
+                this.OnCaHocChanging(value);
+                this.ReportPropertyChanging("CaHoc");
+                this._CaHoc = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("CaHoc");
+                this.OnCaHocChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _CaHoc;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCaHocChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCaHocChanged();
+        /// <summary>
+        /// There are no comments for property SiSo in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Nullable<int> SiSo
+        {
+            get
+            {
+                return this._SiSo;
+            }
+            set
+            {
+                this.OnSiSoChanging(value);
+                this.ReportPropertyChanging("SiSo");
+                this._SiSo = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("SiSo");
+                this.OnSiSoChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Nullable<int> _SiSo;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnSiSoChanging(global::System.Nullable<int> value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnSiSoChanged();
+        /// <summary>
+        /// There are no comments for property GhiChu in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string GhiChu
+        {
+            get
+            {
+                return this._GhiChu;
+            }
+            set
+            {
+                this.OnGhiChuChanging(value);
+                this.ReportPropertyChanging("GhiChu");
+                this._GhiChu = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("GhiChu");
+                this.OnGhiChuChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _GhiChu;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnGhiChuChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnGhiChuChanged();
         /// <summary>
         /// There are no comments for ThoiKhoaBieux in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TKBModel", "FK_ThoiKhoaBieu_LOP", "ThoiKhoaBieu")]
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TKBModel", "FK_ThoiKhoaBieu_Lop", "ThoiKhoaBieu")]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
@@ -1086,13 +1233,13 @@ namespace TKB_G9_Service
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<ThoiKhoaBieu>("TKBModel.FK_ThoiKhoaBieu_LOP", "ThoiKhoaBieu");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<ThoiKhoaBieu>("TKBModel.FK_ThoiKhoaBieu_Lop", "ThoiKhoaBieu");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<ThoiKhoaBieu>("TKBModel.FK_ThoiKhoaBieu_LOP", "ThoiKhoaBieu", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<ThoiKhoaBieu>("TKBModel.FK_ThoiKhoaBieu_Lop", "ThoiKhoaBieu", value);
                 }
             }
         }
@@ -1101,7 +1248,7 @@ namespace TKB_G9_Service
     /// There are no comments for TKBModel.MonHoc in the schema.
     /// </summary>
     /// <KeyProperties>
-    /// id
+    /// MaMonHoc
     /// </KeyProperties>
     [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="TKBModel", Name="MonHoc")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
@@ -1111,41 +1258,41 @@ namespace TKB_G9_Service
         /// <summary>
         /// Create a new MonHoc object.
         /// </summary>
-        /// <param name="id">Initial value of id.</param>
+        /// <param name="maMonHoc">Initial value of MaMonHoc.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static MonHoc CreateMonHoc(string id)
+        public static MonHoc CreateMonHoc(int maMonHoc)
         {
             MonHoc monHoc = new MonHoc();
-            monHoc.id = id;
+            monHoc.MaMonHoc = maMonHoc;
             return monHoc;
         }
         /// <summary>
-        /// There are no comments for property id in the schema.
+        /// There are no comments for property MaMonHoc in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string id
+        public int MaMonHoc
         {
             get
             {
-                return this._id;
+                return this._MaMonHoc;
             }
             set
             {
-                this.OnidChanging(value);
-                this.ReportPropertyChanging("id");
-                this._id = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("id");
-                this.OnidChanged();
+                this.OnMaMonHocChanging(value);
+                this.ReportPropertyChanging("MaMonHoc");
+                this._MaMonHoc = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("MaMonHoc");
+                this.OnMaMonHocChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _id;
+        private int _MaMonHoc;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnidChanging(string value);
+        partial void OnMaMonHocChanging(int value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnidChanged();
+        partial void OnMaMonHocChanged();
         /// <summary>
         /// There are no comments for property TenMonHoc in the schema.
         /// </summary>
@@ -1201,6 +1348,87 @@ namespace TKB_G9_Service
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnMoTaChanged();
         /// <summary>
+        /// There are no comments for property MonChinh in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Nullable<int> MonChinh
+        {
+            get
+            {
+                return this._MonChinh;
+            }
+            set
+            {
+                this.OnMonChinhChanging(value);
+                this.ReportPropertyChanging("MonChinh");
+                this._MonChinh = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("MonChinh");
+                this.OnMonChinhChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Nullable<int> _MonChinh;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnMonChinhChanging(global::System.Nullable<int> value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnMonChinhChanged();
+        /// <summary>
+        /// There are no comments for property HeSoMonHoc in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Nullable<int> HeSoMonHoc
+        {
+            get
+            {
+                return this._HeSoMonHoc;
+            }
+            set
+            {
+                this.OnHeSoMonHocChanging(value);
+                this.ReportPropertyChanging("HeSoMonHoc");
+                this._HeSoMonHoc = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("HeSoMonHoc");
+                this.OnHeSoMonHocChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Nullable<int> _HeSoMonHoc;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnHeSoMonHocChanging(global::System.Nullable<int> value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnHeSoMonHocChanged();
+        /// <summary>
+        /// There are no comments for property GhiChu in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string GhiChu
+        {
+            get
+            {
+                return this._GhiChu;
+            }
+            set
+            {
+                this.OnGhiChuChanging(value);
+                this.ReportPropertyChanging("GhiChu");
+                this._GhiChu = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("GhiChu");
+                this.OnGhiChuChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _GhiChu;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnGhiChuChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnGhiChuChanged();
+        /// <summary>
         /// There are no comments for ChiTietTKBs in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TKBModel", "FK_ChiTietTKB_MonHoc", "ChiTietTKB")]
@@ -1244,12 +1472,405 @@ namespace TKB_G9_Service
                 }
             }
         }
+        /// <summary>
+        /// There are no comments for LoaiMonHoc in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TKBModel", "FK_MonHoc_LoaiMonHoc", "LoaiMonHoc")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public LoaiMonHoc LoaiMonHoc
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<LoaiMonHoc>("TKBModel.FK_MonHoc_LoaiMonHoc", "LoaiMonHoc").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<LoaiMonHoc>("TKBModel.FK_MonHoc_LoaiMonHoc", "LoaiMonHoc").Value = value;
+            }
+        }
+        /// <summary>
+        /// There are no comments for LoaiMonHoc in the schema.
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<LoaiMonHoc> LoaiMonHocReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<LoaiMonHoc>("TKBModel.FK_MonHoc_LoaiMonHoc", "LoaiMonHoc");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<LoaiMonHoc>("TKBModel.FK_MonHoc_LoaiMonHoc", "LoaiMonHoc", value);
+                }
+            }
+        }
+    }
+    /// <summary>
+    /// There are no comments for TKBModel.Phong in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// MaPhong
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="TKBModel", Name="Phong")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class Phong : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// Create a new Phong object.
+        /// </summary>
+        /// <param name="maPhong">Initial value of MaPhong.</param>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public static Phong CreatePhong(int maPhong)
+        {
+            Phong phong = new Phong();
+            phong.MaPhong = maPhong;
+            return phong;
+        }
+        /// <summary>
+        /// There are no comments for property MaPhong in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public int MaPhong
+        {
+            get
+            {
+                return this._MaPhong;
+            }
+            set
+            {
+                this.OnMaPhongChanging(value);
+                this.ReportPropertyChanging("MaPhong");
+                this._MaPhong = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("MaPhong");
+                this.OnMaPhongChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private int _MaPhong;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnMaPhongChanging(int value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnMaPhongChanged();
+        /// <summary>
+        /// There are no comments for property TenPhong in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string TenPhong
+        {
+            get
+            {
+                return this._TenPhong;
+            }
+            set
+            {
+                this.OnTenPhongChanging(value);
+                this.ReportPropertyChanging("TenPhong");
+                this._TenPhong = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("TenPhong");
+                this.OnTenPhongChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _TenPhong;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnTenPhongChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnTenPhongChanged();
+        /// <summary>
+        /// There are no comments for property TinhTrang in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string TinhTrang
+        {
+            get
+            {
+                return this._TinhTrang;
+            }
+            set
+            {
+                this.OnTinhTrangChanging(value);
+                this.ReportPropertyChanging("TinhTrang");
+                this._TinhTrang = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("TinhTrang");
+                this.OnTinhTrangChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _TinhTrang;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnTinhTrangChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnTinhTrangChanged();
+        /// <summary>
+        /// There are no comments for property SucChua in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Nullable<int> SucChua
+        {
+            get
+            {
+                return this._SucChua;
+            }
+            set
+            {
+                this.OnSucChuaChanging(value);
+                this.ReportPropertyChanging("SucChua");
+                this._SucChua = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("SucChua");
+                this.OnSucChuaChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Nullable<int> _SucChua;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnSucChuaChanging(global::System.Nullable<int> value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnSucChuaChanged();
+        /// <summary>
+        /// There are no comments for ChiTietTKBs in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TKBModel", "FK_ChiTietTKB_Phong", "ChiTietTKB")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<ChiTietTKB> ChiTietTKBs
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<ChiTietTKB>("TKBModel.FK_ChiTietTKB_Phong", "ChiTietTKB");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<ChiTietTKB>("TKBModel.FK_ChiTietTKB_Phong", "ChiTietTKB", value);
+                }
+            }
+        }
+        /// <summary>
+        /// There are no comments for LoaiPhong in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TKBModel", "FK_Phong_LoaiPhong", "LoaiPhong")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public LoaiPhong LoaiPhong
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<LoaiPhong>("TKBModel.FK_Phong_LoaiPhong", "LoaiPhong").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<LoaiPhong>("TKBModel.FK_Phong_LoaiPhong", "LoaiPhong").Value = value;
+            }
+        }
+        /// <summary>
+        /// There are no comments for LoaiPhong in the schema.
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<LoaiPhong> LoaiPhongReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<LoaiPhong>("TKBModel.FK_Phong_LoaiPhong", "LoaiPhong");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<LoaiPhong>("TKBModel.FK_Phong_LoaiPhong", "LoaiPhong", value);
+                }
+            }
+        }
+    }
+    /// <summary>
+    /// There are no comments for TKBModel.sysdiagram in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// diagram_id
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="TKBModel", Name="sysdiagram")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class sysdiagram : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// Create a new sysdiagram object.
+        /// </summary>
+        /// <param name="name">Initial value of name.</param>
+        /// <param name="principal_id">Initial value of principal_id.</param>
+        /// <param name="diagram_id">Initial value of diagram_id.</param>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public static sysdiagram Createsysdiagram(string name, int principal_id, int diagram_id)
+        {
+            sysdiagram sysdiagram = new sysdiagram();
+            sysdiagram.name = name;
+            sysdiagram.principal_id = principal_id;
+            sysdiagram.diagram_id = diagram_id;
+            return sysdiagram;
+        }
+        /// <summary>
+        /// There are no comments for property name in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string name
+        {
+            get
+            {
+                return this._name;
+            }
+            set
+            {
+                this.OnnameChanging(value);
+                this.ReportPropertyChanging("name");
+                this._name = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("name");
+                this.OnnameChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _name;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnnameChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnnameChanged();
+        /// <summary>
+        /// There are no comments for property principal_id in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public int principal_id
+        {
+            get
+            {
+                return this._principal_id;
+            }
+            set
+            {
+                this.Onprincipal_idChanging(value);
+                this.ReportPropertyChanging("principal_id");
+                this._principal_id = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("principal_id");
+                this.Onprincipal_idChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private int _principal_id;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void Onprincipal_idChanging(int value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void Onprincipal_idChanged();
+        /// <summary>
+        /// There are no comments for property diagram_id in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public int diagram_id
+        {
+            get
+            {
+                return this._diagram_id;
+            }
+            set
+            {
+                this.Ondiagram_idChanging(value);
+                this.ReportPropertyChanging("diagram_id");
+                this._diagram_id = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("diagram_id");
+                this.Ondiagram_idChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private int _diagram_id;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void Ondiagram_idChanging(int value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void Ondiagram_idChanged();
+        /// <summary>
+        /// There are no comments for property version in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Nullable<int> version
+        {
+            get
+            {
+                return this._version;
+            }
+            set
+            {
+                this.OnversionChanging(value);
+                this.ReportPropertyChanging("version");
+                this._version = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("version");
+                this.OnversionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Nullable<int> _version;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnversionChanging(global::System.Nullable<int> value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnversionChanged();
+        /// <summary>
+        /// There are no comments for property definition in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public byte[] definition
+        {
+            get
+            {
+                return global::System.Data.Objects.DataClasses.StructuralObject.GetValidValue(this._definition);
+            }
+            set
+            {
+                this.OndefinitionChanging(value);
+                this.ReportPropertyChanging("definition");
+                this._definition = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("definition");
+                this.OndefinitionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private byte[] _definition;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OndefinitionChanging(byte[] value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OndefinitionChanged();
     }
     /// <summary>
     /// There are no comments for TKBModel.ThoiKhoaBieu in the schema.
     /// </summary>
     /// <KeyProperties>
-    /// id
+    /// MaTKB
     /// </KeyProperties>
     [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="TKBModel", Name="ThoiKhoaBieu")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
@@ -1259,41 +1880,41 @@ namespace TKB_G9_Service
         /// <summary>
         /// Create a new ThoiKhoaBieu object.
         /// </summary>
-        /// <param name="id">Initial value of id.</param>
+        /// <param name="maTKB">Initial value of MaTKB.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static ThoiKhoaBieu CreateThoiKhoaBieu(string id)
+        public static ThoiKhoaBieu CreateThoiKhoaBieu(int maTKB)
         {
             ThoiKhoaBieu thoiKhoaBieu = new ThoiKhoaBieu();
-            thoiKhoaBieu.id = id;
+            thoiKhoaBieu.MaTKB = maTKB;
             return thoiKhoaBieu;
         }
         /// <summary>
-        /// There are no comments for property id in the schema.
+        /// There are no comments for property MaTKB in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string id
+        public int MaTKB
         {
             get
             {
-                return this._id;
+                return this._MaTKB;
             }
             set
             {
-                this.OnidChanging(value);
-                this.ReportPropertyChanging("id");
-                this._id = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("id");
-                this.OnidChanged();
+                this.OnMaTKBChanging(value);
+                this.ReportPropertyChanging("MaTKB");
+                this._MaTKB = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("MaTKB");
+                this.OnMaTKBChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _id;
+        private int _MaTKB;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnidChanging(string value);
+        partial void OnMaTKBChanging(int value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnidChanged();
+        partial void OnMaTKBChanged();
         /// <summary>
         /// There are no comments for property NamHoc in the schema.
         /// </summary>
@@ -1344,41 +1965,41 @@ namespace TKB_G9_Service
             }
         }
         /// <summary>
-        /// There are no comments for LOP in the schema.
+        /// There are no comments for Lop in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TKBModel", "FK_ThoiKhoaBieu_LOP", "LOP")]
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TKBModel", "FK_ThoiKhoaBieu_Lop", "Lop")]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public LOP LOP
+        public Lop Lop
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<LOP>("TKBModel.FK_ThoiKhoaBieu_LOP", "LOP").Value;
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Lop>("TKBModel.FK_ThoiKhoaBieu_Lop", "Lop").Value;
             }
             set
             {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<LOP>("TKBModel.FK_ThoiKhoaBieu_LOP", "LOP").Value = value;
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Lop>("TKBModel.FK_ThoiKhoaBieu_Lop", "Lop").Value = value;
             }
         }
         /// <summary>
-        /// There are no comments for LOP in the schema.
+        /// There are no comments for Lop in the schema.
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<LOP> LOPReference
+        public global::System.Data.Objects.DataClasses.EntityReference<Lop> LopReference
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<LOP>("TKBModel.FK_ThoiKhoaBieu_LOP", "LOP");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Lop>("TKBModel.FK_ThoiKhoaBieu_Lop", "Lop");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<LOP>("TKBModel.FK_ThoiKhoaBieu_LOP", "LOP", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Lop>("TKBModel.FK_ThoiKhoaBieu_Lop", "Lop", value);
                 }
             }
         }

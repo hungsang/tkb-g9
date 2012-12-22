@@ -9,10 +9,6 @@ body
     background-color: #DCE1E4;
     line-height: 150%;
 }
-a
-{
-    cursor: pointer;
-}
 .btnsubmit
 {
     background-color: #E03434;
@@ -22,6 +18,20 @@ a
     padding: 5px 10px;
     cursor: pointer;
 }
+.lastnewsbox
+{
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border: 1px solid #dfe0e2;
+    border-radius: 10px;
+    background-image: -ms-linear-gradient(top, #FFFFFF 0%, #F7F7F6 100%);
+    background-image: -moz-linear-gradient(top, #FFFFFF 0%, #F7F7F6 100%);
+    background-image: -o-linear-gradient(top, #FFFFFF 0%, #F7F7F6 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #F7F7F6));
+    background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #F7F7F6 100%);
+    background-image: linear-gradient(to bottom, #FFFFFF 0%, #F7F7F6 100%);
+}
+
 /*******GENERAL********/
 .clrb
 {
@@ -86,3 +96,190 @@ a
 {
     font-size: 28px;
 }
+
+.dsdangky
+{
+    background: none repeat scroll 1px center #F7F7F6;
+    border: 1px solid #DFE0E2;
+    padding-bottom: 2px;
+    padding-top: 2px;
+}
+.tableheader
+{
+    /*background-color: #FFFFFF;*/
+    font-weight: bold;
+    height: 30px;
+}
+.tcenter
+{
+    text-align: center;
+}
+ul
+{
+    margin: 0 auto; /*width: 600px;*/
+    list-style: none;
+}
+ul li.hder
+{
+    list-style: none outside none !important;
+    margin: 0;
+    padding: 0;
+}
+
+/******************USER LIST*****************/
+.user-tlb
+{
+}
+.li-atv
+{
+    background-color: #F8FBFF;
+}
+.user-tlb ul li ul li
+{
+    border: 1px solid #D4D4D4;
+    color: #666666;
+    float: left;
+    font-weight: bold;
+    margin: -1px 0 0 -1px;
+    padding: 10px;
+    text-align: center;
+}
+.user-tlb ul li ul li.stt
+{
+    height: 15px;
+    text-transform: uppercase;
+    width: 25px;
+}
+.user-tlb ul li ul li.account_name
+{
+    height: 15px;
+    width: 190px;
+}
+.user-tlb ul li ul li.user_type
+{
+    height: 15px;
+    overflow: hidden;
+    width: 100px;
+}
+.user-tlb ul li ul li.active
+{
+    height: 15px;
+    overflow: hidden;
+    width: 100px;
+}
+.user-tlb ul li ul li.edit
+{
+    height: 15px;
+    overflow: hidden;
+    width: 80px;
+}
+.user-tlb ul li.hder ul li
+{
+    background-color: #E0F4FF;
+    border: 1px solid #D4D4D4;
+    color: #666666;
+    float: left;
+    font-weight: bold;
+    margin: -1px 0 0 -1px;
+    padding: 10px;
+    text-align: center;
+}
+.user-tlb ul li.hder ul li.stt
+{
+    height: 15px;
+    width: 25px;
+}
+.user-tlb ul li.hder ul li.account_name
+{
+    height: 15px;
+    width: 190px;
+}
+.user-tlb ul li.hder ul li.user_type
+{
+    height: 15px;
+    width: 100px;
+}
+.user-tlb ul li.hder ul li.active
+{
+    height: 15px;
+    width: 100px;
+}
+.user-tlb ul li.hder ul li.edit
+{
+    height: 15px;
+    width: 80px;
+}
+
+/***********DANH*************/
+.pagingitem
+{
+    border-style: solid;
+    border-width: thin;
+    border-color: Aqua;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    float: left;
+    margin-left: 5px;
+    cursor: pointer;
+}
+.pagingitemactive
+{
+    border-style: solid;
+    border-width: thin;
+    border-color: Aqua;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    float: left;
+    margin-left: 5px;
+    cursor: pointer;
+    background-color: Aqua;
+}
+.GirdDiv
+{
+}
+.GirdDiv .ListHeader
+{
+    float: left;
+    margin-left: 10px;
+    width: 140px;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.GirdDiv .Item
+{
+    float: left;
+    margin-left: 10px;
+    width: 140px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.clear
+{
+    clear: both;
+}
+.btnXoa
+{
+    background-image: url("../image/xoa_active.gif");
+    width: 18px;
+    height: 17px;
+    cursor: pointer;
+    float: left;
+    margin-left: 5px;
+}
+.btnEdit
+{
+    margin-left: 5px;
+    float: left;
+    background-image: url("../image/icon_edit.gif");
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+.btnThem
+{
+}
+/****************************/
