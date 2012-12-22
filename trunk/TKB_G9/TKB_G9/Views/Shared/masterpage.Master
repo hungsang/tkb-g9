@@ -32,22 +32,22 @@
                 <li class="" id="nav-fragment-3"><a href="#fragment-3">2</a></li>
             </ul>
             <div id="fragment-1" class="ui-tabs-panel" style="">
-                <h1 class="larger">
+                <h1 class="larger" style="color:#4B4B4B">
                     Website Trường THPT Windy</h1>
                 <h3>
                     </h3>
             </div>
             <div style="" id="fragment-2" class="ui-tabs-panel ui-tabs-hide">
-                <h1 class="larger">
+                <h1 class="larger" style="color:#4B4B4B">
                     Website Trường THPT Windy</h1>
                 <h3>
                     </h3>
             </div>
             <div style="" id="fragment-3" class="ui-tabs-panel ui-tabs-hide">
-                <h1 class="larger">
+                <h1 class="larger" style="color:#4B4B4B">
                     Website Trường THPT Windy</h1>
                 <h3>
-                    <h3>
+                    </h3>
             </div>
         </div>
     </div>
@@ -147,14 +147,14 @@
         </div>--%>
         <div id="footer">
             Copyright ©2012
-            <br>
+            <br/>
             Địa chỉ: 123 Middle of Nowhere
-            <br>
+            <br/>
             Điện thoại: 1900 1560 - Fax: 00-1234-5678
-            <br>
+            <br/>
             Email: support@windy.com.vn
         </div>
-        <br>
+        <br/>
     </div>
     <div id="mainfooter" style="height: 30px; text-indent: 10px;">
     </div>
