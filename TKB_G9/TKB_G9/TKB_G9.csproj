@@ -76,6 +76,10 @@
     <Content Include="Content\main.css" />
     <Content Include="Content\style.css" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-1.js" />
+    <Content Include="Scripts\jquery-function.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\MasterpageScript.js" />
     <Content Include="Views\Shared\Login.aspx" />
     <Content Include="Web.config" />
