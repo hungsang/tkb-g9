@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+  <EntityContainerMapping StorageEntityContainer="TKBModelStoreContainer" CdmEntityContainer="TKBEntities">
+    <EntitySetMapping Name="ChiTietTKBs">
+      <EntityTypeMapping TypeName="TKBModel.ChiTietTKB">
+        <MappingFragment StoreEntitySet="ChiTietTKB">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="GioBatDau" ColumnName="GioBatDau" />
+          <ScalarProperty Name="GioKetThuc" ColumnName="GioKetThuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GiaoViens">
+      <EntityTypeMapping TypeName="TKBModel.GiaoVien">
+        <MappingFragment StoreEntitySet="GiaoVien">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TenGiaoVien" ColumnName="TenGiaoVien" />
+          <ScalarProperty Name="ChuNhiem" ColumnName="ChuNhiem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HocSinhs">
+      <EntityTypeMapping TypeName="TKBModel.HocSinh">
+        <MappingFragment StoreEntitySet="HocSinh">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TenHocSinh" ColumnName="TenHocSinh" />
+          <ScalarProperty Name="NgayNhapHoc" ColumnName="NgayNhapHoc" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoaiGiaoViens">
+      <EntityTypeMapping TypeName="TKBModel.LoaiGiaoVien">
+        <MappingFragment StoreEntitySet="LoaiGiaoVien">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TenLoaiGiaoVien" ColumnName="TenLoaiGiaoVien" />
+          <ScalarProperty Name="ThoiHanHopDong" ColumnName="ThoiHanHopDong" />
+          <ScalarProperty Name="NgayNhanViec" ColumnName="NgayNhanViec" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOPs">
+      <EntityTypeMapping TypeName="TKBModel.LOP">
+        <MappingFragment StoreEntitySet="LOP">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TenLop" ColumnName="TenLop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MonHocs">
+      <EntityTypeMapping TypeName="TKBModel.MonHoc">
+        <MappingFragment StoreEntitySet="MonHoc">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TenMonHoc" ColumnName="TenMonHoc" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThoiKhoaBieux">
+      <EntityTypeMapping TypeName="TKBModel.ThoiKhoaBieu">
+        <MappingFragment StoreEntitySet="ThoiKhoaBieu">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="NamHoc" ColumnName="NamHoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_ChiTietTKB_GiaoVien" TypeName="TKBModel.FK_ChiTietTKB_GiaoVien" StoreEntitySet="ChiTietTKB">
+      <EndProperty Name="GiaoVien">
+        <ScalarProperty Name="id" ColumnName="idGiaoVien" />
+      </EndProperty>
+      <EndProperty Name="ChiTietTKB">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition ColumnName="idGiaoVien" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_ChiTietTKB_MonHoc" TypeName="TKBModel.FK_ChiTietTKB_MonHoc" StoreEntitySet="ChiTietTKB">
+      <EndProperty Name="MonHoc">
+        <ScalarProperty Name="id" ColumnName="idMonHoc" />
+      </EndProperty>
+      <EndProperty Name="ChiTietTKB">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition ColumnName="idMonHoc" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_ChiTietTKB_ThoiKhoaBieu" TypeName="TKBModel.FK_ChiTietTKB_ThoiKhoaBieu" StoreEntitySet="ChiTietTKB">
+      <EndProperty Name="ThoiKhoaBieu">
+        <ScalarProperty Name="id" ColumnName="idTKB" />
+      </EndProperty>
+      <EndProperty Name="ChiTietTKB">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition ColumnName="idTKB" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_GiaoVien_LoaiGiaoVien" TypeName="TKBModel.FK_GiaoVien_LoaiGiaoVien" StoreEntitySet="GiaoVien">
+      <EndProperty Name="LoaiGiaoVien">
+        <ScalarProperty Name="id" ColumnName="LoaiGiaoVien" />
+      </EndProperty>
+      <EndProperty Name="GiaoVien">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition ColumnName="LoaiGiaoVien" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_GiaoVien_MonHoc" TypeName="TKBModel.FK_GiaoVien_MonHoc" StoreEntitySet="GiaoVien">
+      <EndProperty Name="MonHoc">
+        <ScalarProperty Name="id" ColumnName="idMonHoc" />
+      </EndProperty>
+      <EndProperty Name="GiaoVien">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition ColumnName="idMonHoc" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_HocSinh_LOP" TypeName="TKBModel.FK_HocSinh_LOP" StoreEntitySet="HocSinh">
+      <EndProperty Name="LOP">
+        <ScalarProperty Name="id" ColumnName="idLop" />
+      </EndProperty>
+      <EndProperty Name="HocSinh">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition ColumnName="idLop" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_ThoiKhoaBieu_LOP" TypeName="TKBModel.FK_ThoiKhoaBieu_LOP" StoreEntitySet="ThoiKhoaBieu">
+      <EndProperty Name="LOP">
+        <ScalarProperty Name="id" ColumnName="idLop" />
+      </EndProperty>
+      <EndProperty Name="ThoiKhoaBieu">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition ColumnName="idLop" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

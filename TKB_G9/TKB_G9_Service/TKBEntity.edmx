@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TKBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="TKBModelStoreContainer">
+          <EntitySet Name="ChiTietTKB" EntityType="TKBModel.Store.ChiTietTKB" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GiaoVien" EntityType="TKBModel.Store.GiaoVien" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HocSinh" EntityType="TKBModel.Store.HocSinh" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LoaiGiaoVien" EntityType="TKBModel.Store.LoaiGiaoVien" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LOP" EntityType="TKBModel.Store.LOP" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MonHoc" EntityType="TKBModel.Store.MonHoc" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ThoiKhoaBieu" EntityType="TKBModel.Store.ThoiKhoaBieu" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ChiTietTKB_GiaoVien" Association="TKBModel.Store.FK_ChiTietTKB_GiaoVien">
+            <End Role="GiaoVien" EntitySet="GiaoVien" />
+            <End Role="ChiTietTKB" EntitySet="ChiTietTKB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietTKB_MonHoc" Association="TKBModel.Store.FK_ChiTietTKB_MonHoc">
+            <End Role="MonHoc" EntitySet="MonHoc" />
+            <End Role="ChiTietTKB" EntitySet="ChiTietTKB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietTKB_ThoiKhoaBieu" Association="TKBModel.Store.FK_ChiTietTKB_ThoiKhoaBieu">
+            <End Role="ThoiKhoaBieu" EntitySet="ThoiKhoaBieu" />
+            <End Role="ChiTietTKB" EntitySet="ChiTietTKB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GiaoVien_LoaiGiaoVien" Association="TKBModel.Store.FK_GiaoVien_LoaiGiaoVien">
+            <End Role="LoaiGiaoVien" EntitySet="LoaiGiaoVien" />
+            <End Role="GiaoVien" EntitySet="GiaoVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GiaoVien_MonHoc" Association="TKBModel.Store.FK_GiaoVien_MonHoc">
+            <End Role="MonHoc" EntitySet="MonHoc" />
+            <End Role="GiaoVien" EntitySet="GiaoVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HocSinh_LOP" Association="TKBModel.Store.FK_HocSinh_LOP">
+            <End Role="LOP" EntitySet="LOP" />
+            <End Role="HocSinh" EntitySet="HocSinh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ThoiKhoaBieu_LOP" Association="TKBModel.Store.FK_ThoiKhoaBieu_LOP">
+            <End Role="LOP" EntitySet="LOP" />
+            <End Role="ThoiKhoaBieu" EntitySet="ThoiKhoaBieu" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ChiTietTKB">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="idTKB" Type="nchar" MaxLength="10" />
+          <Property Name="idMonHoc" Type="nchar" MaxLength="10" />
+          <Property Name="GioBatDau" Type="nchar" MaxLength="10" />
+          <Property Name="GioKetThuc" Type="nchar" MaxLength="10" />
+          <Property Name="idGiaoVien" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="GiaoVien">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="TenGiaoVien" Type="nchar" MaxLength="10" />
+          <Property Name="idMonHoc" Type="nchar" MaxLength="10" />
+          <Property Name="ChuNhiem" Type="nchar" MaxLength="10" />
+          <Property Name="LoaiGiaoVien" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="HocSinh">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="TenHocSinh" Type="nchar" MaxLength="10" />
+          <Property Name="idLop" Type="nchar" MaxLength="10" />
+          <Property Name="NgayNhapHoc" Type="nchar" MaxLength="10" />
+          <Property Name="DiaChi" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="LoaiGiaoVien">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="TenLoaiGiaoVien" Type="nchar" MaxLength="10" />
+          <Property Name="ThoiHanHopDong" Type="nchar" MaxLength="10" />
+          <Property Name="NgayNhanViec" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="LOP">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="TenLop" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="MonHoc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="TenMonHoc" Type="nchar" MaxLength="10" />
+          <Property Name="MoTa" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="ThoiKhoaBieu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="NamHoc" Type="nchar" MaxLength="10" />
+          <Property Name="idLop" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_ChiTietTKB_GiaoVien">
+          <End Role="GiaoVien" Type="TKBModel.Store.GiaoVien" Multiplicity="0..1" />
+          <End Role="ChiTietTKB" Type="TKBModel.Store.ChiTietTKB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GiaoVien">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ChiTietTKB">
+              <PropertyRef Name="idGiaoVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChiTietTKB_MonHoc">
+          <End Role="MonHoc" Type="TKBModel.Store.MonHoc" Multiplicity="0..1" />
+          <End Role="ChiTietTKB" Type="TKBModel.Store.ChiTietTKB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHoc">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ChiTietTKB">
+              <PropertyRef Name="idMonHoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChiTietTKB_ThoiKhoaBieu">
+          <End Role="ThoiKhoaBieu" Type="TKBModel.Store.ThoiKhoaBieu" Multiplicity="0..1" />
+          <End Role="ChiTietTKB" Type="TKBModel.Store.ChiTietTKB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThoiKhoaBieu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ChiTietTKB">
+              <PropertyRef Name="idTKB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GiaoVien_LoaiGiaoVien">
+          <End Role="LoaiGiaoVien" Type="TKBModel.Store.LoaiGiaoVien" Multiplicity="0..1" />
+          <End Role="GiaoVien" Type="TKBModel.Store.GiaoVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiGiaoVien">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GiaoVien">
+              <PropertyRef Name="LoaiGiaoVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GiaoVien_MonHoc">
+          <End Role="MonHoc" Type="TKBModel.Store.MonHoc" Multiplicity="0..1" />
+          <End Role="GiaoVien" Type="TKBModel.Store.GiaoVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHoc">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GiaoVien">
+              <PropertyRef Name="idMonHoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HocSinh_LOP">
+          <End Role="LOP" Type="TKBModel.Store.LOP" Multiplicity="0..1" />
+          <End Role="HocSinh" Type="TKBModel.Store.HocSinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOP">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="HocSinh">
+              <PropertyRef Name="idLop" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ThoiKhoaBieu_LOP">
+          <End Role="LOP" Type="TKBModel.Store.LOP" Multiplicity="0..1" />
+          <End Role="ThoiKhoaBieu" Type="TKBModel.Store.ThoiKhoaBieu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOP">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ThoiKhoaBieu">
+              <PropertyRef Name="idLop" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TKBModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="TKBEntities">
+          <EntitySet Name="ChiTietTKBs" EntityType="TKBModel.ChiTietTKB" />
+          <EntitySet Name="GiaoViens" EntityType="TKBModel.GiaoVien" />
+          <EntitySet Name="HocSinhs" EntityType="TKBModel.HocSinh" />
+          <EntitySet Name="LoaiGiaoViens" EntityType="TKBModel.LoaiGiaoVien" />
+          <EntitySet Name="LOPs" EntityType="TKBModel.LOP" />
+          <EntitySet Name="MonHocs" EntityType="TKBModel.MonHoc" />
+          <EntitySet Name="ThoiKhoaBieux" EntityType="TKBModel.ThoiKhoaBieu" />
+          <AssociationSet Name="FK_ChiTietTKB_GiaoVien" Association="TKBModel.FK_ChiTietTKB_GiaoVien">
+            <End Role="GiaoVien" EntitySet="GiaoViens" />
+            <End Role="ChiTietTKB" EntitySet="ChiTietTKBs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietTKB_MonHoc" Association="TKBModel.FK_ChiTietTKB_MonHoc">
+            <End Role="MonHoc" EntitySet="MonHocs" />
+            <End Role="ChiTietTKB" EntitySet="ChiTietTKBs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietTKB_ThoiKhoaBieu" Association="TKBModel.FK_ChiTietTKB_ThoiKhoaBieu">
+            <End Role="ThoiKhoaBieu" EntitySet="ThoiKhoaBieux" />
+            <End Role="ChiTietTKB" EntitySet="ChiTietTKBs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GiaoVien_LoaiGiaoVien" Association="TKBModel.FK_GiaoVien_LoaiGiaoVien">
+            <End Role="LoaiGiaoVien" EntitySet="LoaiGiaoViens" />
+            <End Role="GiaoVien" EntitySet="GiaoViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GiaoVien_MonHoc" Association="TKBModel.FK_GiaoVien_MonHoc">
+            <End Role="MonHoc" EntitySet="MonHocs" />
+            <End Role="GiaoVien" EntitySet="GiaoViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HocSinh_LOP" Association="TKBModel.FK_HocSinh_LOP">
+            <End Role="LOP" EntitySet="LOPs" />
+            <End Role="HocSinh" EntitySet="HocSinhs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ThoiKhoaBieu_LOP" Association="TKBModel.FK_ThoiKhoaBieu_LOP">
+            <End Role="LOP" EntitySet="LOPs" />
+            <End Role="ThoiKhoaBieu" EntitySet="ThoiKhoaBieux" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ChiTietTKB">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="GioBatDau" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="GioKetThuc" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="GiaoVien" Relationship="TKBModel.FK_ChiTietTKB_GiaoVien" FromRole="ChiTietTKB" ToRole="GiaoVien" />
+          <NavigationProperty Name="MonHoc" Relationship="TKBModel.FK_ChiTietTKB_MonHoc" FromRole="ChiTietTKB" ToRole="MonHoc" />
+          <NavigationProperty Name="ThoiKhoaBieu" Relationship="TKBModel.FK_ChiTietTKB_ThoiKhoaBieu" FromRole="ChiTietTKB" ToRole="ThoiKhoaBieu" />
+        </EntityType>
+        <EntityType Name="GiaoVien">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="TenGiaoVien" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="ChuNhiem" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="ChiTietTKBs" Relationship="TKBModel.FK_ChiTietTKB_GiaoVien" FromRole="GiaoVien" ToRole="ChiTietTKB" />
+          <NavigationProperty Name="LoaiGiaoVien" Relationship="TKBModel.FK_GiaoVien_LoaiGiaoVien" FromRole="GiaoVien" ToRole="LoaiGiaoVien" />
+          <NavigationProperty Name="MonHoc" Relationship="TKBModel.FK_GiaoVien_MonHoc" FromRole="GiaoVien" ToRole="MonHoc" />
+        </EntityType>
+        <EntityType Name="HocSinh">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="TenHocSinh" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="NgayNhapHoc" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="LOP" Relationship="TKBModel.FK_HocSinh_LOP" FromRole="HocSinh" ToRole="LOP" />
+        </EntityType>
+        <EntityType Name="LoaiGiaoVien">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="TenLoaiGiaoVien" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="ThoiHanHopDong" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="NgayNhanViec" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="GiaoViens" Relationship="TKBModel.FK_GiaoVien_LoaiGiaoVien" FromRole="LoaiGiaoVien" ToRole="GiaoVien" />
+        </EntityType>
+        <EntityType Name="LOP">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="TenLop" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="HocSinhs" Relationship="TKBModel.FK_HocSinh_LOP" FromRole="LOP" ToRole="HocSinh" />
+          <NavigationProperty Name="ThoiKhoaBieux" Relationship="TKBModel.FK_ThoiKhoaBieu_LOP" FromRole="LOP" ToRole="ThoiKhoaBieu" />
+        </EntityType>
+        <EntityType Name="MonHoc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="TenMonHoc" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="MoTa" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="ChiTietTKBs" Relationship="TKBModel.FK_ChiTietTKB_MonHoc" FromRole="MonHoc" ToRole="ChiTietTKB" />
+          <NavigationProperty Name="GiaoViens" Relationship="TKBModel.FK_GiaoVien_MonHoc" FromRole="MonHoc" ToRole="GiaoVien" />
+        </EntityType>
+        <EntityType Name="ThoiKhoaBieu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="NamHoc" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="ChiTietTKBs" Relationship="TKBModel.FK_ChiTietTKB_ThoiKhoaBieu" FromRole="ThoiKhoaBieu" ToRole="ChiTietTKB" />
+          <NavigationProperty Name="LOP" Relationship="TKBModel.FK_ThoiKhoaBieu_LOP" FromRole="ThoiKhoaBieu" ToRole="LOP" />
+        </EntityType>
+        <Association Name="FK_ChiTietTKB_GiaoVien">
+          <End Role="GiaoVien" Type="TKBModel.GiaoVien" Multiplicity="0..1" />
+          <End Role="ChiTietTKB" Type="TKBModel.ChiTietTKB" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_ChiTietTKB_MonHoc">
+          <End Role="MonHoc" Type="TKBModel.MonHoc" Multiplicity="0..1" />
+          <End Role="ChiTietTKB" Type="TKBModel.ChiTietTKB" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_ChiTietTKB_ThoiKhoaBieu">
+          <End Role="ThoiKhoaBieu" Type="TKBModel.ThoiKhoaBieu" Multiplicity="0..1" />
+          <End Role="ChiTietTKB" Type="TKBModel.ChiTietTKB" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_GiaoVien_LoaiGiaoVien">
+          <End Role="LoaiGiaoVien" Type="TKBModel.LoaiGiaoVien" Multiplicity="0..1" />
+          <End Role="GiaoVien" Type="TKBModel.GiaoVien" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_GiaoVien_MonHoc">
+          <End Role="MonHoc" Type="TKBModel.MonHoc" Multiplicity="0..1" />
+          <End Role="GiaoVien" Type="TKBModel.GiaoVien" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_HocSinh_LOP">
+          <End Role="LOP" Type="TKBModel.LOP" Multiplicity="0..1" />
+          <End Role="HocSinh" Type="TKBModel.HocSinh" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_ThoiKhoaBieu_LOP">
+          <End Role="LOP" Type="TKBModel.LOP" Multiplicity="0..1" />
+          <End Role="ThoiKhoaBieu" Type="TKBModel.ThoiKhoaBieu" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="TKBModelStoreContainer" CdmEntityContainer="TKBEntities">
+          <EntitySetMapping Name="ChiTietTKBs"><EntityTypeMapping TypeName="TKBModel.ChiTietTKB"><MappingFragment StoreEntitySet="ChiTietTKB">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="GioBatDau" ColumnName="GioBatDau" />
+            <ScalarProperty Name="GioKetThuc" ColumnName="GioKetThuc" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="GiaoViens"><EntityTypeMapping TypeName="TKBModel.GiaoVien"><MappingFragment StoreEntitySet="GiaoVien">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="TenGiaoVien" ColumnName="TenGiaoVien" />
+            <ScalarProperty Name="ChuNhiem" ColumnName="ChuNhiem" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="HocSinhs"><EntityTypeMapping TypeName="TKBModel.HocSinh"><MappingFragment StoreEntitySet="HocSinh">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="TenHocSinh" ColumnName="TenHocSinh" />
+            <ScalarProperty Name="NgayNhapHoc" ColumnName="NgayNhapHoc" />
+            <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LoaiGiaoViens"><EntityTypeMapping TypeName="TKBModel.LoaiGiaoVien"><MappingFragment StoreEntitySet="LoaiGiaoVien">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="TenLoaiGiaoVien" ColumnName="TenLoaiGiaoVien" />
+            <ScalarProperty Name="ThoiHanHopDong" ColumnName="ThoiHanHopDong" />
+            <ScalarProperty Name="NgayNhanViec" ColumnName="NgayNhanViec" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LOPs"><EntityTypeMapping TypeName="TKBModel.LOP"><MappingFragment StoreEntitySet="LOP">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="TenLop" ColumnName="TenLop" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MonHocs"><EntityTypeMapping TypeName="TKBModel.MonHoc"><MappingFragment StoreEntitySet="MonHoc">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="TenMonHoc" ColumnName="TenMonHoc" />
+            <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ThoiKhoaBieux"><EntityTypeMapping TypeName="TKBModel.ThoiKhoaBieu"><MappingFragment StoreEntitySet="ThoiKhoaBieu">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="NamHoc" ColumnName="NamHoc" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="FK_ChiTietTKB_GiaoVien" TypeName="TKBModel.FK_ChiTietTKB_GiaoVien" StoreEntitySet="ChiTietTKB">
+            <EndProperty Name="GiaoVien">
+              <ScalarProperty Name="id" ColumnName="idGiaoVien" />
+            </EndProperty>
+            <EndProperty Name="ChiTietTKB">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+            <Condition ColumnName="idGiaoVien" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_ChiTietTKB_MonHoc" TypeName="TKBModel.FK_ChiTietTKB_MonHoc" StoreEntitySet="ChiTietTKB">
+            <EndProperty Name="MonHoc">
+              <ScalarProperty Name="id" ColumnName="idMonHoc" />
+            </EndProperty>
+            <EndProperty Name="ChiTietTKB">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+            <Condition ColumnName="idMonHoc" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_ChiTietTKB_ThoiKhoaBieu" TypeName="TKBModel.FK_ChiTietTKB_ThoiKhoaBieu" StoreEntitySet="ChiTietTKB">
+            <EndProperty Name="ThoiKhoaBieu">
+              <ScalarProperty Name="id" ColumnName="idTKB" />
+            </EndProperty>
+            <EndProperty Name="ChiTietTKB">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+            <Condition ColumnName="idTKB" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_GiaoVien_LoaiGiaoVien" TypeName="TKBModel.FK_GiaoVien_LoaiGiaoVien" StoreEntitySet="GiaoVien">
+            <EndProperty Name="LoaiGiaoVien">
+              <ScalarProperty Name="id" ColumnName="LoaiGiaoVien" />
+            </EndProperty>
+            <EndProperty Name="GiaoVien">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+            <Condition ColumnName="LoaiGiaoVien" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_GiaoVien_MonHoc" TypeName="TKBModel.FK_GiaoVien_MonHoc" StoreEntitySet="GiaoVien">
+            <EndProperty Name="MonHoc">
+              <ScalarProperty Name="id" ColumnName="idMonHoc" />
+            </EndProperty>
+            <EndProperty Name="GiaoVien">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+            <Condition ColumnName="idMonHoc" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_HocSinh_LOP" TypeName="TKBModel.FK_HocSinh_LOP" StoreEntitySet="HocSinh">
+            <EndProperty Name="LOP">
+              <ScalarProperty Name="id" ColumnName="idLop" />
+            </EndProperty>
+            <EndProperty Name="HocSinh">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+            <Condition ColumnName="idLop" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_ThoiKhoaBieu_LOP" TypeName="TKBModel.FK_ThoiKhoaBieu_LOP" StoreEntitySet="ThoiKhoaBieu">
+            <EndProperty Name="LOP">
+              <ScalarProperty Name="id" ColumnName="idLop" />
+            </EndProperty>
+            <EndProperty Name="ThoiKhoaBieu">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+            <Condition ColumnName="idLop" IsNull="false" />
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="TKBEntity">
+        <EntityTypeShape EntityType="TKBModel.ChiTietTKB" Width="1.5" PointX="3" PointY="3.75" Height="2.172587890625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TKBModel.GiaoVien" Width="1.5" PointX="3" PointY="0.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="TKBModel.HocSinh" Width="1.5" PointX="3.75" PointY="10.25" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="TKBModel.LoaiGiaoVien" Width="1.5" PointX="0.75" PointY="7.625" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="TKBModel.LOP" Width="1.5" PointX="1.5" PointY="10.375" Height="1.7879850260416639" IsExpanded="true" />
+        <EntityTypeShape EntityType="TKBModel.MonHoc" Width="1.5" PointX="0.75" PointY="3.875" Height="1.9802864583333322" IsExpanded="true" />
+        <EntityTypeShape EntityType="TKBModel.ThoiKhoaBieu" Width="1.5" PointX="0.75" PointY="1" Height="1.7879850260416674" IsExpanded="true" />
+        <AssociationConnector Association="TKBModel.FK_ChiTietTKB_GiaoVien" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.75" PointY="2.9225878906249996" />
+          <ConnectorPoint PointX="3.75" PointY="3.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="TKBModel.FK_ChiTietTKB_MonHoc" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="4.8651432291666659" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="4.865143229166665" />
+          <ConnectorPoint PointX="2.8958333333333335" PointY="4.8651432291666659" />
+          <ConnectorPoint PointX="3" PointY="4.8651432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="TKBModel.FK_ChiTietTKB_ThoiKhoaBieu" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.7879850260416674" />
+          <ConnectorPoint PointX="2.625" PointY="3.1629850260416674" />
+          <ConnectorPoint PointX="2.625" PointY="4.2763196145833327" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="4.2763196145833318" />
+          <ConnectorPoint PointX="2.8958333333333335" PointY="4.2763196145833327" />
+          <ConnectorPoint PointX="3" PointY="4.2763196145833327" />
+        </AssociationConnector>
+        <AssociationConnector Association="TKBModel.FK_GiaoVien_LoaiGiaoVien" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="7.6873066923076925" />
+          <ConnectorPoint PointX="2.6910744349011204" PointY="7.2462322574065725" />
+          <ConnectorPoint PointX="2.8089255650988791" PointY="7.1283811272088151" />
+          <ConnectorPoint PointX="2.8125" PointY="7.1248066923076934" />
+          <ConnectorPoint PointX="2.8125" PointY="1.8362939453124998" />
+          <ConnectorPoint PointX="3" PointY="1.8362939453124998" />
+        </AssociationConnector>
+        <AssociationConnector Association="TKBModel.FK_GiaoVien_MonHoc" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.9373066923076925" />
+          <ConnectorPoint PointX="2.5660744349011204" PointY="3.6212322574065712" />
+          <ConnectorPoint PointX="2.6839255650988791" PointY="3.5033811272088133" />
+          <ConnectorPoint PointX="2.6875" PointY="3.4998066923076925" />
+          <ConnectorPoint PointX="2.6875" PointY="2.4106929179687495" />
+          <ConnectorPoint PointX="2.7291666666666665" PointY="2.4106929179687491" />
+          <ConnectorPoint PointX="2.8958333333333335" PointY="2.4106929179687495" />
+          <ConnectorPoint PointX="3" PointY="2.4106929179687495" />
+        </AssociationConnector>
+        <AssociationConnector Association="TKBModel.FK_HocSinh_LOP" ManuallyRouted="false">
+          <ConnectorPoint PointX="3" PointY="11.268992513020832" />
+          <ConnectorPoint PointX="3.75" PointY="11.268992513020832" />
+        </AssociationConnector>
+        <AssociationConnector Association="TKBModel.FK_ThoiKhoaBieu_LOP" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.75" PointY="10.375" />
+          <ConnectorPoint PointX="2.75" PointY="1.38689447265625" />
+          <ConnectorPoint PointX="2.25" PointY="1.38689447265625" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
