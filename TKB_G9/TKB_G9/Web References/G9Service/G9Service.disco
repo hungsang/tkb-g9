@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://localhost:60000/G9Service.asmx?wsdl" docRef="http://localhost:60000/G9Service.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://localhost:60000/G9Service.asmx" xmlns:q1="http://abc.com/" binding="q1:G9_ServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://localhost:60000/G9Service.asmx" xmlns:q2="http://abc.com/" binding="q2:G9_ServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

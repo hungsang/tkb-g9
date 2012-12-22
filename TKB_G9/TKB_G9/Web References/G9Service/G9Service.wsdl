@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://abc.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://abc.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://abc.com/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDanhSachLop">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDanhSachLopResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDanhSachLopResult" type="tns:ArrayOfLop" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLop">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Lop" nillable="true" type="tns:Lop" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Lop">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="MaLop" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="TenLop" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="KhoiLop" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CaHoc" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="SiSo" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="GhiChu" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityObject" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:StructuralObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="EntityKey" type="tns:EntityKey" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StructuralObject" abstract="true" />
+      <s:complexType name="EntityKey">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EntitySetName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntityContainerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntityKeyValues" type="tns:ArrayOfEntityKeyMember" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEntityKeyMember">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EntityKeyMember" nillable="true" type="tns:EntityKeyMember" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EntityKeyMember">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDanhSachLopSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDanhSachLop" />
+  </wsdl:message>
+  <wsdl:message name="GetDanhSachLopSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDanhSachLopResponse" />
+  </wsdl:message>
+  <wsdl:portType name="G9_ServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDanhSachLop">
+      <wsdl:input message="tns:GetDanhSachLopSoapIn" />
+      <wsdl:output message="tns:GetDanhSachLopSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="G9_ServiceSoap" type="tns:G9_ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://abc.com/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDanhSachLop">
+      <soap:operation soapAction="http://abc.com/GetDanhSachLop" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="G9_ServiceSoap12" type="tns:G9_ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://abc.com/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDanhSachLop">
+      <soap12:operation soapAction="http://abc.com/GetDanhSachLop" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="G9_Service">
+    <wsdl:port name="G9_ServiceSoap" binding="tns:G9_ServiceSoap">
+      <soap:address location="http://localhost:60000/G9Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="G9_ServiceSoap12" binding="tns:G9_ServiceSoap12">
+      <soap12:address location="http://localhost:60000/G9Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
