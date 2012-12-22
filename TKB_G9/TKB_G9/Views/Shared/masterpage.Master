@@ -33,23 +33,21 @@
             </ul>
             <div id="fragment-1" class="ui-tabs-panel" style="">
                 <h1 class="larger">
-                    Giải pháp thanh toán số 1</h1>
+                    Website Trường THPT Windy</h1>
                 <h3>
-                    Hàng TRIỆU cá nhân và hàng VẠN doanh nghiệp đang an tâm giao dịch & thanh toán hàng
-                    ngày.</h3>
+                    </h3>
             </div>
             <div style="" id="fragment-2" class="ui-tabs-panel ui-tabs-hide">
                 <h1 class="larger">
-                    Bán hàng tiện lợi</h1>
+                    Website Trường THPT Windy</h1>
                 <h3>
-                    Nhận THANH TOÁN TRỰC TUYẾN bằng thẻ hoặc tài khoản ngân hàng nội địa và quốc tế.</h3>
+                    </h3>
             </div>
             <div style="" id="fragment-3" class="ui-tabs-panel ui-tabs-hide">
                 <h1 class="larger">
-                    Mua sắm an toàn</h1>
+                    Website Trường THPT Windy</h1>
                 <h3>
-                    Ví điện tử hỗ trợ thanh toán NHANH CHÓNG, TIỆN LỢI và BẢO VỆ bạn khỏi các nguy cơ
-                    lừa đảo trực tuyến.<h3>
+                    <h3>
             </div>
         </div>
     </div>
@@ -57,19 +55,26 @@
     <div id="menu">
         <div class="content">
             <ul id="nav" style="padding-left: 30px;">
-                <li><a href="#">Trang chủ</a> </li>
+                <li><a href="#">Trang chính</a> </li>
                 <li class="sperator"></li>
-                <li><a href="#">Giới thiệu</a>
+                <li><a href="#">Giáo viên</a>
                     <ul style="visibility: hidden; display: block;">
-                        <li><a href="#">Công ty Megapayment</a></li>
-                        <li><a href="#">Ví điện tử</a></li>
+                        <li><a href="#">Xem thời khóa biểu</a></li>
+                        <li><a href="#">Đăng ký nghỉ bận</a></li>
                     </ul>
                 </li>
                 <li class="sperator"></li>
-                <li><a href="#">Sản phẩm dịch vụ</a>
+                <li><a href="#">Học sinh</a>
                     <ul style="visibility: hidden; display: block;">
-                        <li><a href="#">Mua hàng trực tuyến</a></li>
-                        <li><a href="#">Nạp tiền</a></li>
+                        <li><a href="#">Danh sách lớp</a></li>
+                        <li><a href="#">Xem thời khóa biểu</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Quản lý</a>
+                    <ul style="visibility: hidden; display: block;">
+                        <li><a href="#">Xem TKB theo lớp</a></li>
+                        <li><a href="#">Xem TKB theo giáo viên</a></li>
+                        <li><a href="#">Sắp xếp TKB</a></li>
                     </ul>
                 </li>
             </ul>
@@ -86,7 +91,7 @@
             <div class="lastnews" id="frameLogin">
                
             </div>
-            <div class="lastnews">
+            <%--<div class="lastnews">
                 <h1 style="margin-bottom: 20px;">
                     <a href="#" title="DANH MỤC">DỊCH VỤ</a>
                 </h1>
@@ -111,7 +116,7 @@
                 <p class="leftrow">
                     <a href="#">Mua sắm</a>
                 </p>
-            </div>
+            </div>--%>
         </div>
         <div id="defaultcontent">
             <%--<div class="detailrow">
@@ -130,7 +135,7 @@
             </div>--%>
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
-        <div id="template">
+       <%-- <div id="template">
             <h1>
                 <a href="#" title="Đối tác">Đối tác</a></h1>
             <div class="topborder">
@@ -139,15 +144,15 @@
             </div>
             <div class="bottomborder">
             </div>
-        </div>
+        </div>--%>
         <div id="footer">
-            Đồ án môn <b>Lập trình ứng dụng Java</b>
+            Copyright ©2012
             <br>
             Địa chỉ: 123 Middle of Nowhere
             <br>
             Điện thoại: 1900 1560 - Fax: 00-1234-5678
             <br>
-            Email: support@java.com.vn
+            Email: support@windy.com.vn
         </div>
         <br>
     </div>
