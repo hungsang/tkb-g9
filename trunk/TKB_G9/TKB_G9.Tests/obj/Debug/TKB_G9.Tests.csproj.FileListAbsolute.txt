@@ -1,0 +1,16 @@
+E:\HCDH_HK3\Dropbox\GroupProject_HK3\04_Quan_Ly_Quy_Trinh_Phan_Mem_N.H.Bien\3.Project Source\TKB_G9\TKB_G9.Tests\bin\Debug\TKB_G9.Tests.dll.config
+E:\HCDH_HK3\Dropbox\GroupProject_HK3\04_Quan_Ly_Quy_Trinh_Phan_Mem_N.H.Bien\3.Project Source\TKB_G9\TKB_G9.Tests\bin\Debug\TKB_G9.Tests.dll
+E:\HCDH_HK3\Dropbox\GroupProject_HK3\04_Quan_Ly_Quy_Trinh_Phan_Mem_N.H.Bien\3.Project Source\TKB_G9\TKB_G9.Tests\bin\Debug\TKB_G9.Tests.pdb
+E:\HCDH_HK3\Dropbox\GroupProject_HK3\04_Quan_Ly_Quy_Trinh_Phan_Mem_N.H.Bien\3.Project Source\TKB_G9\TKB_G9.Tests\bin\Debug\TKB_G9.dll
+E:\HCDH_HK3\Dropbox\GroupProject_HK3\04_Quan_Ly_Quy_Trinh_Phan_Mem_N.H.Bien\3.Project Source\TKB_G9\TKB_G9.Tests\bin\Debug\TKB_G9.pdb
+E:\HCDH_HK3\Dropbox\GroupProject_HK3\04_Quan_Ly_Quy_Trinh_Phan_Mem_N.H.Bien\3.Project Source\TKB_G9\TKB_G9.Tests\obj\Debug\ResolveAssemblyReference.cache
+E:\HCDH_HK3\Dropbox\GroupProject_HK3\04_Quan_Ly_Quy_Trinh_Phan_Mem_N.H.Bien\3.Project Source\TKB_G9\TKB_G9.Tests\obj\Debug\TKB_G9.Tests.dll
+E:\HCDH_HK3\Dropbox\GroupProject_HK3\04_Quan_Ly_Quy_Trinh_Phan_Mem_N.H.Bien\3.Project Source\TKB_G9\TKB_G9.Tests\obj\Debug\TKB_G9.Tests.pdb
+C:\Users\ncdanh.LVDOMAIN\Desktop\TKB_G9\TKB_G9.Tests\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\ncdanh.LVDOMAIN\Desktop\TKB_G9\TKB_G9.Tests\obj\Debug\TKB_G9.Tests.dll
+C:\Users\ncdanh.LVDOMAIN\Desktop\TKB_G9\TKB_G9.Tests\bin\Debug\TKB_G9.Tests.dll.config
+C:\Users\ncdanh.LVDOMAIN\Desktop\TKB_G9\TKB_G9.Tests\bin\Debug\TKB_G9.Tests.dll
+C:\Users\ncdanh.LVDOMAIN\Desktop\TKB_G9\TKB_G9.Tests\bin\Debug\TKB_G9.Tests.pdb
+C:\Users\ncdanh.LVDOMAIN\Desktop\TKB_G9\TKB_G9.Tests\bin\Debug\TKB_G9.dll
+C:\Users\ncdanh.LVDOMAIN\Desktop\TKB_G9\TKB_G9.Tests\bin\Debug\TKB_G9.pdb
+C:\Users\ncdanh.LVDOMAIN\Desktop\TKB_G9\TKB_G9.Tests\obj\Debug\TKB_G9.Tests.pdb

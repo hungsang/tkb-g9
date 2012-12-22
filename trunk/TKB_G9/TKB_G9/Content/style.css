@@ -1,0 +1,88 @@
+body
+{
+    font-family: Arial;
+    margin: 0px auto;
+    font-size: 10pt;
+    width: 995px;
+    font-size: 11px;
+    padding: 0px;
+    background-color: #DCE1E4;
+    line-height: 150%;
+}
+a
+{
+    cursor: pointer;
+}
+.btnsubmit
+{
+    background-color: #E03434;
+    border: 0px;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+/*******GENERAL********/
+.clrb
+{
+    clear: both;
+}
+.bg_green
+{
+    background-color: #e1ffc4;
+}
+.border_green
+{
+    border: 2px solid #7bd522;
+}
+.border_green_bottom
+{
+    border-bottom: 2px solid #7bd522;
+}
+.bg_green2
+{
+    background-color: #66cc00;
+}
+.bg_gray
+{
+    background-color: #EBEBEB;
+}
+.bg_black
+{
+    background-color: green;
+}
+.w100
+{
+    width: 100%;
+}
+.b_radius10
+{
+    border-radius: 10px;
+}
+.m10
+{
+    margin: 10px;
+}
+.button
+{
+    background-color: #7bd522;
+    border: 1px solid #7bd522;
+    text-align: center;
+}
+.talign_left
+{
+    text-align: left;
+}
+.mtop10
+{
+    margin-top: 20px;
+}
+.hr
+{
+    background: #7bd522;
+    height: 4px;
+}
+.larger
+{
+    font-size: 28px;
+}
