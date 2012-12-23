@@ -2,7 +2,7 @@
 	Ban quyen thuoc ve: http://www.phucthinhwebsite.com/
 **/
 
-a{color: #1E84BB;  text-decoration: none}
+a{color: #1E84BB;  text-decoration: none; cursor:pointer}
 a:hover{color: #27628A; text-decoration: underline;}
 h1{font-weight: normal; margin: 10px 0px; font-size: 22px; color: #4B4B4B}
 h1, h2, h3,h4,h5, ul, li{margin: 0px; padding: 0px;outline-style: none;}

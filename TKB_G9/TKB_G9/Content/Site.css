@@ -16,7 +16,8 @@ body
 a:link
 {
     color: #034af3;
-    text-decoration: underline;
+    text-decoration: none;
+    cursor: pointer;
 }
 a:visited
 {
