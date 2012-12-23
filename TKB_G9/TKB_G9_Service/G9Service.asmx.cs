@@ -24,6 +24,20 @@ namespace TKB_G9_Service
             return "Hello World";
         }
 
+        /****************TÀI KHOẢN**************/
+        public bool KiemTraDangNhap(string user, string password)
+        {
+            TKBEntities db = new TKBEntities();
+            var list = db.TaiKhoans
+                            .Where(tk => tk.TenTaiKhoan == user)
+                            .Where(tk => tk.MatKhau == password)
+                            .Count();
+            if (list == 1)
+                return true;
+            return false;
+        }
+
+        /*****************LOP*******************/
         [WebMethod]
         public List<Lop> GetDanhSachLop()
         {
@@ -31,6 +45,9 @@ namespace TKB_G9_Service
             var list = db.Lops.OrderBy(sort => sort.MaLop).ToList();
             return list;
         }
+
+
+        /******************TKB******************/
         [WebMethod]
         public List<ThoiKhoaBieu> CreateTKB(string namHoc, List<List<ChiTietTKB>> arrTKB1, List<MonHoc> dsMonHoc, List<Lop> dsLop, List<Phong> dsPhong, List<GiaoVien> dsGiaoVien)
         {
