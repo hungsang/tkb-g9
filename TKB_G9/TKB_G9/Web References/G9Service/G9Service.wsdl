@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://abc.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://abc.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://abc.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://abc.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://abc.com/">
       <s:element name="HelloWorld">
@@ -260,6 +260,76 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetTKB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="namHoc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTKBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTKBResult" type="tns:ArrayOfThoiKhoaBieu" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDanhSachChiTietTKB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="maTKB" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDanhSachChiTietTKBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDanhSachChiTietTKBResult" type="tns:ArrayOfChiTietTKB" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChiTietTKB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="maChiTiet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChiTietTKBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetChiTietTKBResult" type="tns:ChiTietTKB" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLopFromTKB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="maTKB" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLopFromTKBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLopFromTKBResult" type="tns:Lop" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMonHocFromTKB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="maChiTiet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMonHocFromTKBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMonHocFromTKBResult" type="tns:MonHoc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -292,6 +362,36 @@
   <wsdl:message name="TestCreateTKBSoapOut">
     <wsdl:part name="parameters" element="tns:TestCreateTKBResponse" />
   </wsdl:message>
+  <wsdl:message name="GetTKBSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTKB" />
+  </wsdl:message>
+  <wsdl:message name="GetTKBSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTKBResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDanhSachChiTietTKBSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDanhSachChiTietTKB" />
+  </wsdl:message>
+  <wsdl:message name="GetDanhSachChiTietTKBSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDanhSachChiTietTKBResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetChiTietTKBSoapIn">
+    <wsdl:part name="parameters" element="tns:GetChiTietTKB" />
+  </wsdl:message>
+  <wsdl:message name="GetChiTietTKBSoapOut">
+    <wsdl:part name="parameters" element="tns:GetChiTietTKBResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLopFromTKBSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLopFromTKB" />
+  </wsdl:message>
+  <wsdl:message name="GetLopFromTKBSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLopFromTKBResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMonHocFromTKBSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMonHocFromTKB" />
+  </wsdl:message>
+  <wsdl:message name="GetMonHocFromTKBSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMonHocFromTKBResponse" />
+  </wsdl:message>
   <wsdl:portType name="G9_ServiceSoap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -312,6 +412,26 @@
     <wsdl:operation name="TestCreateTKB">
       <wsdl:input message="tns:TestCreateTKBSoapIn" />
       <wsdl:output message="tns:TestCreateTKBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTKB">
+      <wsdl:input message="tns:GetTKBSoapIn" />
+      <wsdl:output message="tns:GetTKBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDanhSachChiTietTKB">
+      <wsdl:input message="tns:GetDanhSachChiTietTKBSoapIn" />
+      <wsdl:output message="tns:GetDanhSachChiTietTKBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChiTietTKB">
+      <wsdl:input message="tns:GetChiTietTKBSoapIn" />
+      <wsdl:output message="tns:GetChiTietTKBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLopFromTKB">
+      <wsdl:input message="tns:GetLopFromTKBSoapIn" />
+      <wsdl:output message="tns:GetLopFromTKBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMonHocFromTKB">
+      <wsdl:input message="tns:GetMonHocFromTKBSoapIn" />
+      <wsdl:output message="tns:GetMonHocFromTKBSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="G9_ServiceSoap" type="tns:G9_ServiceSoap">
@@ -361,6 +481,51 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetTKB">
+      <soap:operation soapAction="http://abc.com/GetTKB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDanhSachChiTietTKB">
+      <soap:operation soapAction="http://abc.com/GetDanhSachChiTietTKB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChiTietTKB">
+      <soap:operation soapAction="http://abc.com/GetChiTietTKB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLopFromTKB">
+      <soap:operation soapAction="http://abc.com/GetLopFromTKB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMonHocFromTKB">
+      <soap:operation soapAction="http://abc.com/GetMonHocFromTKB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="G9_ServiceSoap12" type="tns:G9_ServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -402,6 +567,51 @@
     </wsdl:operation>
     <wsdl:operation name="TestCreateTKB">
       <soap12:operation soapAction="http://abc.com/TestCreateTKB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTKB">
+      <soap12:operation soapAction="http://abc.com/GetTKB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDanhSachChiTietTKB">
+      <soap12:operation soapAction="http://abc.com/GetDanhSachChiTietTKB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChiTietTKB">
+      <soap12:operation soapAction="http://abc.com/GetChiTietTKB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLopFromTKB">
+      <soap12:operation soapAction="http://abc.com/GetLopFromTKB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMonHocFromTKB">
+      <soap12:operation soapAction="http://abc.com/GetMonHocFromTKB" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

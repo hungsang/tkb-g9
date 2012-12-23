@@ -72,7 +72,7 @@
                 </li>
                 <li><a href="#">Quản lý</a>
                     <ul style="visibility: hidden; display: block;">
-                        <li><a href="#">Xem TKB theo lớp</a></li>
+                        <li><a href="<%=Url.Content("~/TKB/Lop") %>">Xem TKB theo lớp</a></li>
                         <li><a href="#">Xem TKB theo giáo viên</a></li>
                         <li><a href="<%=Url.Content("~/TKB/SapXep") %>">Sắp xếp TKB</a></li>
                     </ul>

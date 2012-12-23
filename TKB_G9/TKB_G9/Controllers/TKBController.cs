@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TKB_G9.G9Service;
+using System.Configuration;
 
 namespace TKB_G9.Controllers
 {
@@ -16,47 +17,74 @@ namespace TKB_G9.Controllers
         {
             return View();
         }
+
+        public ActionResult Lop()
+        {
+            return View();
+        }
+
         public ActionResult SapXep()
         {
-            G9Service.G9_Service sv = new G9Service.G9_Service();
             // input
-            //ChiTietTKB[][] arrTKB = new ChiTietTKB[8][];
-            //List<MonHoc> dsMonHoc = new List<MonHoc>();
-            //dsMonHoc.Add(new MonHoc() { MaMonHoc = 1, SoTiet = 4 });
-            //dsMonHoc.Add(new MonHoc() { MaMonHoc = 2, SoTiet = 4 });
-            //dsMonHoc.Add(new MonHoc() { MaMonHoc = 3, SoTiet = 3 });
-            //dsMonHoc.Add(new MonHoc() { MaMonHoc = 4, SoTiet = 3 });
-            //dsMonHoc.Add(new MonHoc() { MaMonHoc = 5, SoTiet = 1 });
-            //dsMonHoc.Add(new MonHoc() { MaMonHoc = 6, SoTiet = 1 });
-            //List<Lop> dsLop = new List<Lop>();
-            //dsLop.Add(new Lop() { MaLop = 1 });
-            //dsLop.Add(new Lop() { MaLop = 2 });
-            //dsLop.Add(new Lop() { MaLop = 3 });
-            //dsLop.Add(new Lop() { MaLop = 4 });
-            //dsLop.Add(new Lop() { MaLop = 5 });
-            //dsLop.Add(new Lop() { MaLop = 6 });
-            //List<Phong> dsPhong = new List<Phong>();
-            //dsPhong.Add(new Phong() { MaPhong = 1, SucChua = 50 });
-            //dsPhong.Add(new Phong() { MaPhong = 2, SucChua = 50 });
-            //dsPhong.Add(new Phong() { MaPhong = 3, SucChua = 50 });
-            //dsPhong.Add(new Phong() { MaPhong = 4, SucChua = 50 });
-            //dsPhong.Add(new Phong() { MaPhong = 5, SucChua = 50 });
-            //dsPhong.Add(new Phong() { MaPhong = 6, SucChua = 50 });
-            //List<GiaoVien> dsGiaoVien = new List<GiaoVien>();
-            //dsGiaoVien.Add(new GiaoVien() { MaGiaoVien = 1 });
-            //dsGiaoVien.Add(new GiaoVien() { MaGiaoVien = 2 });
-            //dsGiaoVien.Add(new GiaoVien() { MaGiaoVien = 3 });
-            //dsGiaoVien.Add(new GiaoVien() { MaGiaoVien = 4 });
-            //dsGiaoVien.Add(new GiaoVien() { MaGiaoVien = 5 });
-            //dsGiaoVien.Add(new GiaoVien() { MaGiaoVien = 6 });
-            //G9Service.ThoiKhoaBieu[] list = sv.CreateTKB("2009", arrTKB, dsMonHoc.ToArray(), dsLop.ToArray(), dsPhong.ToArray(), dsGiaoVien.ToArray());
-            G9Service.ThoiKhoaBieu[] list = sv.TestCreateTKB();
+            G9Service.G9_Service sv = new G9Service.G9_Service();
+
+            ThoiKhoaBieu[] list = sv.GetTKB("2009");
             if (list == null || list.Count() <= 0)
             {
-                ViewData["DSTKB"] = "Chưa có thời khóa biểu";
-                return View();
+                ViewData["TKB"] = "Chưa có thời khóa biểu";
+                //return View();
+                // for testing
+                sv.TestCreateTKB();
+                list = sv.GetTKB("2009");
             }
-            ViewData["DSTKB"] = list.Count();
+            string temp = "";
+
+            foreach (ThoiKhoaBieu tkb in list)
+            {
+                Lop lop = sv.GetLopFromTKB(tkb.MaTKB);
+                temp += "<div>" + lop.TenLop + "</div>";
+                temp += "        <table>";
+                temp += "            <tr>";
+                temp += "                <th></th>";
+                temp += "                <th>Hai</th>";
+                temp += "                <th>Ba</th>";
+                temp += "                <th>Tư</th>";
+                temp += "                <th>Năm</th>";
+                temp += "                <th>Sáu</th>";
+                temp += "                <th>Bảy</th>";
+                temp += "                <th>Chủ nhật</th>";
+                temp += "            </tr>";
+                for (int j = 0; j < 12; j++)
+                {
+                    temp += "   <tr>";
+                    temp += "       <td>Tiết " + j + "</td>";
+                    for (int i = 0; i < 7; i++)
+                    {
+                        temp += "       <td>&" + tkb.MaTKB + i + j + "&</td>";
+                    }
+                    temp += "   </tr>";
+                }
+
+                temp += "</table>";
+                ChiTietTKB[] chiTiets = sv.GetDanhSachChiTietTKB(tkb.MaTKB);
+
+                foreach (ChiTietTKB chiTiet in chiTiets)
+                {
+                    ChiTietTKB oChiTiet = sv.GetChiTietTKB(chiTiet.MaChiTietTKB);
+                    MonHoc mh = sv.GetMonHocFromTKB(oChiTiet.MaChiTietTKB);
+                    temp = temp.Replace(String.Format("&{0}{1}{2}&", tkb.MaTKB, oChiTiet.Thu, oChiTiet.TietBatDau), mh.TenMonHoc);
+                }
+                
+                for (int j = 0; j < 12; j++)
+                {
+                    for (int i = 0; i < 7; i++)
+                    {
+                        temp = temp.Replace(String.Format("&{0}{1}{2}&", tkb.MaTKB, i, j), "");
+                    }
+                }
+
+            }
+            ViewData["TKB"] = temp;
             return View();
         }
     }
