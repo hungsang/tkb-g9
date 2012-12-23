@@ -12,7 +12,7 @@
 
 <p class="itemsummary" style="line-height: 200%">
 
-<%=ViewData["DSTKB"] %>
+<%=ViewData["TKB"] %>
 
 </p>
 </div>  

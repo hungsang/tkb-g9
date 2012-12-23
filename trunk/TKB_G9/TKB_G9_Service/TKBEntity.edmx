@@ -259,6 +259,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <!--Errors Found During Generation:
+      warning 6013: The table/view 'TKB_G9.dbo.QuyDinh' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="QuyDinh">
+        <Property Name="TongSoTietSang" Type="int" />
+        <Property Name="TongSoTietChieu" Type="int" />
+      </EntityType>-->
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -660,7 +667,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="TKBEntity">
+      <Diagram Name="TKBEntity" ZoomLevel="60">
         <EntityTypeShape EntityType="TKBModel.ChiTietTKB" Width="1.5" PointX="7.5" PointY="6.125" Height="2.5571907552083388" />
         <EntityTypeShape EntityType="TKBModel.GiaoVien" Width="1.5" PointX="5.25" PointY="7.625" Height="2.749492187499996" />
         <EntityTypeShape EntityType="TKBModel.LoaiMonHoc" Width="1.5" PointX="0.75" PointY="5" Height="1.5956835937500031" />
