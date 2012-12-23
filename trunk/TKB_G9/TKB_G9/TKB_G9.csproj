@@ -87,6 +87,8 @@
     <Content Include="Content\main.css" />
     <Content Include="Content\style.css" />
     <Content Include="Global.asax" />
+    <Content Include="image\button.png" />
+    <Content Include="image\logo.jpg" />
     <Content Include="image\icon_edit.gif" />
     <Content Include="image\icon_Them.png" />
     <Content Include="image\kqht.png" />
