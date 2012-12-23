@@ -9,7 +9,6 @@
     <EntitySet Name="Lop" EntityType="TKBModel.Store.Lop" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MonHoc" EntityType="TKBModel.Store.MonHoc" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Phong" EntityType="TKBModel.Store.Phong" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="sysdiagrams" EntityType="TKBModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TaiKhoan" EntityType="TKBModel.Store.TaiKhoan" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ThoiKhoaBieu" EntityType="TKBModel.Store.ThoiKhoaBieu" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_ChiTietTKB_GiaoVien" Association="TKBModel.Store.FK_ChiTietTKB_GiaoVien">
@@ -118,6 +117,7 @@
     <Property Name="MonChinh" Type="int" />
     <Property Name="HeSoMonHoc" Type="int" />
     <Property Name="GhiChu" Type="nvarchar" MaxLength="1000" />
+    <Property Name="SoTiet" Type="int" />
   </EntityType>
   <EntityType Name="Phong">
     <Key>
@@ -128,16 +128,6 @@
     <Property Name="TinhTrang" Type="nvarchar" MaxLength="50" />
     <Property Name="MaLoaiPhong" Type="int" />
     <Property Name="SucChua" Type="int" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="TaiKhoan">
     <Key>

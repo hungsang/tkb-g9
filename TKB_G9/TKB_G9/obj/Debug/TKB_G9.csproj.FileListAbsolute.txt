@@ -13,3 +13,8 @@ G:\ITEC\Quan ly du an PM\SVN\TKB_G9\TKB_G9\bin\TKB_G9.pdb
 G:\ITEC\Quan ly du an PM\SVN\TKB_G9\TKB_G9\obj\Debug\ResolveAssemblyReference.cache
 G:\ITEC\Quan ly du an PM\SVN\TKB_G9\TKB_G9\obj\Debug\TKB_G9.dll
 G:\ITEC\Quan ly du an PM\SVN\TKB_G9\TKB_G9\obj\Debug\TKB_G9.pdb
+E:\Thu Hang\Hoc Tap\TKB\TKB_G9\TKB_G9\bin\TKB_G9.dll
+E:\Thu Hang\Hoc Tap\TKB\TKB_G9\TKB_G9\bin\TKB_G9.pdb
+E:\Thu Hang\Hoc Tap\TKB\TKB_G9\TKB_G9\obj\Debug\TKB_G9.csprojResolveAssemblyReference.cache
+E:\Thu Hang\Hoc Tap\TKB\TKB_G9\TKB_G9\obj\Debug\TKB_G9.dll
+E:\Thu Hang\Hoc Tap\TKB\TKB_G9\TKB_G9\obj\Debug\TKB_G9.pdb

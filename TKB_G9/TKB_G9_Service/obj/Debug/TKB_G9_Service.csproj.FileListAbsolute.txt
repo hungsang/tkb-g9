@@ -13,3 +13,7 @@ G:\ITEC\Quan ly du an PM\SVN\TKB_G9\TKB_G9_Service\bin\TKB_G9_Service.pdb
 G:\ITEC\Quan ly du an PM\SVN\TKB_G9\TKB_G9_Service\obj\Debug\ResolveAssemblyReference.cache
 G:\ITEC\Quan ly du an PM\SVN\TKB_G9\TKB_G9_Service\obj\Debug\TKB_G9_Service.dll
 G:\ITEC\Quan ly du an PM\SVN\TKB_G9\TKB_G9_Service\obj\Debug\TKB_G9_Service.pdb
+E:\Thu Hang\Hoc Tap\TKB\TKB_G9\TKB_G9_Service\obj\Debug\TKB_G9_Service.dll
+E:\Thu Hang\Hoc Tap\TKB\TKB_G9\TKB_G9_Service\bin\TKB_G9_Service.dll
+E:\Thu Hang\Hoc Tap\TKB\TKB_G9\TKB_G9_Service\bin\TKB_G9_Service.pdb
+E:\Thu Hang\Hoc Tap\TKB\TKB_G9\TKB_G9_Service\obj\Debug\TKB_G9_Service.pdb

@@ -8,7 +8,6 @@
     <EntitySet Name="Lops" EntityType="TKBModel.Lop" />
     <EntitySet Name="MonHocs" EntityType="TKBModel.MonHoc" />
     <EntitySet Name="Phongs" EntityType="TKBModel.Phong" />
-    <EntitySet Name="sysdiagrams" EntityType="TKBModel.sysdiagram" />
     <EntitySet Name="ThoiKhoaBieux" EntityType="TKBModel.ThoiKhoaBieu" />
     <AssociationSet Name="FK_ChiTietTKB_GiaoVien" Association="TKBModel.FK_ChiTietTKB_GiaoVien">
       <End Role="GiaoVien" EntitySet="GiaoViens" />
@@ -117,6 +116,7 @@
     <NavigationProperty Name="ChiTietTKBs" Relationship="TKBModel.FK_ChiTietTKB_MonHoc" FromRole="MonHoc" ToRole="ChiTietTKB" />
     <NavigationProperty Name="GiaoViens" Relationship="TKBModel.FK_GiaoVien_MonHoc" FromRole="MonHoc" ToRole="GiaoVien" />
     <NavigationProperty Name="LoaiMonHoc" Relationship="TKBModel.FK_MonHoc_LoaiMonHoc" FromRole="MonHoc" ToRole="LoaiMonHoc" />
+    <Property Type="Int32" Name="SoTiet" />
   </EntityType>
   <EntityType Name="Phong">
     <Key>
@@ -128,16 +128,6 @@
     <Property Type="Int32" Name="SucChua" />
     <NavigationProperty Name="ChiTietTKBs" Relationship="TKBModel.FK_ChiTietTKB_Phong" FromRole="Phong" ToRole="ChiTietTKB" />
     <NavigationProperty Name="LoaiPhong" Relationship="TKBModel.FK_Phong_LoaiPhong" FromRole="Phong" ToRole="LoaiPhong" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Type="Int32" Name="principal_id" Nullable="false" />
-    <Property Type="Int32" Name="diagram_id" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
-    <Property Type="Int32" Name="version" />
-    <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="ThoiKhoaBieu">
     <Key>
