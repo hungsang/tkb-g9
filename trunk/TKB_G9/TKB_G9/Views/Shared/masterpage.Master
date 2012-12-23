@@ -22,8 +22,8 @@
     <!-- HEADER -->
     <div id="header">
         <div class="top">
-            <a href="#" target="_blank" title="Trang chủ">Đăng ký</a> | <a href="#" target="_blank"
-                title="Giới thiệu">Đăng nhập</a>
+            <%--<a href="#" target="_blank" title="Trang chủ">Đăng ký</a> | <a href="#" target="_blank"
+                title="Giới thiệu">Đăng nhập</a>--%>
         </div>
         <div class="content" id="featured">
             <ul class="ui-tabs-nav ui-tabs-hide ">
@@ -74,7 +74,7 @@
                     <ul style="visibility: hidden; display: block;">
                         <li><a href="#">Xem TKB theo lớp</a></li>
                         <li><a href="#">Xem TKB theo giáo viên</a></li>
-                        <li><a href="#">Sắp xếp TKB</a></li>
+                        <li><a href="<%=Url.Content("~/TKB/SapXep") %>">Sắp xếp TKB</a></li>
                     </ul>
                 </li>
             </ul>
