@@ -200,7 +200,7 @@ namespace TKB_G9_Service
             return true;
         }
         [WebMethod]
-        public void TestCreateTKB()
+        public List<ThoiKhoaBieu> TestCreateTKB()
         {
             List<List<ChiTietTKB>> arrTKB = new List<List<ChiTietTKB>>();
             for (int i = 2; i <= 8; i++) // 7days: from Monday to Sunday
@@ -222,7 +222,7 @@ namespace TKB_G9_Service
                 List<Lop> dsLop = db.Lops.ToList();
                 List<Phong> dsPhong = db.Phongs.ToList();
                 List<GiaoVien> dsGiaoVien = db.GiaoViens.ToList();
-                CreateTKB("2009", arrTKB, dsMonHoc, dsLop, dsPhong, dsGiaoVien);
+                 return CreateTKB("2009", arrTKB, dsMonHoc, dsLop, dsPhong, dsGiaoVien);
 
             }
         }

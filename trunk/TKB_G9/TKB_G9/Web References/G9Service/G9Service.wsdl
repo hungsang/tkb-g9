@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://abc.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://abc.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://abc.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://abc.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://abc.com/">
       <s:element name="HelloWorld">
@@ -69,6 +69,182 @@
           <s:element minOccurs="0" maxOccurs="1" name="Value" />
         </s:sequence>
       </s:complexType>
+      <s:element name="CreateTKB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="namHoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrTKB1" type="tns:ArrayOfArrayOfChiTietTKB" />
+            <s:element minOccurs="0" maxOccurs="1" name="dsMonHoc" type="tns:ArrayOfMonHoc" />
+            <s:element minOccurs="0" maxOccurs="1" name="dsLop" type="tns:ArrayOfLop" />
+            <s:element minOccurs="0" maxOccurs="1" name="dsPhong" type="tns:ArrayOfPhong" />
+            <s:element minOccurs="0" maxOccurs="1" name="dsGiaoVien" type="tns:ArrayOfGiaoVien" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfArrayOfChiTietTKB">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfChiTietTKB" nillable="true" type="tns:ArrayOfChiTietTKB" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfChiTietTKB">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ChiTietTKB" nillable="true" type="tns:ChiTietTKB" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ChiTietTKB">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="MaChiTietTKB" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="TietBatDau" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="TietKetThuc" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Thu" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="GiaoVienReference" type="tns:EntityReferenceOfGiaoVien" />
+              <s:element minOccurs="0" maxOccurs="1" name="MonHocReference" type="tns:EntityReferenceOfMonHoc" />
+              <s:element minOccurs="0" maxOccurs="1" name="PhongReference" type="tns:EntityReferenceOfPhong" />
+              <s:element minOccurs="0" maxOccurs="1" name="ThoiKhoaBieuReference" type="tns:EntityReferenceOfThoiKhoaBieu" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityReferenceOfGiaoVien">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityReference" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityReference" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RelatedEnd">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="EntityKey" type="tns:EntityKey" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RelatedEnd" abstract="true" />
+      <s:complexType name="EntityReferenceOfLop">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityReference" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityReferenceOfLoaiPhong">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityReference" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityReferenceOfLoaiMonHoc">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityReference" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityReferenceOfThoiKhoaBieu">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityReference" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityReferenceOfPhong">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityReference" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityReferenceOfMonHoc">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityReference" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfMonHoc">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MonHoc" nillable="true" type="tns:MonHoc" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MonHoc">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="MaMonHoc" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="TenMonHoc" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MoTa" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="MonChinh" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="HeSoMonHoc" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="GhiChu" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="SoTiet" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="LoaiMonHocReference" type="tns:EntityReferenceOfLoaiMonHoc" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfPhong">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Phong" nillable="true" type="tns:Phong" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Phong">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="MaPhong" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="TenPhong" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TinhTrang" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="SucChua" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="LoaiPhongReference" type="tns:EntityReferenceOfLoaiPhong" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfGiaoVien">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GiaoVien" nillable="true" type="tns:GiaoVien" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GiaoVien">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="MaGiaoVien" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="TenGiaoVien" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="GioiTinh" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="NgaySinh" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="DiaChi" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DienThoai" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MonHocReference" type="tns:EntityReferenceOfMonHoc" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfThoiKhoaBieu">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ThoiKhoaBieu" nillable="true" type="tns:ThoiKhoaBieu" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ThoiKhoaBieu">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="MaTKB" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="NamHoc" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="LopReference" type="tns:EntityReferenceOfLop" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="CreateTKBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateTKBResult" type="tns:ArrayOfThoiKhoaBieu" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestCreateTKB">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestCreateTKBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestCreateTKBResult" type="tns:ArrayOfThoiKhoaBieu" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -83,6 +259,18 @@
   <wsdl:message name="GetDanhSachLopSoapOut">
     <wsdl:part name="parameters" element="tns:GetDanhSachLopResponse" />
   </wsdl:message>
+  <wsdl:message name="CreateTKBSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateTKB" />
+  </wsdl:message>
+  <wsdl:message name="CreateTKBSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateTKBResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestCreateTKBSoapIn">
+    <wsdl:part name="parameters" element="tns:TestCreateTKB" />
+  </wsdl:message>
+  <wsdl:message name="TestCreateTKBSoapOut">
+    <wsdl:part name="parameters" element="tns:TestCreateTKBResponse" />
+  </wsdl:message>
   <wsdl:portType name="G9_ServiceSoap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -91,6 +279,14 @@
     <wsdl:operation name="GetDanhSachLop">
       <wsdl:input message="tns:GetDanhSachLopSoapIn" />
       <wsdl:output message="tns:GetDanhSachLopSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTKB">
+      <wsdl:input message="tns:CreateTKBSoapIn" />
+      <wsdl:output message="tns:CreateTKBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestCreateTKB">
+      <wsdl:input message="tns:TestCreateTKBSoapIn" />
+      <wsdl:output message="tns:TestCreateTKBSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="G9_ServiceSoap" type="tns:G9_ServiceSoap">
@@ -113,6 +309,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CreateTKB">
+      <soap:operation soapAction="http://abc.com/CreateTKB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestCreateTKB">
+      <soap:operation soapAction="http://abc.com/TestCreateTKB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="G9_ServiceSoap12" type="tns:G9_ServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -127,6 +341,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetDanhSachLop">
       <soap12:operation soapAction="http://abc.com/GetDanhSachLop" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTKB">
+      <soap12:operation soapAction="http://abc.com/CreateTKB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestCreateTKB">
+      <soap12:operation soapAction="http://abc.com/TestCreateTKB" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
