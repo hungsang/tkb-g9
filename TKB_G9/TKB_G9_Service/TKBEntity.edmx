@@ -10,10 +10,12 @@
           <EntitySet Name="GiaoVien" EntityType="TKBModel.Store.GiaoVien" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="LoaiMonHoc" EntityType="TKBModel.Store.LoaiMonHoc" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="LoaiPhong" EntityType="TKBModel.Store.LoaiPhong" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LoaiTaiKhoan" EntityType="TKBModel.Store.LoaiTaiKhoan" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Lop" EntityType="TKBModel.Store.Lop" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MonHoc" EntityType="TKBModel.Store.MonHoc" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Phong" EntityType="TKBModel.Store.Phong" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="sysdiagrams" EntityType="TKBModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TaiKhoan" EntityType="TKBModel.Store.TaiKhoan" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ThoiKhoaBieu" EntityType="TKBModel.Store.ThoiKhoaBieu" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_ChiTietTKB_GiaoVien" Association="TKBModel.Store.FK_ChiTietTKB_GiaoVien">
             <End Role="GiaoVien" EntitySet="GiaoVien" />
@@ -43,6 +45,10 @@
             <End Role="LoaiPhong" EntitySet="LoaiPhong" />
             <End Role="Phong" EntitySet="Phong" />
           </AssociationSet>
+          <AssociationSet Name="FK_TaiKhoan_LoaiTaiKhoan" Association="TKBModel.Store.FK_TaiKhoan_LoaiTaiKhoan">
+            <End Role="LoaiTaiKhoan" EntitySet="LoaiTaiKhoan" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+          </AssociationSet>
           <AssociationSet Name="FK_ThoiKhoaBieu_Lop" Association="TKBModel.Store.FK_ThoiKhoaBieu_Lop">
             <End Role="Lop" EntitySet="Lop" />
             <End Role="ThoiKhoaBieu" EntitySet="ThoiKhoaBieu" />
@@ -52,7 +58,7 @@
           <Key>
             <PropertyRef Name="MaChiTietTKB" />
           </Key>
-          <Property Name="MaChiTietTKB" Type="int" Nullable="false" />
+          <Property Name="MaChiTietTKB" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaTKB" Type="int" />
           <Property Name="MaMonHoc" Type="int" />
           <Property Name="MaGiaoVien" Type="int" />
@@ -65,7 +71,7 @@
           <Key>
             <PropertyRef Name="MaGiaoVien" />
           </Key>
-          <Property Name="MaGiaoVien" Type="int" Nullable="false" />
+          <Property Name="MaGiaoVien" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="TenGiaoVien" Type="nvarchar" MaxLength="200" />
           <Property Name="GioiTinh" Type="nvarchar" MaxLength="20" />
           <Property Name="NgaySinh" Type="date" />
@@ -78,21 +84,28 @@
           <Key>
             <PropertyRef Name="MaLoaiMonHoc" />
           </Key>
-          <Property Name="MaLoaiMonHoc" Type="int" Nullable="false" />
+          <Property Name="MaLoaiMonHoc" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="TenLoaiMonHoc" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="LoaiPhong">
           <Key>
             <PropertyRef Name="MaLoaiPhong" />
           </Key>
-          <Property Name="MaLoaiPhong" Type="int" Nullable="false" />
+          <Property Name="MaLoaiPhong" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="TenLoaiPhong" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="LoaiTaiKhoan">
+          <Key>
+            <PropertyRef Name="MaLoaiTK" />
+          </Key>
+          <Property Name="MaLoaiTK" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TenLoaiTK" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Lop">
           <Key>
             <PropertyRef Name="MaLop" />
           </Key>
-          <Property Name="MaLop" Type="int" Nullable="false" />
+          <Property Name="MaLop" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="TenLop" Type="nvarchar" MaxLength="50" />
           <Property Name="KhoiLop" Type="nvarchar" MaxLength="50" />
           <Property Name="CaHoc" Type="nvarchar" MaxLength="20" />
@@ -103,7 +116,7 @@
           <Key>
             <PropertyRef Name="MaMonHoc" />
           </Key>
-          <Property Name="MaMonHoc" Type="int" Nullable="false" />
+          <Property Name="MaMonHoc" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="TenMonHoc" Type="nvarchar" MaxLength="200" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="1000" />
           <Property Name="MaLoaiMonHoc" Type="int" />
@@ -115,7 +128,7 @@
           <Key>
             <PropertyRef Name="MaPhong" />
           </Key>
-          <Property Name="MaPhong" Type="int" Nullable="false" />
+          <Property Name="MaPhong" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="TenPhong" Type="nvarchar" MaxLength="200" />
           <Property Name="TinhTrang" Type="nvarchar" MaxLength="50" />
           <Property Name="MaLoaiPhong" Type="int" />
@@ -131,11 +144,20 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="MaTaiKhoan" />
+          </Key>
+          <Property Name="MaTaiKhoan" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TenTaiKhoan" Type="varchar" MaxLength="200" />
+          <Property Name="MatKhau" Type="varchar" MaxLength="200" />
+          <Property Name="MaLoaiTaiKhoan" Type="int" />
+        </EntityType>
         <EntityType Name="ThoiKhoaBieu">
           <Key>
             <PropertyRef Name="MaTKB" />
           </Key>
-          <Property Name="MaTKB" Type="int" Nullable="false" />
+          <Property Name="MaTKB" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaLop" Type="int" />
           <Property Name="NamHoc" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -223,6 +245,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TaiKhoan_LoaiTaiKhoan">
+          <End Role="LoaiTaiKhoan" Type="TKBModel.Store.LoaiTaiKhoan" Multiplicity="0..1" />
+          <End Role="TaiKhoan" Type="TKBModel.Store.TaiKhoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiTaiKhoan">
+              <PropertyRef Name="MaLoaiTK" />
+            </Principal>
+            <Dependent Role="TaiKhoan">
+              <PropertyRef Name="MaLoaiTaiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ThoiKhoaBieu_Lop">
           <End Role="Lop" Type="TKBModel.Store.Lop" Multiplicity="0..1" />
           <End Role="ThoiKhoaBieu" Type="TKBModel.Store.ThoiKhoaBieu" Multiplicity="*" />
@@ -280,6 +314,12 @@
           <AssociationSet Name="FK_ThoiKhoaBieu_Lop" Association="TKBModel.FK_ThoiKhoaBieu_Lop">
             <End Role="Lop" EntitySet="Lops" />
             <End Role="ThoiKhoaBieu" EntitySet="ThoiKhoaBieux" />
+          </AssociationSet>
+          <EntitySet Name="LoaiTaiKhoans" EntityType="TKBModel.LoaiTaiKhoan" />
+          <EntitySet Name="TaiKhoans" EntityType="TKBModel.TaiKhoan" />
+          <AssociationSet Name="FK_TaiKhoan_LoaiTaiKhoan" Association="TKBModel.FK_TaiKhoan_LoaiTaiKhoan">
+            <End Role="LoaiTaiKhoan" EntitySet="LoaiTaiKhoans" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="ChiTietTKB">
@@ -412,6 +452,27 @@
         <Association Name="FK_ThoiKhoaBieu_Lop">
           <End Type="TKBModel.Lop" Role="Lop" Multiplicity="0..1" />
           <End Type="TKBModel.ThoiKhoaBieu" Role="ThoiKhoaBieu" Multiplicity="*" />
+        </Association>
+        <EntityType Name="LoaiTaiKhoan">
+          <Key>
+            <PropertyRef Name="MaLoaiTK" />
+          </Key>
+          <Property Type="Int32" Name="MaLoaiTK" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="TenLoaiTK" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TaiKhoans" Relationship="TKBModel.FK_TaiKhoan_LoaiTaiKhoan" FromRole="LoaiTaiKhoan" ToRole="TaiKhoan" />
+        </EntityType>
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="MaTaiKhoan" />
+          </Key>
+          <Property Type="Int32" Name="MaTaiKhoan" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="TenTaiKhoan" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MatKhau" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LoaiTaiKhoan" Relationship="TKBModel.FK_TaiKhoan_LoaiTaiKhoan" FromRole="TaiKhoan" ToRole="LoaiTaiKhoan" />
+        </EntityType>
+        <Association Name="FK_TaiKhoan_LoaiTaiKhoan">
+          <End Type="TKBModel.LoaiTaiKhoan" Role="LoaiTaiKhoan" Multiplicity="0..1" />
+          <End Type="TKBModel.TaiKhoan" Role="TaiKhoan" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -583,6 +644,32 @@
             </EndProperty>
             <Condition ColumnName="MaLop" IsNull="false" />
           </AssociationSetMapping>
+          <EntitySetMapping Name="LoaiTaiKhoans">
+            <EntityTypeMapping TypeName="TKBModel.LoaiTaiKhoan">
+              <MappingFragment StoreEntitySet="LoaiTaiKhoan">
+                <ScalarProperty Name="TenLoaiTK" ColumnName="TenLoaiTK" />
+                <ScalarProperty Name="MaLoaiTK" ColumnName="MaLoaiTK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaiKhoans">
+            <EntityTypeMapping TypeName="TKBModel.TaiKhoan">
+              <MappingFragment StoreEntitySet="TaiKhoan">
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="TenTaiKhoan" ColumnName="TenTaiKhoan" />
+                <ScalarProperty Name="MaTaiKhoan" ColumnName="MaTaiKhoan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_TaiKhoan_LoaiTaiKhoan" TypeName="TKBModel.FK_TaiKhoan_LoaiTaiKhoan" StoreEntitySet="TaiKhoan">
+            <EndProperty Name="TaiKhoan">
+              <ScalarProperty Name="MaTaiKhoan" ColumnName="MaTaiKhoan" />
+            </EndProperty>
+            <EndProperty Name="LoaiTaiKhoan">
+              <ScalarProperty Name="MaLoaiTK" ColumnName="MaLoaiTaiKhoan" />
+            </EndProperty>
+            <Condition ColumnName="MaLoaiTaiKhoan" IsNull="false" />
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -624,9 +711,9 @@
           <ConnectorPoint PointX="7.5" PointY="6.6247460937500016" />
         </AssociationConnector>
         <AssociationConnector Association="TKBModel.FK_ChiTietTKB_Phong" >
-          <ConnectorPoint PointX="6.75" PointY="1.836293945312498" />
-          <ConnectorPoint PointX="8.25" PointY="1.836293945312498" />
-          <ConnectorPoint PointX="8.25" PointY="6.125" />
+          <ConnectorPoint PointX="6.75" PointY="2.7903857421874978" />
+          <ConnectorPoint PointX="8.96875" PointY="2.7903857421874978" />
+          <ConnectorPoint PointX="8.96875" PointY="6.125" />
         </AssociationConnector>
         <AssociationConnector Association="TKBModel.FK_ChiTietTKB_ThoiKhoaBieu" >
           <ConnectorPoint PointX="6.75" PointY="12.893992513020834" />
@@ -649,6 +736,12 @@
         <AssociationConnector Association="TKBModel.FK_ThoiKhoaBieu_Lop" >
           <ConnectorPoint PointX="4.5" PointY="12.893992513020834" />
           <ConnectorPoint PointX="5.25" PointY="12.893992513020834" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TKBModel.LoaiTaiKhoan" Width="1.5" PointX="7.375" PointY="1" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="TKBModel.TaiKhoan" Width="1.5" PointX="9.625" PointY="0.875" Height="1.787985026041671" />
+        <AssociationConnector Association="TKBModel.FK_TaiKhoan_LoaiTaiKhoan" >
+          <ConnectorPoint PointX="8.875" PointY="1.7978417968749998" />
+          <ConnectorPoint PointX="9.625" PointY="1.7978417968749998" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

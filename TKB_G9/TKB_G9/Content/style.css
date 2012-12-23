@@ -73,11 +73,21 @@ body
 {
     margin: 10px;
 }
-.button
+/*.button
 {
     background-color: #7bd522;
     border: 1px solid #7bd522;
     text-align: center;
+}*/
+.button 
+{
+	background: url(../image/button.png) no-repeat;
+	width: 81px;
+	height: 32px;
+	border-style: none;
+	margin: 2px 2px;
+	color: White;
+    cursor: pointer;
 }
 .talign_left
 {
