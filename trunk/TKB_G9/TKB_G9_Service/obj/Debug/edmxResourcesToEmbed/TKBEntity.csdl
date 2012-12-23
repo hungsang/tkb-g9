@@ -42,6 +42,12 @@
       <End Role="Lop" EntitySet="Lops" />
       <End Role="ThoiKhoaBieu" EntitySet="ThoiKhoaBieux" />
     </AssociationSet>
+    <EntitySet Name="LoaiTaiKhoans" EntityType="TKBModel.LoaiTaiKhoan" />
+    <EntitySet Name="TaiKhoans" EntityType="TKBModel.TaiKhoan" />
+    <AssociationSet Name="FK_TaiKhoan_LoaiTaiKhoan" Association="TKBModel.FK_TaiKhoan_LoaiTaiKhoan">
+      <End Role="LoaiTaiKhoan" EntitySet="LoaiTaiKhoans" />
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="ChiTietTKB">
     <Key>
@@ -173,5 +179,26 @@
   <Association Name="FK_ThoiKhoaBieu_Lop">
     <End Type="TKBModel.Lop" Role="Lop" Multiplicity="0..1" />
     <End Type="TKBModel.ThoiKhoaBieu" Role="ThoiKhoaBieu" Multiplicity="*" />
+  </Association>
+  <EntityType Name="LoaiTaiKhoan">
+    <Key>
+      <PropertyRef Name="MaLoaiTK" />
+    </Key>
+    <Property Type="Int32" Name="MaLoaiTK" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="String" Name="TenLoaiTK" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TaiKhoans" Relationship="TKBModel.FK_TaiKhoan_LoaiTaiKhoan" FromRole="LoaiTaiKhoan" ToRole="TaiKhoan" />
+  </EntityType>
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="MaTaiKhoan" />
+    </Key>
+    <Property Type="Int32" Name="MaTaiKhoan" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="String" Name="TenTaiKhoan" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="MatKhau" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="LoaiTaiKhoan" Relationship="TKBModel.FK_TaiKhoan_LoaiTaiKhoan" FromRole="TaiKhoan" ToRole="LoaiTaiKhoan" />
+  </EntityType>
+  <Association Name="FK_TaiKhoan_LoaiTaiKhoan">
+    <End Type="TKBModel.LoaiTaiKhoan" Role="LoaiTaiKhoan" Multiplicity="0..1" />
+    <End Type="TKBModel.TaiKhoan" Role="TaiKhoan" Multiplicity="*" />
   </Association>
 </Schema>
