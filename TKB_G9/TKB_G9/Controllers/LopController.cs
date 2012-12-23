@@ -21,35 +21,42 @@ namespace TKB_G9.Controllers
             G9Service.G9_Service sv = new G9Service.G9_Service();
             G9Service.Lop[] list = sv.GetDanhSachLop();
 
-            string temp = "<div id=\"dvDKHP\" class=\"lastnews\" style=\"width:600px;background-image:none;\">";
-            temp += "<h2>Danh sách lớp</h2><br />";
-            if (list.Count() > 0)
+            if (list==null || list.Count()<=0)
             {
-                temp += "<table class=\"dsdangky\" border=\"0\" cellspacing=\"2\" cellpadding=\"2\">";
-                temp += "<tr class=\"tableheader\">";
-                temp += "<th width=\"80px\" align=\"center\">Mã lớp</th>";
-                temp += "<th align=\"center\">Tên lớp</th>";
-                temp += "<th align=\"center\">Khối</th>";
-                temp += "<th align=\"center\">Ca học</th>";
-                temp += "<th align=\"center\">Sỉ số</th>";
-                foreach (G9Service.Lop lop in list)
-                {
-                    temp += "<tr>";
-                    temp += "<td class=\"tcenter\">" + lop.MaLop + "</td>";
-                    temp += "<td class=\"tcenter\">" + lop.TenLop + "</td>";
-                    temp += "<td class=\"tcenter\">" + lop.KhoiLop + "</td>";
-                    temp += "<td class=\"tcenter\">" + lop.CaHoc + "</td>";
-                    temp += "<td class=\"tcenter\">" + lop.SiSo + "</td>";
-                    temp += "</tr>";
-                }
-                temp += "</table>";
-            }
-            else
-            {
-                temp += "không có lớp nào";
+                ViewData["DSLop"] = "Không có lớp";
+                return View();
             }
 
+            string temp = "";
+            
+            temp += "<div class=\"user-tlb\">";
+            temp += "    <ul style=\"list-style: none\">";
+            temp += "        <li class=\"hder\">";
+            temp += "            <ul>";
+            temp += "                <li class=\"stt\">STT</li>";
+            temp += "                <li class=\"account_name\">Lớp</li>";
+            temp += "                <li class=\"user_type\">Khối</li>";
+            temp += "                <li class=\"active\">Sỉ số</li>";
+            temp += "                <li class=\"edit\">Thao tác</li>";
+            temp += "            </ul>";
+            temp += "        </li>";
+            int i = 1;
+            foreach (G9Service.Lop lop in list)
+            {
+                temp += "    <li class=\"li-atv fl\">";
+                temp += "        <ul>";
+                temp += "            <li class=\"stt\">" + i + "</li>";
+                temp += "            <li class=\"account_name\">" + lop.TenLop + "</li>";
+                temp += "            <li class=\"user_type\">" + lop.KhoiLop + "</li>";
+                temp += "            <li class=\"active\">" + lop.SiSo + "</li>";
+                temp += "            <li class=\"edit\"><div style='margin:0 35px;' onclick=\"loadFormEditClassInfo('" + lop.MaLop + "')\" class='btnEdit'></div></li>";
+                temp += "        </ul>";
+                temp += "    </li>";
+                i++;
+            }
+            temp += "</ul>";
             temp += "</div>";
+
             ViewData["DSLop"] = temp;
             return View();
         }
