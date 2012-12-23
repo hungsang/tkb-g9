@@ -25,6 +25,7 @@ namespace TKB_G9_Service
         }
 
         /****************TÀI KHOẢN**************/
+        [WebMethod]
         public bool KiemTraDangNhap(string user, string password)
         {
             TKBEntities db = new TKBEntities();

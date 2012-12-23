@@ -35,6 +35,8 @@ namespace TKB_G9.G9Service {
         
         private System.Threading.SendOrPostCallback HelloWorldOperationCompleted;
         
+        private System.Threading.SendOrPostCallback KiemTraDangNhapOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetDanhSachLopOperationCompleted;
         
         private System.Threading.SendOrPostCallback CreateTKBOperationCompleted;
@@ -83,6 +85,9 @@ namespace TKB_G9.G9Service {
         public event HelloWorldCompletedEventHandler HelloWorldCompleted;
         
         /// <remarks/>
+        public event KiemTraDangNhapCompletedEventHandler KiemTraDangNhapCompleted;
+        
+        /// <remarks/>
         public event GetDanhSachLopCompletedEventHandler GetDanhSachLopCompleted;
         
         /// <remarks/>
@@ -115,6 +120,37 @@ namespace TKB_G9.G9Service {
             if ((this.HelloWorldCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.HelloWorldCompleted(this, new HelloWorldCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/KiemTraDangNhap", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool KiemTraDangNhap(string user, string password) {
+            object[] results = this.Invoke("KiemTraDangNhap", new object[] {
+                        user,
+                        password});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void KiemTraDangNhapAsync(string user, string password) {
+            this.KiemTraDangNhapAsync(user, password, null);
+        }
+        
+        /// <remarks/>
+        public void KiemTraDangNhapAsync(string user, string password, object userState) {
+            if ((this.KiemTraDangNhapOperationCompleted == null)) {
+                this.KiemTraDangNhapOperationCompleted = new System.Threading.SendOrPostCallback(this.OnKiemTraDangNhapOperationCompleted);
+            }
+            this.InvokeAsync("KiemTraDangNhap", new object[] {
+                        user,
+                        password}, this.KiemTraDangNhapOperationCompleted, userState);
+        }
+        
+        private void OnKiemTraDangNhapOperationCompleted(object arg) {
+            if ((this.KiemTraDangNhapCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.KiemTraDangNhapCompleted(this, new KiemTraDangNhapCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1000,6 +1036,32 @@ namespace TKB_G9.G9Service {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void KiemTraDangNhapCompletedEventHandler(object sender, KiemTraDangNhapCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class KiemTraDangNhapCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal KiemTraDangNhapCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
             }
         }
     }
