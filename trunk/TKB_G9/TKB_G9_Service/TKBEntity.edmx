@@ -14,7 +14,6 @@
           <EntitySet Name="Lop" EntityType="TKBModel.Store.Lop" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MonHoc" EntityType="TKBModel.Store.MonHoc" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Phong" EntityType="TKBModel.Store.Phong" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="sysdiagrams" EntityType="TKBModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TaiKhoan" EntityType="TKBModel.Store.TaiKhoan" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ThoiKhoaBieu" EntityType="TKBModel.Store.ThoiKhoaBieu" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_ChiTietTKB_GiaoVien" Association="TKBModel.Store.FK_ChiTietTKB_GiaoVien">
@@ -123,6 +122,7 @@
           <Property Name="MonChinh" Type="int" />
           <Property Name="HeSoMonHoc" Type="int" />
           <Property Name="GhiChu" Type="nvarchar" MaxLength="1000" />
+          <Property Name="SoTiet" Type="int" />
         </EntityType>
         <EntityType Name="Phong">
           <Key>
@@ -133,16 +133,6 @@
           <Property Name="TinhTrang" Type="nvarchar" MaxLength="50" />
           <Property Name="MaLoaiPhong" Type="int" />
           <Property Name="SucChua" Type="int" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
@@ -281,7 +271,6 @@
           <EntitySet Name="Lops" EntityType="TKBModel.Lop" />
           <EntitySet Name="MonHocs" EntityType="TKBModel.MonHoc" />
           <EntitySet Name="Phongs" EntityType="TKBModel.Phong" />
-          <EntitySet Name="sysdiagrams" EntityType="TKBModel.sysdiagram" />
           <EntitySet Name="ThoiKhoaBieux" EntityType="TKBModel.ThoiKhoaBieu" />
           <AssociationSet Name="FK_ChiTietTKB_GiaoVien" Association="TKBModel.FK_ChiTietTKB_GiaoVien">
             <End Role="GiaoVien" EntitySet="GiaoViens" />
@@ -390,6 +379,7 @@
           <NavigationProperty Name="ChiTietTKBs" Relationship="TKBModel.FK_ChiTietTKB_MonHoc" FromRole="MonHoc" ToRole="ChiTietTKB" />
           <NavigationProperty Name="GiaoViens" Relationship="TKBModel.FK_GiaoVien_MonHoc" FromRole="MonHoc" ToRole="GiaoVien" />
           <NavigationProperty Name="LoaiMonHoc" Relationship="TKBModel.FK_MonHoc_LoaiMonHoc" FromRole="MonHoc" ToRole="LoaiMonHoc" />
+          <Property Type="Int32" Name="SoTiet" />
         </EntityType>
         <EntityType Name="Phong">
           <Key>
@@ -401,16 +391,6 @@
           <Property Type="Int32" Name="SucChua" />
           <NavigationProperty Name="ChiTietTKBs" Relationship="TKBModel.FK_ChiTietTKB_Phong" FromRole="Phong" ToRole="ChiTietTKB" />
           <NavigationProperty Name="LoaiPhong" Relationship="TKBModel.FK_Phong_LoaiPhong" FromRole="Phong" ToRole="LoaiPhong" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="principal_id" Nullable="false" />
-          <Property Type="Int32" Name="diagram_id" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
-          <Property Type="Int32" Name="version" />
-          <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="ThoiKhoaBieu">
           <Key>
@@ -534,6 +514,7 @@
           <EntitySetMapping Name="MonHocs">
             <EntityTypeMapping TypeName="TKBModel.MonHoc">
               <MappingFragment StoreEntitySet="MonHoc">
+                <ScalarProperty Name="SoTiet" ColumnName="SoTiet" />
                 <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
                 <ScalarProperty Name="HeSoMonHoc" ColumnName="HeSoMonHoc" />
                 <ScalarProperty Name="MonChinh" ColumnName="MonChinh" />
@@ -550,17 +531,6 @@
                 <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
                 <ScalarProperty Name="TenPhong" ColumnName="TenPhong" />
                 <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="TKBModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -698,7 +668,6 @@
         <EntityTypeShape EntityType="TKBModel.Lop" Width="1.5" PointX="3" PointY="11.625" Height="2.3648893229166674" />
         <EntityTypeShape EntityType="TKBModel.MonHoc" Width="1.5" PointX="3" PointY="4.375" Height="2.7494921875000031" />
         <EntityTypeShape EntityType="TKBModel.Phong" Width="1.5" PointX="5.25" PointY="0.75" Height="2.172587890624996" />
-        <EntityTypeShape EntityType="TKBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="8.375" Height="1.9802864583333388" />
         <EntityTypeShape EntityType="TKBModel.ThoiKhoaBieu" Width="1.5" PointX="5.25" PointY="12" Height="1.7879850260416674" />
         <AssociationConnector Association="TKBModel.FK_ChiTietTKB_GiaoVien" >
           <ConnectorPoint PointX="6.75" PointY="8.15359537760417" />
