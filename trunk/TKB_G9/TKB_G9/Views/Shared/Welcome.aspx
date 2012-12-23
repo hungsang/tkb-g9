@@ -1,0 +1,1 @@
+﻿Xin chào <b><%=User.Identity.Name %></b>, <a onclick='Logout()'>Thoát</a>

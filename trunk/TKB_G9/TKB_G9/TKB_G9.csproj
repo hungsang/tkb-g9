@@ -109,7 +109,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Web References\G9Service\G9Service.disco" />
-    <Content Include="Views\TKB\Index.aspx" />
+    <Content Include="Views\Shared\Welcome.aspx" />
     <Content Include="Views\TKB\SapXep.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

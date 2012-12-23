@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="contentbordercol">
-        <form id="frmDangNhap">
+        <form id="frmDangNhap" action="../Home/Index.aspx">
         <h3 style="margin-bottom: 8px;">
             Đăng nhập</h3>
         Tài khoản:
@@ -19,7 +19,7 @@
         <input type="password" maxlength="50" id="txtPwd" class="bordercolumninput" onkeypress="onKeyEnterPwd(event)"/>
         <br>
         <p>
-            <input type="button" value="Đăng nhập" id="" class="btnsubmit" onclick="checkLogin()"/>
+            <input type="submit" value="Đăng nhập" id="" class="btnsubmit" />
         </p>
         </form>
     </div>
