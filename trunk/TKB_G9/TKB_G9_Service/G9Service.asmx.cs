@@ -32,7 +32,7 @@ namespace TKB_G9_Service
             return list;
         }
         [WebMethod]
-        public List<ThoiKhoaBieu> CreateTKB(string namHoc, int buoi, List<List<ChiTietTKB>> arrTKB1, List<MonHoc> dsMonHoc, List<Lop> dsLop, List<Phong> dsPhong, List<GiaoVien> dsGiaoVien)
+        public List<ThoiKhoaBieu> CreateTKB(string namHoc, List<List<ChiTietTKB>> arrTKB1, List<MonHoc> dsMonHoc, List<Lop> dsLop, List<Phong> dsPhong, List<GiaoVien> dsGiaoVien)
         {
             List<ThoiKhoaBieu> lstTKB = new List<ThoiKhoaBieu>();
 
@@ -222,7 +222,7 @@ namespace TKB_G9_Service
                 List<Lop> dsLop = db.Lops.ToList();
                 List<Phong> dsPhong = db.Phongs.ToList();
                 List<GiaoVien> dsGiaoVien = db.GiaoViens.ToList();
-                CreateTKB("2009", 1, arrTKB, dsMonHoc, dsLop, dsPhong, dsGiaoVien);
+                CreateTKB("2009", arrTKB, dsMonHoc, dsLop, dsPhong, dsGiaoVien);
 
             }
         }
