@@ -165,5 +165,31 @@
       </EndProperty>
       <Condition ColumnName="MaLop" IsNull="false" />
     </AssociationSetMapping>
+    <EntitySetMapping Name="LoaiTaiKhoans">
+      <EntityTypeMapping TypeName="TKBModel.LoaiTaiKhoan">
+        <MappingFragment StoreEntitySet="LoaiTaiKhoan">
+          <ScalarProperty Name="TenLoaiTK" ColumnName="TenLoaiTK" />
+          <ScalarProperty Name="MaLoaiTK" ColumnName="MaLoaiTK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaiKhoans">
+      <EntityTypeMapping TypeName="TKBModel.TaiKhoan">
+        <MappingFragment StoreEntitySet="TaiKhoan">
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="TenTaiKhoan" ColumnName="TenTaiKhoan" />
+          <ScalarProperty Name="MaTaiKhoan" ColumnName="MaTaiKhoan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_TaiKhoan_LoaiTaiKhoan" TypeName="TKBModel.FK_TaiKhoan_LoaiTaiKhoan" StoreEntitySet="TaiKhoan">
+      <EndProperty Name="TaiKhoan">
+        <ScalarProperty Name="MaTaiKhoan" ColumnName="MaTaiKhoan" />
+      </EndProperty>
+      <EndProperty Name="LoaiTaiKhoan">
+        <ScalarProperty Name="MaLoaiTK" ColumnName="MaLoaiTaiKhoan" />
+      </EndProperty>
+      <Condition ColumnName="MaLoaiTaiKhoan" IsNull="false" />
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>
