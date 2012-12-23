@@ -14,7 +14,7 @@
 </p>
 
 <p class="itemsummary" style="line-height: 200%">
-
+<a href="<%=Url.Content("~/Lop/ThemLop") %>"><input type="button" class="button" value="Thêm lớp" /></a>
 
     <%=  ViewData["DSLop"]%>
 

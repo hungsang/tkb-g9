@@ -21,7 +21,8 @@ namespace TKB_G9.Controllers
                 return View();
             string password = HttpContext.Request["txtPwd"];
             password = FormsAuthentication.HashPasswordForStoringInConfigFile(password, "md5");
-            bool result = true;
+            G9Service.G9_Service sv = new G9Service.G9_Service();
+            bool result = sv.KiemTraDangNhap(user, password);
             if (result)
             {
                 FormsAuthentication.SetAuthCookie(user, false);
