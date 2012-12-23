@@ -87,6 +87,10 @@
     <Content Include="Content\main.css" />
     <Content Include="Content\style.css" />
     <Content Include="Global.asax" />
+    <Content Include="image\icon_edit.gif" />
+    <Content Include="image\icon_Them.png" />
+    <Content Include="image\kqht.png" />
+    <Content Include="image\xoa_active.gif" />
     <Content Include="Scripts\jquery-1.js" />
     <Content Include="Scripts\jquery-function.js" />
     <Content Include="Scripts\jquery-ui.js" />
