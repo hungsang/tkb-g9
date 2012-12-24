@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TKB_G9.G9Service;
 using System.Configuration;
+using TKB_G9.Models;
 
 namespace TKB_G9.Controllers
 {
@@ -24,6 +25,12 @@ namespace TKB_G9.Controllers
         }
 
         public ActionResult SapXep()
+        {
+            return View();   
+        }
+
+        [HttpPost]
+        public ActionResult SapXep(TKBModel model)
         {
             // input
             G9Service.G9_Service sv = new G9Service.G9_Service();
@@ -54,11 +61,11 @@ namespace TKB_G9.Controllers
                 temp += "                <th>Bảy</th>";
                 temp += "                <th>Chủ nhật</th>";
                 temp += "            </tr>";
-                for (int j = 0; j < 12; j++)
+                for (int j = 1; j < 13; j++)
                 {
                     temp += "   <tr>";
                     temp += "       <td>Tiết " + j + "</td>";
-                    for (int i = 0; i < 7; i++)
+                    for (int i = 2; i <= 8; i++)
                     {
                         temp += "       <td>&" + tkb.MaTKB + i + j + "&</td>";
                     }
@@ -72,12 +79,12 @@ namespace TKB_G9.Controllers
                 {
                     ChiTietTKB oChiTiet = sv.GetChiTietTKB(chiTiet.MaChiTietTKB);
                     MonHoc mh = sv.GetMonHocFromTKB(oChiTiet.MaChiTietTKB);
-                    temp = temp.Replace(String.Format("&{0}{1}{2}&", tkb.MaTKB, oChiTiet.Thu, oChiTiet.TietBatDau), mh.TenMonHoc);
+                    temp = temp.Replace(String.Format("&{0}{1}{2}&", tkb.MaTKB, oChiTiet.Thu + 2, oChiTiet.TietBatDau + 1), mh.TenMonHoc);
                 }
-                
-                for (int j = 0; j < 12; j++)
+
+                for (int j = 1; j < 13; j++)
                 {
-                    for (int i = 0; i < 7; i++)
+                    for (int i = 2; i <= 8; i++)
                     {
                         temp = temp.Replace(String.Format("&{0}{1}{2}&", tkb.MaTKB, i, j), "");
                     }
