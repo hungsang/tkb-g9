@@ -22,3 +22,4 @@ E:\HCDH\TKB\TKB_G9\TKB_G9_Service\bin\TKB_G9_Service.pdb
 E:\HCDH\TKB\TKB_G9\TKB_G9_Service\obj\Debug\TKB_G9_Service.csprojResolveAssemblyReference.cache
 E:\HCDH\TKB\TKB_G9\TKB_G9_Service\obj\Debug\TKB_G9_Service.dll
 E:\HCDH\TKB\TKB_G9\TKB_G9_Service\obj\Debug\TKB_G9_Service.pdb
+E:\Thu Hang\Hoc Tap\TKB\TKB_G9\TKB_G9_Service\obj\Debug\TKB_G9_Service.csprojResolveAssemblyReference.cache
