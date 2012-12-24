@@ -20,7 +20,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TKBModel", "FK_TaiKhoan_LoaiTaiKhoan", "LoaiTaiKhoan", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TKB_G9_Service.LoaiTaiKhoan), "TaiKhoan", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TKB_G9_Service.TaiKhoan))]
 
 // Original file name:
-// Generation date: 12/24/2012 3:45:42 PM
+// Generation date: 12/24/2012 5:35:52 PM
 namespace TKB_G9_Service
 {
     

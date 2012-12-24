@@ -24,25 +24,22 @@ namespace TKB_G9.Controllers
             return View();
         }
 
-        public ActionResult SapXep()
-        {
-            return View();   
-        }
+        //public ActionResult SapXep()
+        //{
+        //    return View();   
+        //}
 
-        [HttpPost]
-        public ActionResult SapXep(TKBModel model)
+        //[HttpPost]
+        public ActionResult SapXep()
         {
             // input
             G9Service.G9_Service sv = new G9Service.G9_Service();
 
-            ThoiKhoaBieu[] list = sv.GetTKB("2009");
+            ThoiKhoaBieu[] list = sv.GetTKB("2012");
             if (list == null || list.Count() <= 0)
             {
                 ViewData["TKB"] = "Chưa có thời khóa biểu";
-                //return View();
-                // for testing
-                sv.TestCreateTKB();
-                list = sv.GetTKB("2009");
+                return View();
             }
             string temp = "";
 
@@ -79,7 +76,7 @@ namespace TKB_G9.Controllers
                 {
                     ChiTietTKB oChiTiet = sv.GetChiTietTKB(chiTiet.MaChiTietTKB);
                     MonHoc mh = sv.GetMonHocFromTKB(oChiTiet.MaChiTietTKB);
-                    temp = temp.Replace(String.Format("&{0}{1}{2}&", tkb.MaTKB, oChiTiet.Thu + 2, oChiTiet.TietBatDau + 1), mh.TenMonHoc);
+                    temp = temp.Replace(String.Format("&{0}{1}{2}&", tkb.MaTKB, oChiTiet.Thu, oChiTiet.TietBatDau), mh.TenMonHoc);
                 }
 
                 for (int j = 1; j < 13; j++)
