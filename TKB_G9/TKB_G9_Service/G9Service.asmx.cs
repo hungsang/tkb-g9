@@ -26,6 +26,20 @@ namespace TKB_G9_Service
 
         /****************TÀI KHOẢN**************/
         [WebMethod]
+        public TaiKhoan getTaiKhoanByUserName(String userName)
+        {
+            try
+            {
+                TKBEntities db = new TKBEntities();
+                var result = db.TaiKhoans.Where(us => us.TenTaiKhoan == userName).FirstOrDefault();
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        [WebMethod]
         public bool KiemTraDangNhap(string user, string password)
         {
             TKBEntities db = new TKBEntities();
@@ -58,6 +72,61 @@ namespace TKB_G9_Service
         }
         /******************TKB******************/
         #region TKB
+        //nhdanh add
+        [WebMethod]
+        public Phong getPhongByMaChiTietTKB(int maCT)
+        {
+            try
+            {
+                TKBEntities db = new TKBEntities();
+                var cttkb = db.ChiTietTKBs.Where(ct => ct.MaChiTietTKB == maCT).FirstOrDefault();
+                cttkb.PhongReference.Load();
+                return cttkb.Phong;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        [WebMethod]
+        public Lop getLopByMaChiTietTKB(int maCT)
+        {
+            try
+            {
+                TKBEntities db = new TKBEntities();
+                var cttkb = db.ChiTietTKBs.Where(ct => ct.MaChiTietTKB == maCT).FirstOrDefault();
+                cttkb.ThoiKhoaBieuReference.Load();
+                cttkb.ThoiKhoaBieu.LopReference.Load();
+                var result = cttkb.ThoiKhoaBieu.Lop;
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
+        [WebMethod]
+        public List<ChiTietTKB> getListTKBByGiaoVien(string tenTaiKhoan)
+        {
+            try
+            {
+                TKBEntities db = new TKBEntities();
+                foreach (var cur in db.ChiTietTKBs)
+                {
+                    cur.GiaoVienReference.Load();
+                }
+                var result = db.ChiTietTKBs.Where(ct => ct.GiaoVien.TenGiaoVien == tenTaiKhoan).ToList();
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
+        //ncdanh end
+
         [WebMethod]
         public bool GenerateTKB(string namHoc, List<List<ChiTietTKB>> arrTKB1, List<MonHoc> dsMonHoc, List<Lop> dsLop, List<Phong> dsPhong, List<GiaoVien> dsGiaoVien)
         {

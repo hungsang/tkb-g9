@@ -60,7 +60,7 @@
                 <li class="sperator"></li>
                 <li><a href="#">Giáo viên</a>
                     <ul style="visibility: hidden; display: block;">
-                        <li><a href="#">Xem thời khóa biểu</a></li>
+                        <li><a href="<%=Url.Content("~/GiaoVien/XemThoiKhoaBieu") %>">Xem thời khóa biểu</a></li>
                         <li><a href="#">Đăng ký nghỉ bận</a></li>
                     </ul>
                 </li>
