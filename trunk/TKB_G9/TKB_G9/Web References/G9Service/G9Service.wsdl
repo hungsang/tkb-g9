@@ -303,6 +303,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetTKBFromLop">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="maLop" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTKBFromLopResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTKBFromLopResult" type="tns:ThoiKhoaBieu" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetDanhSachChiTietTKB">
         <s:complexType>
           <s:sequence>
@@ -423,6 +437,12 @@
   <wsdl:message name="GetTKBSoapOut">
     <wsdl:part name="parameters" element="tns:GetTKBResponse" />
   </wsdl:message>
+  <wsdl:message name="GetTKBFromLopSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTKBFromLop" />
+  </wsdl:message>
+  <wsdl:message name="GetTKBFromLopSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTKBFromLopResponse" />
+  </wsdl:message>
   <wsdl:message name="GetDanhSachChiTietTKBSoapIn">
     <wsdl:part name="parameters" element="tns:GetDanhSachChiTietTKB" />
   </wsdl:message>
@@ -485,6 +505,10 @@
     <wsdl:operation name="GetTKB">
       <wsdl:input message="tns:GetTKBSoapIn" />
       <wsdl:output message="tns:GetTKBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTKBFromLop">
+      <wsdl:input message="tns:GetTKBFromLopSoapIn" />
+      <wsdl:output message="tns:GetTKBFromLopSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetDanhSachChiTietTKB">
       <wsdl:input message="tns:GetDanhSachChiTietTKBSoapIn" />
@@ -574,6 +598,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetTKB">
       <soap:operation soapAction="http://abc.com/GetTKB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTKBFromLop">
+      <soap:operation soapAction="http://abc.com/GetTKBFromLop" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -694,6 +727,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetTKB">
       <soap12:operation soapAction="http://abc.com/GetTKB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTKBFromLop">
+      <soap12:operation soapAction="http://abc.com/GetTKBFromLop" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

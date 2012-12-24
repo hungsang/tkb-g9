@@ -49,6 +49,8 @@ namespace TKB_G9.G9Service {
         
         private System.Threading.SendOrPostCallback GetTKBOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetTKBFromLopOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetDanhSachChiTietTKBOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetChiTietTKBOperationCompleted;
@@ -120,6 +122,9 @@ namespace TKB_G9.G9Service {
         
         /// <remarks/>
         public event GetTKBCompletedEventHandler GetTKBCompleted;
+        
+        /// <remarks/>
+        public event GetTKBFromLopCompletedEventHandler GetTKBFromLopCompleted;
         
         /// <remarks/>
         public event GetDanhSachChiTietTKBCompletedEventHandler GetDanhSachChiTietTKBCompleted;
@@ -373,6 +378,35 @@ namespace TKB_G9.G9Service {
             if ((this.GetTKBCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetTKBCompleted(this, new GetTKBCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/GetTKBFromLop", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ThoiKhoaBieu GetTKBFromLop(int maLop) {
+            object[] results = this.Invoke("GetTKBFromLop", new object[] {
+                        maLop});
+            return ((ThoiKhoaBieu)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetTKBFromLopAsync(int maLop) {
+            this.GetTKBFromLopAsync(maLop, null);
+        }
+        
+        /// <remarks/>
+        public void GetTKBFromLopAsync(int maLop, object userState) {
+            if ((this.GetTKBFromLopOperationCompleted == null)) {
+                this.GetTKBFromLopOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTKBFromLopOperationCompleted);
+            }
+            this.InvokeAsync("GetTKBFromLop", new object[] {
+                        maLop}, this.GetTKBFromLopOperationCompleted, userState);
+        }
+        
+        private void OnGetTKBFromLopOperationCompleted(object arg) {
+            if ((this.GetTKBFromLopCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetTKBFromLopCompleted(this, new GetTKBFromLopCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1492,6 +1526,32 @@ namespace TKB_G9.G9Service {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((ThoiKhoaBieu[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetTKBFromLopCompletedEventHandler(object sender, GetTKBFromLopCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetTKBFromLopCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetTKBFromLopCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ThoiKhoaBieu Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ThoiKhoaBieu)(this.results[0]));
             }
         }
     }

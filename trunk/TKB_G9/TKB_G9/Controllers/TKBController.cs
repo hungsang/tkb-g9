@@ -90,7 +90,7 @@ namespace TKB_G9.Controllers
                 Lop lop = sv.GetLopFromTKB(tkb.MaTKB);
                 strLop += " | <span id=\"span" + lop.MaLop + "\" onClick='Show(\"div" + lop.MaLop + "\")' class='menuLop'>" + lop.TenLop + "</span>";
                 temp += "<div id=\"div" + lop.MaLop + "\" class=\"divTKB\">";
-                temp += "<div><a href='~/TKB/Sua?lop=" + lop.MaLop + "'" + lop.TenLop + "</div>";
+                temp += "<div><a href='Sua?lop=" + lop.MaLop + "'>" + lop.TenLop + "</a></div>";
                 temp += "";
                 temp += "";
                 temp += "        <table>";
@@ -140,5 +140,59 @@ namespace TKB_G9.Controllers
             return temp;
         }
 
+        public ActionResult Sua(int lop)
+        {
+            G9Service.G9_Service sv = new G9Service.G9_Service();
+            string temp = "";
+            ThoiKhoaBieu tkb = sv.GetTKBFromLop(lop);
+            Lop oLop = sv.GetLopFromTKB(tkb.MaTKB);
+            temp += "<div id=\"div" + oLop.MaLop + "\" class=\"divTKB\">";
+            temp += "<div><a href='~/TKB/Sua?lop=" + oLop.MaLop + "'>" + oLop.TenLop + "</a></div>";
+            temp += "";
+            temp += "";
+            temp += "        <table>";
+            temp += "            <tr>";
+            temp += "                <th></th>";
+            temp += "                <th>Hai</th>";
+            temp += "                <th>Ba</th>";
+            temp += "                <th>Tư</th>";
+            temp += "                <th>Năm</th>";
+            temp += "                <th>Sáu</th>";
+            temp += "                <th>Bảy</th>";
+            temp += "                <th>Chủ nhật</th>";
+            temp += "            </tr>";
+            for (int j = 1; j < 13; j++)
+            {
+                temp += "   <tr>";
+                temp += "       <td>Tiết " + j + "</td>";
+                for (int i = 2; i <= 8; i++)
+                {
+                    temp += "       <td>&" + tkb.MaTKB + i + j + "&</td>";
+                }
+                temp += "   </tr>";
+            }
+
+            temp += "</table>";
+            temp += "</div>";
+            ChiTietTKB[] chiTiets = sv.GetDanhSachChiTietTKB(tkb.MaTKB);
+
+            foreach (ChiTietTKB chiTiet in chiTiets)
+            {
+                ChiTietTKB oChiTiet = sv.GetChiTietTKB(chiTiet.MaChiTietTKB);
+                MonHoc mh = sv.GetMonHocFromTKB(oChiTiet.MaChiTietTKB);
+                GiaoVien gv = sv.GetGiaoVienFromTKB(oChiTiet.MaChiTietTKB);
+                temp = temp.Replace(String.Format("&{0}{1}{2}&", tkb.MaTKB, oChiTiet.Thu, oChiTiet.TietBatDau), mh.TenMonHoc + "<br/>" + gv.TenGiaoVien);
+            }
+
+            for (int j = 1; j < 13; j++)
+            {
+                for (int i = 2; i <= 8; i++)
+                {
+                    temp = temp.Replace(String.Format("&{0}{1}{2}&", tkb.MaTKB, i, j), "");
+                }
+            }
+            ViewData["TKB"] = temp;
+            return View();
+        }
     }
 }
