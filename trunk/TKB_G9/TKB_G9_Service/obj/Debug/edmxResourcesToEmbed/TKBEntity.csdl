@@ -68,7 +68,7 @@
     <Property Type="Int32" Name="MaGiaoVien" Nullable="false" />
     <Property Type="String" Name="TenGiaoVien" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="GioiTinh" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Type="DateTime" Name="NgaySinh" />
+    <Property Type="DateTime" Name="NgaySinh" Precision="0" />
     <Property Type="String" Name="DiaChi" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="DienThoai" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="Email" MaxLength="200" FixedLength="false" Unicode="true" />
