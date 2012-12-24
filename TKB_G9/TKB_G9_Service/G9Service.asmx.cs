@@ -199,6 +199,16 @@ namespace TKB_G9_Service
         }
 
         [WebMethod]
+        public ThoiKhoaBieu GetTKBFromLop(int maLop)
+        {
+            using (var db = new TKBEntities())
+            {
+                ThoiKhoaBieu tkb = db.ThoiKhoaBieux.FirstOrDefault(p => p.Lop.MaLop == maLop);
+                return tkb;
+            }
+        }
+
+        [WebMethod]
         public List<ChiTietTKB> GetDanhSachChiTietTKB(int maTKB)
         {
             using (var db = new TKBEntities())
