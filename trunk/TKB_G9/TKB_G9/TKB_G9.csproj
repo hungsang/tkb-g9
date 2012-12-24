@@ -68,6 +68,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attribute.cs" />
+    <Compile Include="Controllers\GiaoVienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LopController.cs" />
     <Compile Include="Controllers\TKBController.cs" />
@@ -111,6 +113,7 @@
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\MasterpageScript.js" />
     <Content Include="Scripts\TKBScript.js" />
+    <Content Include="Views\GiaoVien\XemThoiKhoaBieu.aspx" />
     <Content Include="Views\Lop\DanhSachLop.aspx" />
     <Content Include="Views\Lop\ThemLop.aspx" />
     <Content Include="Views\Shared\Login.aspx" />
@@ -161,9 +164,15 @@
     <None Include="Web References\G9Service\MonHoc.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\G9Service\Phong.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\G9Service\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\G9Service\TaiKhoan.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\G9Service\ThoiKhoaBieu.datasource">
       <DependentUpon>Reference.map</DependentUpon>
