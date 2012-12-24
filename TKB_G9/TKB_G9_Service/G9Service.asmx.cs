@@ -51,7 +51,7 @@ namespace TKB_G9_Service
         /******************TKB******************/
         #region TKB
         [WebMethod]
-        public List<ThoiKhoaBieu> CreateTKB(string namHoc, List<List<ChiTietTKB>> arrTKB1, List<MonHoc> dsMonHoc, List<Lop> dsLop, List<Phong> dsPhong, List<GiaoVien> dsGiaoVien)
+        public List<ThoiKhoaBieu> GenerateTKB(string namHoc, List<List<ChiTietTKB>> arrTKB1, List<MonHoc> dsMonHoc, List<Lop> dsLop, List<Phong> dsPhong, List<GiaoVien> dsGiaoVien)
         {
             List<ThoiKhoaBieu> lstTKB = new List<ThoiKhoaBieu>();
             List<List<List<ChiTietTKB>>> listTKBs = new List<List<List<ChiTietTKB>>>();
@@ -104,10 +104,27 @@ namespace TKB_G9_Service
         [WebMethod]
         public List<ThoiKhoaBieu> TestCreateTKB()
         {
+            List<List<ChiTietTKB>> arrTKB = new List<List<ChiTietTKB>>();
+            for (int i = 2; i <= 8; i++) // 7days: from Monday to Sunday
+            {
+                List<ChiTietTKB> dsTKB = new List<ChiTietTKB>();
+                for (int j = 1; j <= Int32.Parse(ConfigurationManager.AppSettings["TongSoTietSang"]) + Int32.Parse(ConfigurationManager.AppSettings["TongSoTietChieu"]); j++)
+                {
+                    ChiTietTKB ct = new ChiTietTKB();
+                    ct.Thu = i;
+                    ct.TietBatDau = j;
+                    ct.TietKetThuc = j;
+                    dsTKB.Add(ct);
+                }
+                arrTKB.Add(dsTKB);
+            }
             using (var db = new TKBEntities())
             {
                 List<Lop> dsLop = db.Lops.ToList();
-                return CreateTKB(dsLop,"2009");
+                List<MonHoc> dsMonHoc = db.MonHocs.ToList();
+                List<Phong> dsPhong = db.Phongs.ToList();
+                List<GiaoVien> dsGiaoVien = db.GiaoViens.ToList();
+                return GenerateTKB("2012", arrTKB, dsMonHoc, dsLop, dsPhong, dsGiaoVien);
 
             }
         }
@@ -133,7 +150,7 @@ namespace TKB_G9_Service
                 List<MonHoc> dsMonHoc = db.MonHocs.ToList();
                 List<Phong> dsPhong = db.Phongs.ToList();
                 List<GiaoVien> dsGiaoVien = db.GiaoViens.ToList();
-                return CreateTKB(namHoc, arrTKB, dsMonHoc, dsLop, dsPhong, dsGiaoVien);
+                return GenerateTKB(namHoc, arrTKB, dsMonHoc, dsLop, dsPhong, dsGiaoVien);
 
             }
         }
@@ -194,6 +211,18 @@ namespace TKB_G9_Service
         {
             using (var db = new TKBEntities())
             {
+                List<ChiTietTKB> lstCTTKB = db.ChiTietTKBs.ToList();
+                foreach (var item in lstCTTKB)
+                {
+                    db.DeleteObject(item);
+                }
+                db.SaveChanges();
+                List<ThoiKhoaBieu> lstTKBs = db.ThoiKhoaBieux.ToList();
+                foreach (var item in lstTKBs)
+                {
+                    db.DeleteObject(item);
+                }
+                db.SaveChanges();
                 foreach (ThoiKhoaBieu oTKB in lstTKB)
                 {
                     ThoiKhoaBieu tkb = new ThoiKhoaBieu()
@@ -307,7 +336,7 @@ namespace TKB_G9_Service
             Phong phong = new Phong();
             for (int i = 0; i < dsPhong.Count; i++)
             {
-                if (dsPhong[i].TinhTrang.Equals("trống") && dsPhong[i].SucChua >= siSo)
+                if (dsPhong[i].TinhTrang.ToLower().Equals("trống") && dsPhong[i].SucChua >= siSo)
                 {
                     phong = dsPhong[i];
                     break;
