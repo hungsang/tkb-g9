@@ -47,62 +47,83 @@ namespace TKB_G9_Service
             return list;
         }
 
-
+        [WebMethod]
+        public Lop GetLop(int maLop)
+        {
+            using (var db = new TKBEntities())
+            {
+                Lop lop = db.Lops.FirstOrDefault(l => l.MaLop == maLop);
+                return lop;
+            }
+        }
         /******************TKB******************/
         #region TKB
         [WebMethod]
-        public List<ThoiKhoaBieu> GenerateTKB(string namHoc, List<List<ChiTietTKB>> arrTKB1, List<MonHoc> dsMonHoc, List<Lop> dsLop, List<Phong> dsPhong, List<GiaoVien> dsGiaoVien)
+        public bool GenerateTKB(string namHoc, List<List<ChiTietTKB>> arrTKB1, List<MonHoc> dsMonHoc, List<Lop> dsLop, List<Phong> dsPhong, List<GiaoVien> dsGiaoVien)
         {
-            List<ThoiKhoaBieu> lstTKB = new List<ThoiKhoaBieu>();
-            List<List<List<ChiTietTKB>>> listTKBs = new List<List<List<ChiTietTKB>>>();
-            for (int l = 0; l < dsLop.Count; l++)
+            try
             {
-                List<List<ChiTietTKB>> arrTKB = new List<List<ChiTietTKB>>();
-                for (int i = 0; i < arrTKB1.Count; i++)
+                // Xóa thông tin TKB cũ sẽ sắp mới
+                foreach (Lop l in dsLop)
                 {
-                    List<ChiTietTKB> temp = new List<ChiTietTKB>();
-                    for (int j = 0; j < arrTKB1[i].Count; j++)
-                    {
-                        ChiTietTKB ct = new ChiTietTKB();
-                        AddChiTietTKB(ref ct, arrTKB1[i][j]);
-                        temp.Add(ct);
-                    }
-                    arrTKB.Add(temp);
+                    DeleteTKB(l.MaLop, namHoc);
                 }
+                // Lấy danh sách TKB cũ 
+                List<ThoiKhoaBieu> lstTKB = GetTKB(namHoc);
+                List<List<List<ChiTietTKB>>> listTKBs = new List<List<List<ChiTietTKB>>>();
+                for (int l = 0; l < dsLop.Count; l++)
+                {
+                    List<List<ChiTietTKB>> arrTKB = new List<List<ChiTietTKB>>();
+                    for (int i = 0; i < arrTKB1.Count; i++)
+                    {
+                        List<ChiTietTKB> temp = new List<ChiTietTKB>();
+                        for (int j = 0; j < arrTKB1[i].Count; j++)
+                        {
+                            ChiTietTKB ct = new ChiTietTKB();
+                            AddChiTietTKB(ref ct, arrTKB1[i][j]);
+                            temp.Add(ct);
+                        }
+                        arrTKB.Add(temp);
+                    }
 
-                // Tìm phòng trống
-                Phong phong = new Phong();
-                int caHoc = dsLop[l].CaHoc == null ? 1 : (dsLop[l].CaHoc.Equals("Sáng") ? 1 : 2);
-                phong = GetPhong(ref dsPhong, (int)dsLop[l].SiSo);
-                ThoiKhoaBieu tkb = BuildTKB(namHoc, caHoc, dsMonHoc, dsLop, ref dsPhong, dsGiaoVien, lstTKB, l, arrTKB, phong);
-                lstTKB.Add(tkb);
-                //Tối ưu TKB
-               listTKBs.Add(OptimizeTKB(arrTKB));
-            }
-            // For debugging
-            string s = "";
-            for (int i = 0; i < listTKBs.Count; i++)
-            {
-                s += dsLop[i].TenLop + "\t1\t2\t3\t4\t5\t6\t7\t8\t9\t10\t11\t12\n";
-                for (int j = 0; j < listTKBs[i].Count; j++)
-                {
-                    s += (j == 6 ? "CN" : (j + 2).ToString()) + "\t";
-                    for (int k = 0; k < listTKBs[i][j].Count; k++)
-                    {
-                        s += listTKBs[i][j][k].MonHoc == null ? "----\t" : listTKBs[i][j][k].MonHoc.TenMonHoc + " \t";
-                    }
-                    s += "\n";
+                    // Tìm phòng trống
+                    Phong phong = new Phong();
+                    int caHoc = dsLop[l].CaHoc == null ? 1 : (dsLop[l].CaHoc.Equals("Sáng") ? 1 : 2);
+                    phong = GetPhong(ref dsPhong, (int)dsLop[l].SiSo);
+                    ThoiKhoaBieu tkb = BuildTKB(namHoc, caHoc, dsMonHoc, dsLop, ref dsPhong, dsGiaoVien, lstTKB, l, arrTKB, phong);
+                    lstTKB.Add(tkb);
+                    //Tối ưu TKB
+                    listTKBs.Add(OptimizeTKB(arrTKB));
                 }
-                s += "--\n";
+                // For debugging
+                string s = "";
+                for (int i = 0; i < listTKBs.Count; i++)
+                {
+                    s += dsLop[i].TenLop + "\t1\t2\t3\t4\t5\t6\t7\t8\t9\t10\t11\t12\n";
+                    for (int j = 0; j < listTKBs[i].Count; j++)
+                    {
+                        s += (j == 6 ? "CN" : (j + 2).ToString()) + "\t";
+                        for (int k = 0; k < listTKBs[i][j].Count; k++)
+                        {
+                            s += listTKBs[i][j][k].MonHoc == null ? "----\t" : listTKBs[i][j][k].MonHoc.TenMonHoc + " \t";
+                        }
+                        s += "\n";
+                    }
+                    s += "--\n";
+                }
+                // End for debugging
+                // Save TKB;
+                SaveTKB(lstTKB, dsLop);
             }
-            // End for debugging
-            // Save TKB;
-            SaveTKB(lstTKB);
-            return lstTKB;
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
         }
 
         [WebMethod]
-        public List<ThoiKhoaBieu> TestCreateTKB()
+        public bool TestCreateTKB()
         {
             List<List<ChiTietTKB>> arrTKB = new List<List<ChiTietTKB>>();
             for (int i = 2; i <= 8; i++) // 7days: from Monday to Sunday
@@ -121,6 +142,9 @@ namespace TKB_G9_Service
             using (var db = new TKBEntities())
             {
                 List<Lop> dsLop = db.Lops.ToList();
+                //List<Lop> dsLop = new List<Lop>();
+                //dsLop.Add(new Lop() { MaLop = 1, SiSo = 20, CaHoc= });
+                //dsLop.Add(new Lop() { MaLop = 2, SiSo = 20 });
                 List<MonHoc> dsMonHoc = db.MonHocs.ToList();
                 List<Phong> dsPhong = db.Phongs.ToList();
                 List<GiaoVien> dsGiaoVien = db.GiaoViens.ToList();
@@ -129,7 +153,7 @@ namespace TKB_G9_Service
             }
         }
         [WebMethod]
-        public List<ThoiKhoaBieu> CreateTKB(List<Lop> dsLop, string namHoc)
+        public bool CreateTKB(List<Lop> dsLop, string namHoc)
         {
             List<List<ChiTietTKB>> arrTKB = new List<List<ChiTietTKB>>();
             for (int i = 2; i <= 8; i++) // 7days: from Monday to Sunday
@@ -158,9 +182,18 @@ namespace TKB_G9_Service
         [WebMethod]
         public List<ThoiKhoaBieu> GetTKB(string namHoc)
         {
+            List<ThoiKhoaBieu> temp;
             using (var db = new TKBEntities())
             {
-                List<ThoiKhoaBieu> listTKB = db.ThoiKhoaBieux.Where(p => p.NamHoc == namHoc).ToList();
+                temp = db.ThoiKhoaBieux.Where(p => p.NamHoc == namHoc).ToList();
+                List<ThoiKhoaBieu> listTKB = new List<ThoiKhoaBieu>();
+                foreach (ThoiKhoaBieu t in temp)
+                {
+                    ThoiKhoaBieu tkb = t;
+                    Lop lop = GetLop((int)t.LopReference.EntityKey.EntityKeyValues[0].Value);
+                    tkb.Lop = new Lop() { MaLop = lop.MaLop };
+                    listTKB.Add(tkb);
+                }
                 return listTKB;
             }
         }
@@ -197,6 +230,17 @@ namespace TKB_G9_Service
         }
 
         [WebMethod]
+        public GiaoVien GetGiaoVienFromTKB(int maChiTiet)
+        {
+            using (var db = new TKBEntities())
+            {
+                int maGV = (int)db.ChiTietTKBs.FirstOrDefault(p => p.MaChiTietTKB == maChiTiet).GiaoVienReference.EntityKey.EntityKeyValues[0].Value;
+                GiaoVien gv = db.GiaoViens.FirstOrDefault(p => p.MaGiaoVien == maGV);
+                return gv;
+            }
+        }
+
+        [WebMethod]
         public MonHoc GetMonHocFromTKB(int maChiTiet)
         {
             using (var db = new TKBEntities())
@@ -207,49 +251,63 @@ namespace TKB_G9_Service
             }
         }
 
-        private void SaveTKB(List<ThoiKhoaBieu> lstTKB)
+        private void SaveTKB(List<ThoiKhoaBieu> lstTKB, List<Lop> dsLop)
         {
             using (var db = new TKBEntities())
             {
-                List<ChiTietTKB> lstCTTKB = db.ChiTietTKBs.ToList();
-                foreach (var item in lstCTTKB)
-                {
-                    db.DeleteObject(item);
-                }
-                db.SaveChanges();
-                List<ThoiKhoaBieu> lstTKBs = db.ThoiKhoaBieux.ToList();
-                foreach (var item in lstTKBs)
-                {
-                    db.DeleteObject(item);
-                }
-                db.SaveChanges();
+
                 foreach (ThoiKhoaBieu oTKB in lstTKB)
                 {
-                    ThoiKhoaBieu tkb = new ThoiKhoaBieu()
+                    if (oTKB.MaTKB ==0)
                     {
-                        Lop = db.Lops.FirstOrDefault(p => p.MaLop == oTKB.Lop.MaLop),
-                        NamHoc = oTKB.NamHoc
-                    };
-                    db.AddToThoiKhoaBieux(tkb);
-                    db.SaveChanges();
-                    foreach (ChiTietTKB ct in oTKB.ChiTietTKBs.ToList())
-                    {
-                        ChiTietTKB chiTiet = new ChiTietTKB()
+                        ThoiKhoaBieu tkb = new ThoiKhoaBieu()
                         {
-                            ThoiKhoaBieu = tkb,
-                            MonHoc = db.MonHocs.FirstOrDefault(p => p.MaMonHoc == ct.MonHoc.MaMonHoc),
-                            GiaoVien = db.GiaoViens.FirstOrDefault(p => p.MaGiaoVien == ct.GiaoVien.MaGiaoVien),
-                            Phong = db.Phongs.FirstOrDefault(p => p.MaPhong == ct.Phong.MaPhong),
-                            TietBatDau = ct.TietBatDau + 1,
-                            TietKetThuc = ct.TietKetThuc + 1,
-                            Thu = ct.Thu + 2
+                            Lop = db.Lops.FirstOrDefault(p => p.MaLop == oTKB.Lop.MaLop),
+                            NamHoc = oTKB.NamHoc
                         };
-                        db.AddToChiTietTKBs(chiTiet);
+                        db.AddToThoiKhoaBieux(tkb);
                         db.SaveChanges();
+                        foreach (ChiTietTKB ct in oTKB.ChiTietTKBs.ToList())
+                        {
+                            ChiTietTKB chiTiet = new ChiTietTKB()
+                            {
+                                ThoiKhoaBieu = tkb,
+                                MonHoc = db.MonHocs.FirstOrDefault(p => p.MaMonHoc == ct.MonHoc.MaMonHoc),
+                                GiaoVien = db.GiaoViens.FirstOrDefault(p => p.MaGiaoVien == ct.GiaoVien.MaGiaoVien),
+                                Phong = db.Phongs.FirstOrDefault(p => p.MaPhong == ct.Phong.MaPhong),
+                                TietBatDau = ct.TietBatDau + 1,
+                                TietKetThuc = ct.TietKetThuc + 1,
+                                Thu = ct.Thu + 2
+                            };
+                            db.AddToChiTietTKBs(chiTiet);
+                            db.SaveChanges();
+                        }
                     }
                 }
             }
 
+        }
+
+        private void DeleteTKB(int maLop, string namHoc)
+        {
+            using (var db = new TKBEntities())
+            {
+                ThoiKhoaBieu tkb = db.ThoiKhoaBieux.FirstOrDefault(p => p.Lop.MaLop == maLop && p.NamHoc == namHoc);
+                if (tkb != null)
+                {
+                    List<ChiTietTKB> chiTiets = db.ChiTietTKBs.Where(p => p.ThoiKhoaBieu.MaTKB == tkb.MaTKB).ToList();
+                    if (chiTiets != null)
+                    {
+                        foreach (var ct in chiTiets)
+                        {
+                            db.DeleteObject(ct);
+                        }
+                        db.SaveChanges();
+                    }
+                    db.DeleteObject(tkb);
+                    db.SaveChanges();
+                }
+            }
         }
 
         private void AddChiTietTKB(ref ChiTietTKB ct, ChiTietTKB chiTietTKB)

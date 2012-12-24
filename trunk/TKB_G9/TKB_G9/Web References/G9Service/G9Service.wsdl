@@ -84,7 +84,21 @@
           <s:element minOccurs="0" maxOccurs="1" name="Value" />
         </s:sequence>
       </s:complexType>
-      <s:element name="CreateTKB">
+      <s:element name="GetLop">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="maLop" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLopResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLopResult" type="tns:Lop" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateTKB">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="namHoc" type="s:string" />
@@ -137,11 +151,6 @@
         </s:complexContent>
       </s:complexType>
       <s:complexType name="RelatedEnd" abstract="true" />
-      <s:complexType name="EntityReferenceOfLop">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:EntityReference" />
-        </s:complexContent>
-      </s:complexType>
       <s:complexType name="EntityReferenceOfLoaiPhong">
         <s:complexContent mixed="false">
           <s:extension base="tns:EntityReference" />
@@ -227,6 +236,45 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
+      <s:element name="GenerateTKBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GenerateTKBResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestCreateTKB">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestCreateTKBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TestCreateTKBResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateTKB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsLop" type="tns:ArrayOfLop" />
+            <s:element minOccurs="0" maxOccurs="1" name="namHoc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateTKBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateTKBResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTKB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="namHoc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:complexType name="ArrayOfThoiKhoaBieu">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="ThoiKhoaBieu" nillable="true" type="tns:ThoiKhoaBieu" />
@@ -243,30 +291,11 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:element name="CreateTKBResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="CreateTKBResult" type="tns:ArrayOfThoiKhoaBieu" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="TestCreateTKB">
-        <s:complexType />
-      </s:element>
-      <s:element name="TestCreateTKBResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="TestCreateTKBResult" type="tns:ArrayOfThoiKhoaBieu" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetTKB">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="namHoc" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
+      <s:complexType name="EntityReferenceOfLop">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityReference" />
+        </s:complexContent>
+      </s:complexType>
       <s:element name="GetTKBResponse">
         <s:complexType>
           <s:sequence>
@@ -316,6 +345,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetGiaoVienFromTKB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="maChiTiet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGiaoVienFromTKBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGiaoVienFromTKBResult" type="tns:GiaoVien" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetMonHocFromTKB">
         <s:complexType>
           <s:sequence>
@@ -350,17 +393,29 @@
   <wsdl:message name="GetDanhSachLopSoapOut">
     <wsdl:part name="parameters" element="tns:GetDanhSachLopResponse" />
   </wsdl:message>
-  <wsdl:message name="CreateTKBSoapIn">
-    <wsdl:part name="parameters" element="tns:CreateTKB" />
+  <wsdl:message name="GetLopSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLop" />
   </wsdl:message>
-  <wsdl:message name="CreateTKBSoapOut">
-    <wsdl:part name="parameters" element="tns:CreateTKBResponse" />
+  <wsdl:message name="GetLopSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLopResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenerateTKBSoapIn">
+    <wsdl:part name="parameters" element="tns:GenerateTKB" />
+  </wsdl:message>
+  <wsdl:message name="GenerateTKBSoapOut">
+    <wsdl:part name="parameters" element="tns:GenerateTKBResponse" />
   </wsdl:message>
   <wsdl:message name="TestCreateTKBSoapIn">
     <wsdl:part name="parameters" element="tns:TestCreateTKB" />
   </wsdl:message>
   <wsdl:message name="TestCreateTKBSoapOut">
     <wsdl:part name="parameters" element="tns:TestCreateTKBResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateTKBSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateTKB" />
+  </wsdl:message>
+  <wsdl:message name="CreateTKBSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateTKBResponse" />
   </wsdl:message>
   <wsdl:message name="GetTKBSoapIn">
     <wsdl:part name="parameters" element="tns:GetTKB" />
@@ -386,6 +441,12 @@
   <wsdl:message name="GetLopFromTKBSoapOut">
     <wsdl:part name="parameters" element="tns:GetLopFromTKBResponse" />
   </wsdl:message>
+  <wsdl:message name="GetGiaoVienFromTKBSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGiaoVienFromTKB" />
+  </wsdl:message>
+  <wsdl:message name="GetGiaoVienFromTKBSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGiaoVienFromTKBResponse" />
+  </wsdl:message>
   <wsdl:message name="GetMonHocFromTKBSoapIn">
     <wsdl:part name="parameters" element="tns:GetMonHocFromTKB" />
   </wsdl:message>
@@ -405,13 +466,21 @@
       <wsdl:input message="tns:GetDanhSachLopSoapIn" />
       <wsdl:output message="tns:GetDanhSachLopSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="CreateTKB">
-      <wsdl:input message="tns:CreateTKBSoapIn" />
-      <wsdl:output message="tns:CreateTKBSoapOut" />
+    <wsdl:operation name="GetLop">
+      <wsdl:input message="tns:GetLopSoapIn" />
+      <wsdl:output message="tns:GetLopSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateTKB">
+      <wsdl:input message="tns:GenerateTKBSoapIn" />
+      <wsdl:output message="tns:GenerateTKBSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="TestCreateTKB">
       <wsdl:input message="tns:TestCreateTKBSoapIn" />
       <wsdl:output message="tns:TestCreateTKBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTKB">
+      <wsdl:input message="tns:CreateTKBSoapIn" />
+      <wsdl:output message="tns:CreateTKBSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetTKB">
       <wsdl:input message="tns:GetTKBSoapIn" />
@@ -428,6 +497,10 @@
     <wsdl:operation name="GetLopFromTKB">
       <wsdl:input message="tns:GetLopFromTKBSoapIn" />
       <wsdl:output message="tns:GetLopFromTKBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGiaoVienFromTKB">
+      <wsdl:input message="tns:GetGiaoVienFromTKBSoapIn" />
+      <wsdl:output message="tns:GetGiaoVienFromTKBSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetMonHocFromTKB">
       <wsdl:input message="tns:GetMonHocFromTKBSoapIn" />
@@ -463,8 +536,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CreateTKB">
-      <soap:operation soapAction="http://abc.com/CreateTKB" style="document" />
+    <wsdl:operation name="GetLop">
+      <soap:operation soapAction="http://abc.com/GetLop" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateTKB">
+      <soap:operation soapAction="http://abc.com/GenerateTKB" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -474,6 +556,15 @@
     </wsdl:operation>
     <wsdl:operation name="TestCreateTKB">
       <soap:operation soapAction="http://abc.com/TestCreateTKB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTKB">
+      <soap:operation soapAction="http://abc.com/CreateTKB" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -510,6 +601,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetLopFromTKB">
       <soap:operation soapAction="http://abc.com/GetLopFromTKB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGiaoVienFromTKB">
+      <soap:operation soapAction="http://abc.com/GetGiaoVienFromTKB" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -556,8 +656,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CreateTKB">
-      <soap12:operation soapAction="http://abc.com/CreateTKB" style="document" />
+    <wsdl:operation name="GetLop">
+      <soap12:operation soapAction="http://abc.com/GetLop" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateTKB">
+      <soap12:operation soapAction="http://abc.com/GenerateTKB" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -567,6 +676,15 @@
     </wsdl:operation>
     <wsdl:operation name="TestCreateTKB">
       <soap12:operation soapAction="http://abc.com/TestCreateTKB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTKB">
+      <soap12:operation soapAction="http://abc.com/CreateTKB" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -603,6 +721,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetLopFromTKB">
       <soap12:operation soapAction="http://abc.com/GetLopFromTKB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGiaoVienFromTKB">
+      <soap12:operation soapAction="http://abc.com/GetGiaoVienFromTKB" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

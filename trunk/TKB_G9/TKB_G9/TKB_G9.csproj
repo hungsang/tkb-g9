@@ -103,6 +103,7 @@
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\MasterpageScript.js" />
+    <Content Include="Scripts\TKBScript.js" />
     <Content Include="Views\Lop\DanhSachLop.aspx" />
     <Content Include="Views\Lop\ThemLop.aspx" />
     <Content Include="Views\Shared\Login.aspx" />
@@ -143,6 +144,9 @@
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Web.config" />
     <None Include="Web References\G9Service\G9Service.wsdl" />
+    <None Include="Web References\G9Service\GiaoVien.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\G9Service\Lop.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>

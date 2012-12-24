@@ -39,9 +39,13 @@ namespace TKB_G9.G9Service {
         
         private System.Threading.SendOrPostCallback GetDanhSachLopOperationCompleted;
         
-        private System.Threading.SendOrPostCallback CreateTKBOperationCompleted;
+        private System.Threading.SendOrPostCallback GetLopOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GenerateTKBOperationCompleted;
         
         private System.Threading.SendOrPostCallback TestCreateTKBOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CreateTKBOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetTKBOperationCompleted;
         
@@ -50,6 +54,8 @@ namespace TKB_G9.G9Service {
         private System.Threading.SendOrPostCallback GetChiTietTKBOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetLopFromTKBOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetGiaoVienFromTKBOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMonHocFromTKBOperationCompleted;
         
@@ -101,10 +107,16 @@ namespace TKB_G9.G9Service {
         public event GetDanhSachLopCompletedEventHandler GetDanhSachLopCompleted;
         
         /// <remarks/>
-        public event CreateTKBCompletedEventHandler CreateTKBCompleted;
+        public event GetLopCompletedEventHandler GetLopCompleted;
+        
+        /// <remarks/>
+        public event GenerateTKBCompletedEventHandler GenerateTKBCompleted;
         
         /// <remarks/>
         public event TestCreateTKBCompletedEventHandler TestCreateTKBCompleted;
+        
+        /// <remarks/>
+        public event CreateTKBCompletedEventHandler CreateTKBCompleted;
         
         /// <remarks/>
         public event GetTKBCompletedEventHandler GetTKBCompleted;
@@ -117,6 +129,9 @@ namespace TKB_G9.G9Service {
         
         /// <remarks/>
         public event GetLopFromTKBCompletedEventHandler GetLopFromTKBCompleted;
+        
+        /// <remarks/>
+        public event GetGiaoVienFromTKBCompletedEventHandler GetGiaoVienFromTKBCompleted;
         
         /// <remarks/>
         public event GetMonHocFromTKBCompletedEventHandler GetMonHocFromTKBCompleted;
@@ -207,49 +222,78 @@ namespace TKB_G9.G9Service {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/CreateTKB", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ThoiKhoaBieu[] CreateTKB(string namHoc, [System.Xml.Serialization.XmlArrayItemAttribute("ArrayOfChiTietTKB")] [System.Xml.Serialization.XmlArrayItemAttribute(NestingLevel=1)] ChiTietTKB[][] arrTKB1, MonHoc[] dsMonHoc, Lop[] dsLop, Phong[] dsPhong, GiaoVien[] dsGiaoVien) {
-            object[] results = this.Invoke("CreateTKB", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/GetLop", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Lop GetLop(int maLop) {
+            object[] results = this.Invoke("GetLop", new object[] {
+                        maLop});
+            return ((Lop)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetLopAsync(int maLop) {
+            this.GetLopAsync(maLop, null);
+        }
+        
+        /// <remarks/>
+        public void GetLopAsync(int maLop, object userState) {
+            if ((this.GetLopOperationCompleted == null)) {
+                this.GetLopOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLopOperationCompleted);
+            }
+            this.InvokeAsync("GetLop", new object[] {
+                        maLop}, this.GetLopOperationCompleted, userState);
+        }
+        
+        private void OnGetLopOperationCompleted(object arg) {
+            if ((this.GetLopCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetLopCompleted(this, new GetLopCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/GenerateTKB", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool GenerateTKB(string namHoc, [System.Xml.Serialization.XmlArrayItemAttribute("ArrayOfChiTietTKB")] [System.Xml.Serialization.XmlArrayItemAttribute(NestingLevel=1)] ChiTietTKB[][] arrTKB1, MonHoc[] dsMonHoc, Lop[] dsLop, Phong[] dsPhong, GiaoVien[] dsGiaoVien) {
+            object[] results = this.Invoke("GenerateTKB", new object[] {
                         namHoc,
                         arrTKB1,
                         dsMonHoc,
                         dsLop,
                         dsPhong,
                         dsGiaoVien});
-            return ((ThoiKhoaBieu[])(results[0]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void CreateTKBAsync(string namHoc, ChiTietTKB[][] arrTKB1, MonHoc[] dsMonHoc, Lop[] dsLop, Phong[] dsPhong, GiaoVien[] dsGiaoVien) {
-            this.CreateTKBAsync(namHoc, arrTKB1, dsMonHoc, dsLop, dsPhong, dsGiaoVien, null);
+        public void GenerateTKBAsync(string namHoc, ChiTietTKB[][] arrTKB1, MonHoc[] dsMonHoc, Lop[] dsLop, Phong[] dsPhong, GiaoVien[] dsGiaoVien) {
+            this.GenerateTKBAsync(namHoc, arrTKB1, dsMonHoc, dsLop, dsPhong, dsGiaoVien, null);
         }
         
         /// <remarks/>
-        public void CreateTKBAsync(string namHoc, ChiTietTKB[][] arrTKB1, MonHoc[] dsMonHoc, Lop[] dsLop, Phong[] dsPhong, GiaoVien[] dsGiaoVien, object userState) {
-            if ((this.CreateTKBOperationCompleted == null)) {
-                this.CreateTKBOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateTKBOperationCompleted);
+        public void GenerateTKBAsync(string namHoc, ChiTietTKB[][] arrTKB1, MonHoc[] dsMonHoc, Lop[] dsLop, Phong[] dsPhong, GiaoVien[] dsGiaoVien, object userState) {
+            if ((this.GenerateTKBOperationCompleted == null)) {
+                this.GenerateTKBOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGenerateTKBOperationCompleted);
             }
-            this.InvokeAsync("CreateTKB", new object[] {
+            this.InvokeAsync("GenerateTKB", new object[] {
                         namHoc,
                         arrTKB1,
                         dsMonHoc,
                         dsLop,
                         dsPhong,
-                        dsGiaoVien}, this.CreateTKBOperationCompleted, userState);
+                        dsGiaoVien}, this.GenerateTKBOperationCompleted, userState);
         }
         
-        private void OnCreateTKBOperationCompleted(object arg) {
-            if ((this.CreateTKBCompleted != null)) {
+        private void OnGenerateTKBOperationCompleted(object arg) {
+            if ((this.GenerateTKBCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.CreateTKBCompleted(this, new CreateTKBCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GenerateTKBCompleted(this, new GenerateTKBCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/TestCreateTKB", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ThoiKhoaBieu[] TestCreateTKB() {
+        public bool TestCreateTKB() {
             object[] results = this.Invoke("TestCreateTKB", new object[0]);
-            return ((ThoiKhoaBieu[])(results[0]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -269,6 +313,37 @@ namespace TKB_G9.G9Service {
             if ((this.TestCreateTKBCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.TestCreateTKBCompleted(this, new TestCreateTKBCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/CreateTKB", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool CreateTKB(Lop[] dsLop, string namHoc) {
+            object[] results = this.Invoke("CreateTKB", new object[] {
+                        dsLop,
+                        namHoc});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CreateTKBAsync(Lop[] dsLop, string namHoc) {
+            this.CreateTKBAsync(dsLop, namHoc, null);
+        }
+        
+        /// <remarks/>
+        public void CreateTKBAsync(Lop[] dsLop, string namHoc, object userState) {
+            if ((this.CreateTKBOperationCompleted == null)) {
+                this.CreateTKBOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateTKBOperationCompleted);
+            }
+            this.InvokeAsync("CreateTKB", new object[] {
+                        dsLop,
+                        namHoc}, this.CreateTKBOperationCompleted, userState);
+        }
+        
+        private void OnCreateTKBOperationCompleted(object arg) {
+            if ((this.CreateTKBCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CreateTKBCompleted(this, new CreateTKBCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -385,6 +460,35 @@ namespace TKB_G9.G9Service {
             if ((this.GetLopFromTKBCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetLopFromTKBCompleted(this, new GetLopFromTKBCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/GetGiaoVienFromTKB", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public GiaoVien GetGiaoVienFromTKB(int maChiTiet) {
+            object[] results = this.Invoke("GetGiaoVienFromTKB", new object[] {
+                        maChiTiet});
+            return ((GiaoVien)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetGiaoVienFromTKBAsync(int maChiTiet) {
+            this.GetGiaoVienFromTKBAsync(maChiTiet, null);
+        }
+        
+        /// <remarks/>
+        public void GetGiaoVienFromTKBAsync(int maChiTiet, object userState) {
+            if ((this.GetGiaoVienFromTKBOperationCompleted == null)) {
+                this.GetGiaoVienFromTKBOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetGiaoVienFromTKBOperationCompleted);
+            }
+            this.InvokeAsync("GetGiaoVienFromTKB", new object[] {
+                        maChiTiet}, this.GetGiaoVienFromTKBOperationCompleted, userState);
+        }
+        
+        private void OnGetGiaoVienFromTKBOperationCompleted(object arg) {
+            if ((this.GetGiaoVienFromTKBCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetGiaoVienFromTKBCompleted(this, new GetGiaoVienFromTKBCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -625,12 +729,12 @@ namespace TKB_G9.G9Service {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReference))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLop))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfMonHoc))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfPhong))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfThoiKhoaBieu))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLoaiMonHoc))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLoaiPhong))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLop))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfGiaoVien))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
     [System.SerializableAttribute()]
@@ -641,12 +745,12 @@ namespace TKB_G9.G9Service {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLop))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfMonHoc))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfPhong))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfThoiKhoaBieu))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLoaiMonHoc))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLoaiPhong))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLop))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfGiaoVien))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
     [System.SerializableAttribute()]
@@ -666,6 +770,15 @@ namespace TKB_G9.G9Service {
                 this.entityKeyField = value;
             }
         }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
+    public partial class EntityReferenceOfLop : EntityReference {
     }
     
     /// <remarks/>
@@ -711,15 +824,6 @@ namespace TKB_G9.G9Service {
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
     public partial class EntityReferenceOfLoaiPhong : EntityReference {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
-    public partial class EntityReferenceOfLop : EntityReference {
     }
     
     /// <remarks/>
@@ -1264,26 +1368,52 @@ namespace TKB_G9.G9Service {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void CreateTKBCompletedEventHandler(object sender, CreateTKBCompletedEventArgs e);
+    public delegate void GetLopCompletedEventHandler(object sender, GetLopCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class CreateTKBCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetLopCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal CreateTKBCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetLopCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public ThoiKhoaBieu[] Result {
+        public Lop Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((ThoiKhoaBieu[])(this.results[0]));
+                return ((Lop)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GenerateTKBCompletedEventHandler(object sender, GenerateTKBCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GenerateTKBCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GenerateTKBCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
             }
         }
     }
@@ -1306,10 +1436,36 @@ namespace TKB_G9.G9Service {
         }
         
         /// <remarks/>
-        public ThoiKhoaBieu[] Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((ThoiKhoaBieu[])(this.results[0]));
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void CreateTKBCompletedEventHandler(object sender, CreateTKBCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CreateTKBCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CreateTKBCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
             }
         }
     }
@@ -1414,6 +1570,32 @@ namespace TKB_G9.G9Service {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Lop)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetGiaoVienFromTKBCompletedEventHandler(object sender, GetGiaoVienFromTKBCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetGiaoVienFromTKBCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetGiaoVienFromTKBCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public GiaoVien Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((GiaoVien)(this.results[0]));
             }
         }
     }
