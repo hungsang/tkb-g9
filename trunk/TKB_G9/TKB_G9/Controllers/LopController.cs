@@ -62,8 +62,6 @@ namespace TKB_G9.Controllers
         }
         public ActionResult ThemLop()
         {
-
-
             ViewData["DSLop"] = "";
             return View();
         }
