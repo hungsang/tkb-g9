@@ -42,6 +42,8 @@ namespace TKB_G9.G9Service {
         
         private System.Threading.SendOrPostCallback GetLopOperationCompleted;
         
+        private System.Threading.SendOrPostCallback ThemLopOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getPhongByMaChiTietTKBOperationCompleted;
         
         private System.Threading.SendOrPostCallback getLopByMaChiTietTKBOperationCompleted;
@@ -120,6 +122,9 @@ namespace TKB_G9.G9Service {
         
         /// <remarks/>
         public event GetLopCompletedEventHandler GetLopCompleted;
+        
+        /// <remarks/>
+        public event ThemLopCompletedEventHandler ThemLopCompleted;
         
         /// <remarks/>
         public event getPhongByMaChiTietTKBCompletedEventHandler getPhongByMaChiTietTKBCompleted;
@@ -300,6 +305,35 @@ namespace TKB_G9.G9Service {
             if ((this.GetLopCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetLopCompleted(this, new GetLopCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/ThemLop", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool ThemLop(Lop lop) {
+            object[] results = this.Invoke("ThemLop", new object[] {
+                        lop});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ThemLopAsync(Lop lop) {
+            this.ThemLopAsync(lop, null);
+        }
+        
+        /// <remarks/>
+        public void ThemLopAsync(Lop lop, object userState) {
+            if ((this.ThemLopOperationCompleted == null)) {
+                this.ThemLopOperationCompleted = new System.Threading.SendOrPostCallback(this.OnThemLopOperationCompleted);
+            }
+            this.InvokeAsync("ThemLop", new object[] {
+                        lop}, this.ThemLopOperationCompleted, userState);
+        }
+        
+        private void OnThemLopOperationCompleted(object arg) {
+            if ((this.ThemLopCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ThemLopCompleted(this, new ThemLopCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1653,6 +1687,32 @@ namespace TKB_G9.G9Service {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Lop)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void ThemLopCompletedEventHandler(object sender, ThemLopCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ThemLopCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ThemLopCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
             }
         }
     }

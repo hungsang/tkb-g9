@@ -139,6 +139,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ThemLop">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lop" type="tns:Lop" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThemLopResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ThemLopResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="getPhongByMaChiTietTKB">
         <s:complexType>
           <s:sequence>
@@ -492,6 +506,12 @@
   <wsdl:message name="GetLopSoapOut">
     <wsdl:part name="parameters" element="tns:GetLopResponse" />
   </wsdl:message>
+  <wsdl:message name="ThemLopSoapIn">
+    <wsdl:part name="parameters" element="tns:ThemLop" />
+  </wsdl:message>
+  <wsdl:message name="ThemLopSoapOut">
+    <wsdl:part name="parameters" element="tns:ThemLopResponse" />
+  </wsdl:message>
   <wsdl:message name="getPhongByMaChiTietTKBSoapIn">
     <wsdl:part name="parameters" element="tns:getPhongByMaChiTietTKB" />
   </wsdl:message>
@@ -591,6 +611,10 @@
       <wsdl:input message="tns:GetLopSoapIn" />
       <wsdl:output message="tns:GetLopSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ThemLop">
+      <wsdl:input message="tns:ThemLopSoapIn" />
+      <wsdl:output message="tns:ThemLopSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="getPhongByMaChiTietTKB">
       <wsdl:input message="tns:getPhongByMaChiTietTKBSoapIn" />
       <wsdl:output message="tns:getPhongByMaChiTietTKBSoapOut" />
@@ -684,6 +708,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetLop">
       <soap:operation soapAction="http://abc.com/GetLop" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemLop">
+      <soap:operation soapAction="http://abc.com/ThemLop" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -849,6 +882,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetLop">
       <soap12:operation soapAction="http://abc.com/GetLop" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemLop">
+      <soap12:operation soapAction="http://abc.com/ThemLop" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
