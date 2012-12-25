@@ -136,6 +136,15 @@ namespace TKB_G9_Service
             return list;
         }
         [WebMethod]
+        public List<GiaoVien> GetDanhSachGiaoVienTheoMonHoc(int maMonHoc)
+        {
+            using (var db = new TKBEntities())
+            {
+                List<GiaoVien> giaoViens = db.GiaoViens.Where(p => p.MonHoc.MaMonHoc == maMonHoc).OrderBy(o => o.TenGiaoVien).ToList();
+                return giaoViens;
+            }
+        }
+        [WebMethod]
         public GiaoVien GetGiaoVien(int maGiaoVien)
         {
             using (var db = new TKBEntities())
@@ -201,7 +210,7 @@ namespace TKB_G9_Service
                 return false;
             }
         }
-        
+
         /*****************PHONG*******************/
         [WebMethod]
         public List<Phong> GetDanhSachPhong()
@@ -426,7 +435,7 @@ namespace TKB_G9_Service
             {
                 //List<Lop> dsLop = db.Lops.ToList();
                 List<Lop> dsLop = new List<Lop>();
-                dsLop.Add(new Lop() { MaLop = 7, SiSo = 20, CaHoc= "Sáng"});
+                dsLop.Add(new Lop() { MaLop = 7, SiSo = 20, CaHoc = "Sáng" });
                 dsLop.Add(new Lop() { MaLop = 8, SiSo = 20, CaHoc = "Sáng" });
                 List<MonHoc> dsMonHoc = db.MonHocs.ToList();
                 List<Phong> dsPhong = db.Phongs.ToList();
@@ -478,16 +487,17 @@ namespace TKB_G9_Service
                     tkb.Lop = new Lop() { MaLop = lop.MaLop };
                     listTKB.Add(tkb);
                 }
+                listTKB.Sort((x, y) => string.Compare(x.Lop.MaLop.ToString(), y.Lop.MaLop.ToString()));
                 return listTKB;
             }
         }
 
         [WebMethod]
-        public ThoiKhoaBieu GetTKBFromLop(int maLop)
+        public ThoiKhoaBieu GetTKBFromLop(int maLop, string namHoc)
         {
             using (var db = new TKBEntities())
             {
-                ThoiKhoaBieu tkb = db.ThoiKhoaBieux.FirstOrDefault(p => p.Lop.MaLop == maLop);
+                ThoiKhoaBieu tkb = db.ThoiKhoaBieux.FirstOrDefault(p => p.Lop.MaLop == maLop && p.NamHoc == namHoc);
                 return tkb;
             }
         }
@@ -545,6 +555,97 @@ namespace TKB_G9_Service
             }
         }
 
+        [WebMethod]
+        public Phong GetPhongFromTKB(int maChiTiet)
+        {
+            using (var db = new TKBEntities())
+            {
+                int maPhong = (int)db.ChiTietTKBs.FirstOrDefault(p => p.MaChiTietTKB == maChiTiet).PhongReference.EntityKey.EntityKeyValues[0].Value;
+                Phong phong = db.Phongs.FirstOrDefault(p => p.MaPhong == maPhong);
+                return phong;
+            }
+        }
+
+        [WebMethod]
+        public bool UpdateTKB(int maChiTiet, int maMH, int maGV, int maPhong)
+        {
+            try
+            {
+                using (var db = new TKBEntities())
+                {
+                    ChiTietTKB chiTiet = db.ChiTietTKBs.FirstOrDefault(p => p.MaChiTietTKB == maChiTiet);
+                    if (chiTiet != null)
+                    {
+                        chiTiet.MonHoc = db.MonHocs.FirstOrDefault(o => o.MaMonHoc == maMH);
+                        chiTiet.GiaoVien = db.GiaoViens.FirstOrDefault(o => o.MaGiaoVien == maGV);
+                        chiTiet.Phong = db.Phongs.FirstOrDefault(o => o.MaPhong == maPhong);
+                    }
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        [WebMethod]
+        public bool NewTKB(int lop, string namHoc)
+        {
+            try
+            {
+                if (namHoc.Length > 0)
+                {
+                    DeleteTKB(lop, namHoc);
+                    using (var db = new TKBEntities())
+                    {
+                        ThoiKhoaBieu tkb = new ThoiKhoaBieu()
+                        {
+                            Lop = db.Lops.FirstOrDefault(p => p.MaLop == lop),
+                            NamHoc = namHoc
+                        };
+                        db.AddToThoiKhoaBieux(tkb);
+                        db.SaveChanges();
+                        return true;
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        [WebMethod]
+        public bool SaveChiTietTKB(int maTKB, int thu, int tiet, int maMH, int maGV, int maPhong)
+        {
+            try
+            {
+                using (var db = new TKBEntities())
+                {
+                    ChiTietTKB chiTiet = new ChiTietTKB()
+                    {
+                        ThoiKhoaBieu = db.ThoiKhoaBieux.FirstOrDefault(p => p.MaTKB == maTKB),
+                        MonHoc = db.MonHocs.FirstOrDefault(p => p.MaMonHoc == maMH),
+                        GiaoVien = db.GiaoViens.FirstOrDefault(p => p.MaGiaoVien == maGV),
+                        Phong = db.Phongs.FirstOrDefault(p => p.MaPhong == maPhong),
+                        TietBatDau = tiet,
+                        TietKetThuc = tiet,
+                        Thu = thu
+                    };
+                    db.AddToChiTietTKBs(chiTiet);
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         private void SaveTKB(List<ThoiKhoaBieu> lstTKB, List<Lop> dsLop)
         {
             using (var db = new TKBEntities())
@@ -552,7 +653,7 @@ namespace TKB_G9_Service
 
                 foreach (ThoiKhoaBieu oTKB in lstTKB)
                 {
-                    if (oTKB.MaTKB ==0)
+                    if (oTKB.MaTKB == 0)
                     {
                         ThoiKhoaBieu tkb = new ThoiKhoaBieu()
                         {
@@ -586,7 +687,7 @@ namespace TKB_G9_Service
         {
             using (var db = new TKBEntities())
             {
-                ThoiKhoaBieu tkb = db.ThoiKhoaBieux.FirstOrDefault(p => p.Lop.MaLop == maLop && p.NamHoc == namHoc);
+                ThoiKhoaBieu tkb = db.ThoiKhoaBieux.FirstOrDefault(p => p.Lop.MaLop == maLop && (p.NamHoc == namHoc || (namHoc == null && p.NamHoc.Equals(null))));
                 if (tkb != null)
                 {
                     List<ChiTietTKB> chiTiets = db.ChiTietTKBs.Where(p => p.ThoiKhoaBieu.MaTKB == tkb.MaTKB).ToList();
