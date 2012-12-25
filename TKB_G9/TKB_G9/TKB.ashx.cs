@@ -74,7 +74,7 @@ namespace TKB_G9
             {
                 int maMonHoc = Int32.Parse(context.Request.QueryString["maMonHoc"]);
                 G9Service.G9_Service sv = new G9Service.G9_Service();
-                List<GiaoVien> lstGiaoVien = sv.GetDanhSachGiaoVien(maMonHoc).ToList();
+                List<GiaoVien> lstGiaoVien = sv.GetDanhSachGiaoVienTheoMonHoc(maMonHoc).ToList();
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
                 string result = serializer.Serialize(lstGiaoVien);
                 context.Response.Write(result);
