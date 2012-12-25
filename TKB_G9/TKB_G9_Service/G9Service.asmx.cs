@@ -210,10 +210,10 @@ namespace TKB_G9_Service
             }
             using (var db = new TKBEntities())
             {
-                List<Lop> dsLop = db.Lops.ToList();
-                //List<Lop> dsLop = new List<Lop>();
-                //dsLop.Add(new Lop() { MaLop = 1, SiSo = 20, CaHoc= });
-                //dsLop.Add(new Lop() { MaLop = 2, SiSo = 20 });
+                //List<Lop> dsLop = db.Lops.ToList();
+                List<Lop> dsLop = new List<Lop>();
+                dsLop.Add(new Lop() { MaLop = 7, SiSo = 20, CaHoc= "Sáng"});
+                dsLop.Add(new Lop() { MaLop = 8, SiSo = 20, CaHoc = "Sáng" });
                 List<MonHoc> dsMonHoc = db.MonHocs.ToList();
                 List<Phong> dsPhong = db.Phongs.ToList();
                 List<GiaoVien> dsGiaoVien = db.GiaoViens.ToList();
@@ -416,6 +416,7 @@ namespace TKB_G9_Service
             for (int k = 0; k < dsMonHoc.Count; k++)
             {
                 MonHoc mh = dsMonHoc[k];
+                GiaoVien giaoVien = null;
                 for (int i = 0; i < 7; i++) // 7days: from Monday to Sunday
                 {
                     for (int j = tietDau; j < tietCuoi; j++)
@@ -426,8 +427,7 @@ namespace TKB_G9_Service
                             {
                                 ChiTietTKB ctTKB = new ChiTietTKB();
                                 // Xếp giáo viên vào môn học ở ngày i tiết j
-                                GiaoVien giaoVien = new GiaoVien();
-                                if (GetGiaoVien(lstTKB, arrTKB, dsGiaoVien, mh.MaMonHoc, i, j, out giaoVien))
+                                if ((giaoVien != null && KiemTraGiaoVien(lstTKB, arrTKB, giaoVien, mh.MaMonHoc, i, j)) || GetGiaoVien(lstTKB, arrTKB, dsGiaoVien, mh.MaMonHoc, i, j, out giaoVien))
                                 {
                                     ctTKB.ThoiKhoaBieu = tkb;
                                     ctTKB.MonHoc = mh;
@@ -450,6 +450,15 @@ namespace TKB_G9_Service
                 }
             }
             return tkb;
+        }
+
+        private bool KiemTraGiaoVien(List<ThoiKhoaBieu> lstTKB, List<List<ChiTietTKB>> arrTKB, GiaoVien giaoVien, int maMonHoc, int thu, int tiet)
+        {
+            if (tiet < 2 || (tiet >= 2 && (arrTKB[thu][tiet - 2].MonHoc == null || (arrTKB[thu][tiet - 2].MonHoc != null && arrTKB[thu][tiet - 2].MonHoc.MaMonHoc != maMonHoc))))
+            {
+                return KiemTraTKBLopKhac(lstTKB, giaoVien, thu, tiet, maMonHoc);
+            }
+            return false;
         }
 
         private bool KiemTraMonHoc(List<List<ChiTietTKB>> arrTKB, MonHoc mh, int thu, int tiet)
@@ -505,10 +514,11 @@ namespace TKB_G9_Service
         {
             for (int j = 0; j < lstTKB.Count; j++)
             {
-                for (int k = 0; k < lstTKB[j].ChiTietTKBs.Count; k++)
+                List<ChiTietTKB> chiTiets = GetDanhSachChiTietTKB(lstTKB[j].MaTKB);
+                for (int k = 0; k < chiTiets.Count; k++)
                 {
-                    ChiTietTKB ct = lstTKB[j].ChiTietTKBs.ToList()[k];
-                    if (ct.Thu == thu && ct.TietBatDau == tiet && ct.MonHoc.MaMonHoc == maMonHoc && ct.GiaoVien.MaGiaoVien == giaoVien.MaGiaoVien)
+                    ChiTietTKB ct = chiTiets[k];
+                    if (ct.Thu - 2 == thu && ct.TietBatDau - 1 == tiet && (int)ct.MonHocReference.EntityKey.EntityKeyValues[0].Value == maMonHoc && (int)ct.GiaoVienReference.EntityKey.EntityKeyValues[0].Value == giaoVien.MaGiaoVien)
                         return false;
                 }
             }

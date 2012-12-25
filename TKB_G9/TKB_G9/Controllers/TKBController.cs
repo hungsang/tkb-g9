@@ -146,6 +146,7 @@ namespace TKB_G9.Controllers
             string temp = "";
             ThoiKhoaBieu tkb = sv.GetTKBFromLop(lop);
             Lop oLop = sv.GetLopFromTKB(tkb.MaTKB);
+            ViewData["TenLop"] = oLop.TenLop;
             temp += "<div id=\"div" + oLop.MaLop + "\" class=\"divTKB\">";
             temp += "<div><a href='~/TKB/Sua?lop=" + oLop.MaLop + "'>" + oLop.TenLop + "</a></div>";
             temp += "";

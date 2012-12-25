@@ -7,7 +7,7 @@
             Sắp xếp TKB</a> </span>
         <br />
         <p class="detailtitle">
-            <span>SỬA THỜI KHÓA BIỂU LỚP <%=Request.QueryString["tenlop"] %></span>
+            <span>SỬA THỜI KHÓA BIỂU LỚP <%= ViewData["TenLop"]%></span>
         </p>
         <p class="itemsummary" style="line-height: 200%">
             <% using (Html.BeginForm("SapXep", "TKB", FormMethod.Post)) { %>
