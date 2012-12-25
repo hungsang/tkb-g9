@@ -106,6 +106,8 @@ namespace TKB_G9.G9Service {
         
         private System.Threading.SendOrPostCallback SaveChiTietTKBOperationCompleted;
         
+        private System.Threading.SendOrPostCallback CheckUpdateTKBOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -254,6 +256,9 @@ namespace TKB_G9.G9Service {
         
         /// <remarks/>
         public event SaveChiTietTKBCompletedEventHandler SaveChiTietTKBCompleted;
+        
+        /// <remarks/>
+        public event CheckUpdateTKBCompletedEventHandler CheckUpdateTKBCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/HelloWorld", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1347,6 +1352,41 @@ namespace TKB_G9.G9Service {
             if ((this.SaveChiTietTKBCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.SaveChiTietTKBCompleted(this, new SaveChiTietTKBCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/CheckUpdateTKB", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string CheckUpdateTKB(int maChiTiet, int maMH, int maGV, int maPhong) {
+            object[] results = this.Invoke("CheckUpdateTKB", new object[] {
+                        maChiTiet,
+                        maMH,
+                        maGV,
+                        maPhong});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CheckUpdateTKBAsync(int maChiTiet, int maMH, int maGV, int maPhong) {
+            this.CheckUpdateTKBAsync(maChiTiet, maMH, maGV, maPhong, null);
+        }
+        
+        /// <remarks/>
+        public void CheckUpdateTKBAsync(int maChiTiet, int maMH, int maGV, int maPhong, object userState) {
+            if ((this.CheckUpdateTKBOperationCompleted == null)) {
+                this.CheckUpdateTKBOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCheckUpdateTKBOperationCompleted);
+            }
+            this.InvokeAsync("CheckUpdateTKB", new object[] {
+                        maChiTiet,
+                        maMH,
+                        maGV,
+                        maPhong}, this.CheckUpdateTKBOperationCompleted, userState);
+        }
+        
+        private void OnCheckUpdateTKBOperationCompleted(object arg) {
+            if ((this.CheckUpdateTKBCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CheckUpdateTKBCompleted(this, new CheckUpdateTKBCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3145,6 +3185,32 @@ namespace TKB_G9.G9Service {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void CheckUpdateTKBCompletedEventHandler(object sender, CheckUpdateTKBCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CheckUpdateTKBCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CheckUpdateTKBCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }

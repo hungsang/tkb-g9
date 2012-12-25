@@ -575,14 +575,14 @@ namespace TKB_G9_Service
         {
             using (var db = new TKBEntities())
             {
-                 ChiTietTKB temp = db.ChiTietTKBs.FirstOrDefault(p => p.MaChiTietTKB == maChiTiet);
-                 if (temp.PhongReference.EntityKey != null)
-                 {
-                     int maPhong = (int)temp.PhongReference.EntityKey.EntityKeyValues[0].Value;
-                     Phong phong = db.Phongs.FirstOrDefault(p => p.MaPhong == maPhong);
-                     return phong;
-                 }
-                 return new Phong();
+                ChiTietTKB temp = db.ChiTietTKBs.FirstOrDefault(p => p.MaChiTietTKB == maChiTiet);
+                if (temp.PhongReference.EntityKey != null)
+                {
+                    int maPhong = (int)temp.PhongReference.EntityKey.EntityKeyValues[0].Value;
+                    Phong phong = db.Phongs.FirstOrDefault(p => p.MaPhong == maPhong);
+                    return phong;
+                }
+                return new Phong();
             }
         }
 
@@ -663,6 +663,60 @@ namespace TKB_G9_Service
             catch (Exception ex)
             {
                 return false;
+            }
+        }
+
+        [WebMethod]
+        public string CheckUpdateTKB(int maChiTiet, int maMH, int maGV, int maPhong)
+        {
+            try
+            {
+                using (var db = new TKBEntities())
+                {
+                    ChiTietTKB chiTiet = db.ChiTietTKBs.FirstOrDefault(p => p.MaChiTietTKB == maChiTiet);
+                    if (chiTiet != null)
+                    {
+                        int maTKB = (int)chiTiet.ThoiKhoaBieuReference.EntityKey.EntityKeyValues[0].Value;
+                        ThoiKhoaBieu tkb = db.ThoiKhoaBieux.FirstOrDefault(p => p.MaTKB == maTKB);
+                        List<ThoiKhoaBieu> lstTKB = GetTKB(tkb.NamHoc);
+                        List<ChiTietTKB> lstChiTiet = GetDanhSachChiTietTKB(tkb.MaTKB);
+                        List<List<ChiTietTKB>> arrTKB = new List<List<ChiTietTKB>>();
+                        for (int i = 2; i <= 8; i++) // 7days: from Monday to Sunday
+                        {
+                            List<ChiTietTKB> dsTKB = new List<ChiTietTKB>();
+                            for (int j = 1; j <= Int32.Parse(ConfigurationManager.AppSettings["TongSoTietSang"]) + Int32.Parse(ConfigurationManager.AppSettings["TongSoTietChieu"]); j++)
+                            {
+                                ChiTietTKB ct = new ChiTietTKB();
+                                dsTKB.Add(ct);
+                            }
+                            arrTKB.Add(dsTKB);
+                        }
+                        foreach (ChiTietTKB ct in lstChiTiet)
+                        {
+                            int maMonHoc = (int)ct.MonHocReference.EntityKey.EntityKeyValues[0].Value;
+                            int maGiaoVien =  (int)ct.GiaoVienReference.EntityKey.EntityKeyValues[0].Value;
+                            arrTKB[(int)ct.Thu - 2][(int)ct.TietBatDau - 1].MonHoc = db.MonHocs.FirstOrDefault(p => p.MaMonHoc == maMonHoc);
+                            arrTKB[(int)ct.Thu - 2][(int)ct.TietBatDau - 1].GiaoVien = db.GiaoViens.FirstOrDefault(p => p.MaGiaoVien ==maGiaoVien);
+                        }
+                        MonHoc mh = db.MonHocs.FirstOrDefault(o => o.MaMonHoc == maMH);
+                        if (KiemTraMonHoc(arrTKB, mh, (int)chiTiet.Thu, (int)chiTiet.TietBatDau))
+                        {
+                            GiaoVien gv = db.GiaoViens.FirstOrDefault(p => p.MaGiaoVien == maGV);
+                            if (KiemTraGiaoVien(lstTKB, arrTKB, gv, mh.MaMonHoc, (int)chiTiet.Thu, (int)chiTiet.TietBatDau))
+                            {
+                                // Kiểm tra phòng (từ từ làm, đuối òi)
+                                return "true";
+                            }
+                            else return "Giáo viên này bận rồi.";
+                        }
+                        else return "Môn học này không xếp vào đây được";
+                    }
+                    else return "Có lỗi xảy ra ở hệ thống";
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.ToString();
             }
         }
 
