@@ -37,7 +37,9 @@ namespace TKB_G9
                 case "saveTKB":
                     SaveTKB(context);
                     break;
-                
+                case "checkUpdateTKB":
+                    CheckUpdateTKB(context);
+                    break;
             }
         }
 
@@ -137,6 +139,24 @@ namespace TKB_G9
                     string result = serializer.Serialize(success);
                     context.Response.Write(result);
                 }
+            }
+            catch (Exception ex) { context.Response.Write(ex.Message); }
+        }
+
+        public void CheckUpdateTKB(HttpContext context)
+        {
+            try
+            {
+                int maChiTiet = Int32.Parse(context.Request.QueryString["maChiTiet"]);
+                int maMonHoc = Int32.Parse(context.Request.QueryString["maMonHoc"]);
+                int maGiaoVien = Int32.Parse(context.Request.QueryString["maGiaoVien"]);
+                int maPhong = Int32.Parse(context.Request.QueryString["maPhong"]);
+                G9Service.G9_Service sv = new G9Service.G9_Service();
+                string success = sv.CheckUpdateTKB(maChiTiet, maMonHoc, maGiaoVien, maPhong);
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+                string result = serializer.Serialize(success);
+                context.Response.Write(result);
             }
             catch (Exception ex) { context.Response.Write(ex.Message); }
         }

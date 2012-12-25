@@ -57,6 +57,11 @@ function UpdateTKB(maChiTiet) {
     var maMH = $("#cbMonHoc").val();
     var maGV = $("#cbGiaoVien").val();
     var phong = $("#cbPhong").val();
+    KiemTraTKB(maChiTiet, maMH, maGV, phong);
+
+}
+
+function ThucHienUpdateTKB(maChiTiet, maMH, maGV, phong) {
     var handlerPage = "/TKB.ashx";
     var param = { method: "updateTKB", maChiTiet: maChiTiet, maMonHoc: maMH, maGiaoVien: maGV, maPhong: phong };
 
@@ -75,6 +80,43 @@ function UpdateTKB(maChiTiet) {
                 window.location = "Sua?lop=" + getURLParameter("lop") + "&namHoc=" + getURLParameter("namHoc");
             } else {
                 alert("Không lưu được. Vui lòng thử lại sau.");
+            }
+        },
+        error: function () {
+            isFailed = true;
+            msgText = "<p>Cannot get data from server!</p>" + msgText;
+            $('#hdnErrorMsg').html(msgText);
+        }
+    });
+    if (isFailed) {
+        xhr.abort();
+    }
+}
+
+function KiemTraTKB(maChiTiet, maMH, maGV, phong) {
+    var handlerPage = "/TKB.ashx";
+    var param = { method: "checkUpdateTKB", maChiTiet: maChiTiet, maMonHoc: maMH, maGiaoVien: maGV, maPhong: phong };
+
+    var isFailed = false;
+    var msgText = "";
+    var xhr = $.ajax({
+        type: "GET",
+        url: handlerPage,
+        data: param,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        timeout: 5000,
+        cache: false,
+        success: function (result) {
+            if (result != null) {
+                if (result != "true") {
+                    alert(result);
+                }
+                else {
+                    ThucHienUpdateTKB(maChiTiet, maMH, maGV, phong);
+                }
+            } else {
+                alert("Không xử lý được. Vui lòng thử lại sau.");
             }
         },
         error: function () {
