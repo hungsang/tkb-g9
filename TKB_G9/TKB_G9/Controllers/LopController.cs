@@ -49,7 +49,7 @@ namespace TKB_G9.Controllers
                 temp += "            <li class=\"account_name\">" + lop.TenLop + "</li>";
                 temp += "            <li class=\"user_type\">" + lop.KhoiLop + "</li>";
                 temp += "            <li class=\"active\">" + lop.SiSo + "</li>";
-                temp += "            <li class=\"edit\"><div style='margin:0 35px;' onclick=\"loadFormEditClassInfo('" + lop.MaLop + "')\" class='btnEdit'></div></li>";
+                temp += "            <li class=\"edit\"><a href='" + Url.Content("~/Lop/CapNhatLop?id=" + lop.MaLop) + "'><div style='margin:0 35px;' class='btnEdit'></div></a></li>";
                 temp += "        </ul>";
                 temp += "    </li>";
                 i++;
@@ -63,6 +63,44 @@ namespace TKB_G9.Controllers
         public ActionResult ThemLop()
         {
             ViewData["DSLop"] = "";
+            return View();
+        }
+        public ActionResult CapNhatLop()
+        {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("DanhSachLop", "Lop");
+            }
+
+            int id = Int32.Parse(HttpContext.Request["id"]);
+            G9Service.G9_Service ws = new G9Service.G9_Service();
+            G9Service.Lop lop = ws.GetLop(id);
+
+            ViewData["TenLop"] = lop.TenLop;
+            ViewData["Khoi"] = "";
+            for(int i=10; i<=12; i++)
+            {
+                if(i == Int32.Parse(lop.KhoiLop))
+                    ViewData["Khoi"] += "<option id='Option'" + i + " selected value='" + lop.KhoiLop + "' >" + lop.KhoiLop + "</option>";
+                else
+                    ViewData["Khoi"] += "<option id='Option'" + i + " value='" + lop.KhoiLop + "' >" + lop.KhoiLop + "</option>";
+            }
+
+            ViewData["CaHoc"] = "";
+            if (lop.CaHoc.Equals("Sáng"))
+            {
+                ViewData["CaHoc"] += "<option id='Option' selected value='Sáng' >Sáng</option>";
+                ViewData["CaHoc"] += "<option id='Option' value='Chiều' >Chiều</option>";
+            }
+            else
+            {
+                ViewData["CaHoc"] += "<option id='Option' value='Sáng' >Sáng</option>";
+                ViewData["CaHoc"] += "<option id='Option' selected value='Chiều' >Chiều</option>";
+            }
+
+            ViewData["SiSo"] = lop.SiSo;
+            ViewData["GhiChu"] = lop.GhiChu;
+
             return View();
         }
 
