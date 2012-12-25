@@ -153,6 +153,34 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="XoaLop">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="maLop" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="XoaLopResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="XoaLopResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CapNhatLop">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lopClient" type="tns:Lop" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CapNhatLopResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CapNhatLopResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="getPhongByMaChiTietTKB">
         <s:complexType>
           <s:sequence>
@@ -512,6 +540,18 @@
   <wsdl:message name="ThemLopSoapOut">
     <wsdl:part name="parameters" element="tns:ThemLopResponse" />
   </wsdl:message>
+  <wsdl:message name="XoaLopSoapIn">
+    <wsdl:part name="parameters" element="tns:XoaLop" />
+  </wsdl:message>
+  <wsdl:message name="XoaLopSoapOut">
+    <wsdl:part name="parameters" element="tns:XoaLopResponse" />
+  </wsdl:message>
+  <wsdl:message name="CapNhatLopSoapIn">
+    <wsdl:part name="parameters" element="tns:CapNhatLop" />
+  </wsdl:message>
+  <wsdl:message name="CapNhatLopSoapOut">
+    <wsdl:part name="parameters" element="tns:CapNhatLopResponse" />
+  </wsdl:message>
   <wsdl:message name="getPhongByMaChiTietTKBSoapIn">
     <wsdl:part name="parameters" element="tns:getPhongByMaChiTietTKB" />
   </wsdl:message>
@@ -615,6 +655,14 @@
       <wsdl:input message="tns:ThemLopSoapIn" />
       <wsdl:output message="tns:ThemLopSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="XoaLop">
+      <wsdl:input message="tns:XoaLopSoapIn" />
+      <wsdl:output message="tns:XoaLopSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CapNhatLop">
+      <wsdl:input message="tns:CapNhatLopSoapIn" />
+      <wsdl:output message="tns:CapNhatLopSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="getPhongByMaChiTietTKB">
       <wsdl:input message="tns:getPhongByMaChiTietTKBSoapIn" />
       <wsdl:output message="tns:getPhongByMaChiTietTKBSoapOut" />
@@ -717,6 +765,24 @@
     </wsdl:operation>
     <wsdl:operation name="ThemLop">
       <soap:operation soapAction="http://abc.com/ThemLop" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XoaLop">
+      <soap:operation soapAction="http://abc.com/XoaLop" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CapNhatLop">
+      <soap:operation soapAction="http://abc.com/CapNhatLop" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -891,6 +957,24 @@
     </wsdl:operation>
     <wsdl:operation name="ThemLop">
       <soap12:operation soapAction="http://abc.com/ThemLop" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XoaLop">
+      <soap12:operation soapAction="http://abc.com/XoaLop" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CapNhatLop">
+      <soap12:operation soapAction="http://abc.com/CapNhatLop" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

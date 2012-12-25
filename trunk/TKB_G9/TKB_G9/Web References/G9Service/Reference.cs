@@ -44,6 +44,10 @@ namespace TKB_G9.G9Service {
         
         private System.Threading.SendOrPostCallback ThemLopOperationCompleted;
         
+        private System.Threading.SendOrPostCallback XoaLopOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CapNhatLopOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getPhongByMaChiTietTKBOperationCompleted;
         
         private System.Threading.SendOrPostCallback getLopByMaChiTietTKBOperationCompleted;
@@ -125,6 +129,12 @@ namespace TKB_G9.G9Service {
         
         /// <remarks/>
         public event ThemLopCompletedEventHandler ThemLopCompleted;
+        
+        /// <remarks/>
+        public event XoaLopCompletedEventHandler XoaLopCompleted;
+        
+        /// <remarks/>
+        public event CapNhatLopCompletedEventHandler CapNhatLopCompleted;
         
         /// <remarks/>
         public event getPhongByMaChiTietTKBCompletedEventHandler getPhongByMaChiTietTKBCompleted;
@@ -334,6 +344,64 @@ namespace TKB_G9.G9Service {
             if ((this.ThemLopCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.ThemLopCompleted(this, new ThemLopCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/XoaLop", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool XoaLop(int maLop) {
+            object[] results = this.Invoke("XoaLop", new object[] {
+                        maLop});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void XoaLopAsync(int maLop) {
+            this.XoaLopAsync(maLop, null);
+        }
+        
+        /// <remarks/>
+        public void XoaLopAsync(int maLop, object userState) {
+            if ((this.XoaLopOperationCompleted == null)) {
+                this.XoaLopOperationCompleted = new System.Threading.SendOrPostCallback(this.OnXoaLopOperationCompleted);
+            }
+            this.InvokeAsync("XoaLop", new object[] {
+                        maLop}, this.XoaLopOperationCompleted, userState);
+        }
+        
+        private void OnXoaLopOperationCompleted(object arg) {
+            if ((this.XoaLopCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.XoaLopCompleted(this, new XoaLopCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/CapNhatLop", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool CapNhatLop(Lop lopClient) {
+            object[] results = this.Invoke("CapNhatLop", new object[] {
+                        lopClient});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CapNhatLopAsync(Lop lopClient) {
+            this.CapNhatLopAsync(lopClient, null);
+        }
+        
+        /// <remarks/>
+        public void CapNhatLopAsync(Lop lopClient, object userState) {
+            if ((this.CapNhatLopOperationCompleted == null)) {
+                this.CapNhatLopOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCapNhatLopOperationCompleted);
+            }
+            this.InvokeAsync("CapNhatLop", new object[] {
+                        lopClient}, this.CapNhatLopOperationCompleted, userState);
+        }
+        
+        private void OnCapNhatLopOperationCompleted(object arg) {
+            if ((this.CapNhatLopCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CapNhatLopCompleted(this, new CapNhatLopCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1704,6 +1772,58 @@ namespace TKB_G9.G9Service {
         private object[] results;
         
         internal ThemLopCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void XoaLopCompletedEventHandler(object sender, XoaLopCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class XoaLopCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal XoaLopCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void CapNhatLopCompletedEventHandler(object sender, CapNhatLopCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CapNhatLopCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CapNhatLopCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
