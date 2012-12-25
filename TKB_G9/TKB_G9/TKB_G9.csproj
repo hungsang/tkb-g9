@@ -117,7 +117,11 @@
     <Content Include="Scripts\MasterpageScript.js" />
     <Content Include="Content\tkbStyle.css" />
     <Content Include="Scripts\TKBScript.js" />
+    <Content Include="Views\GiaoVien\CapNhatGiaoVien.aspx" />
+    <Content Include="Views\GiaoVien\DanhSachGiaoVien.aspx" />
+    <Content Include="Views\GiaoVien\ThemGiaoVien.aspx" />
     <Content Include="Views\GiaoVien\XemThoiKhoaBieu.aspx" />
+    <Content Include="Views\Lop\CapNhatLop.aspx" />
     <Content Include="Views\Lop\DanhSachLop.aspx" />
     <Content Include="Views\Lop\ThemLop.aspx" />
     <Content Include="Views\Shared\Login.aspx" />

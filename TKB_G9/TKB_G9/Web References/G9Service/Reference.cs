@@ -48,6 +48,18 @@ namespace TKB_G9.G9Service {
         
         private System.Threading.SendOrPostCallback CapNhatLopOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetDanhSachGiaoVienOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetGiaoVienOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ThemGiaoVienOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback XoaGiaoVienOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CapNhatGiaoVienOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetDanhSachMonHocOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getPhongByMaChiTietTKBOperationCompleted;
         
         private System.Threading.SendOrPostCallback getLopByMaChiTietTKBOperationCompleted;
@@ -135,6 +147,24 @@ namespace TKB_G9.G9Service {
         
         /// <remarks/>
         public event CapNhatLopCompletedEventHandler CapNhatLopCompleted;
+        
+        /// <remarks/>
+        public event GetDanhSachGiaoVienCompletedEventHandler GetDanhSachGiaoVienCompleted;
+        
+        /// <remarks/>
+        public event GetGiaoVienCompletedEventHandler GetGiaoVienCompleted;
+        
+        /// <remarks/>
+        public event ThemGiaoVienCompletedEventHandler ThemGiaoVienCompleted;
+        
+        /// <remarks/>
+        public event XoaGiaoVienCompletedEventHandler XoaGiaoVienCompleted;
+        
+        /// <remarks/>
+        public event CapNhatGiaoVienCompletedEventHandler CapNhatGiaoVienCompleted;
+        
+        /// <remarks/>
+        public event GetDanhSachMonHocCompletedEventHandler GetDanhSachMonHocCompleted;
         
         /// <remarks/>
         public event getPhongByMaChiTietTKBCompletedEventHandler getPhongByMaChiTietTKBCompleted;
@@ -402,6 +432,176 @@ namespace TKB_G9.G9Service {
             if ((this.CapNhatLopCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.CapNhatLopCompleted(this, new CapNhatLopCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/GetDanhSachGiaoVien", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public GiaoVien[] GetDanhSachGiaoVien() {
+            object[] results = this.Invoke("GetDanhSachGiaoVien", new object[0]);
+            return ((GiaoVien[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetDanhSachGiaoVienAsync() {
+            this.GetDanhSachGiaoVienAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetDanhSachGiaoVienAsync(object userState) {
+            if ((this.GetDanhSachGiaoVienOperationCompleted == null)) {
+                this.GetDanhSachGiaoVienOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetDanhSachGiaoVienOperationCompleted);
+            }
+            this.InvokeAsync("GetDanhSachGiaoVien", new object[0], this.GetDanhSachGiaoVienOperationCompleted, userState);
+        }
+        
+        private void OnGetDanhSachGiaoVienOperationCompleted(object arg) {
+            if ((this.GetDanhSachGiaoVienCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetDanhSachGiaoVienCompleted(this, new GetDanhSachGiaoVienCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/GetGiaoVien", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public GiaoVien GetGiaoVien(int maGiaoVien) {
+            object[] results = this.Invoke("GetGiaoVien", new object[] {
+                        maGiaoVien});
+            return ((GiaoVien)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetGiaoVienAsync(int maGiaoVien) {
+            this.GetGiaoVienAsync(maGiaoVien, null);
+        }
+        
+        /// <remarks/>
+        public void GetGiaoVienAsync(int maGiaoVien, object userState) {
+            if ((this.GetGiaoVienOperationCompleted == null)) {
+                this.GetGiaoVienOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetGiaoVienOperationCompleted);
+            }
+            this.InvokeAsync("GetGiaoVien", new object[] {
+                        maGiaoVien}, this.GetGiaoVienOperationCompleted, userState);
+        }
+        
+        private void OnGetGiaoVienOperationCompleted(object arg) {
+            if ((this.GetGiaoVienCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetGiaoVienCompleted(this, new GetGiaoVienCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/ThemGiaoVien", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool ThemGiaoVien(GiaoVien gv) {
+            object[] results = this.Invoke("ThemGiaoVien", new object[] {
+                        gv});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ThemGiaoVienAsync(GiaoVien gv) {
+            this.ThemGiaoVienAsync(gv, null);
+        }
+        
+        /// <remarks/>
+        public void ThemGiaoVienAsync(GiaoVien gv, object userState) {
+            if ((this.ThemGiaoVienOperationCompleted == null)) {
+                this.ThemGiaoVienOperationCompleted = new System.Threading.SendOrPostCallback(this.OnThemGiaoVienOperationCompleted);
+            }
+            this.InvokeAsync("ThemGiaoVien", new object[] {
+                        gv}, this.ThemGiaoVienOperationCompleted, userState);
+        }
+        
+        private void OnThemGiaoVienOperationCompleted(object arg) {
+            if ((this.ThemGiaoVienCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ThemGiaoVienCompleted(this, new ThemGiaoVienCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/XoaGiaoVien", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool XoaGiaoVien(int maGiaoVien) {
+            object[] results = this.Invoke("XoaGiaoVien", new object[] {
+                        maGiaoVien});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void XoaGiaoVienAsync(int maGiaoVien) {
+            this.XoaGiaoVienAsync(maGiaoVien, null);
+        }
+        
+        /// <remarks/>
+        public void XoaGiaoVienAsync(int maGiaoVien, object userState) {
+            if ((this.XoaGiaoVienOperationCompleted == null)) {
+                this.XoaGiaoVienOperationCompleted = new System.Threading.SendOrPostCallback(this.OnXoaGiaoVienOperationCompleted);
+            }
+            this.InvokeAsync("XoaGiaoVien", new object[] {
+                        maGiaoVien}, this.XoaGiaoVienOperationCompleted, userState);
+        }
+        
+        private void OnXoaGiaoVienOperationCompleted(object arg) {
+            if ((this.XoaGiaoVienCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.XoaGiaoVienCompleted(this, new XoaGiaoVienCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/CapNhatGiaoVien", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool CapNhatGiaoVien(GiaoVien GiaoVienClient) {
+            object[] results = this.Invoke("CapNhatGiaoVien", new object[] {
+                        GiaoVienClient});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CapNhatGiaoVienAsync(GiaoVien GiaoVienClient) {
+            this.CapNhatGiaoVienAsync(GiaoVienClient, null);
+        }
+        
+        /// <remarks/>
+        public void CapNhatGiaoVienAsync(GiaoVien GiaoVienClient, object userState) {
+            if ((this.CapNhatGiaoVienOperationCompleted == null)) {
+                this.CapNhatGiaoVienOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCapNhatGiaoVienOperationCompleted);
+            }
+            this.InvokeAsync("CapNhatGiaoVien", new object[] {
+                        GiaoVienClient}, this.CapNhatGiaoVienOperationCompleted, userState);
+        }
+        
+        private void OnCapNhatGiaoVienOperationCompleted(object arg) {
+            if ((this.CapNhatGiaoVienCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CapNhatGiaoVienCompleted(this, new CapNhatGiaoVienCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/GetDanhSachMonHoc", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public MonHoc[] GetDanhSachMonHoc() {
+            object[] results = this.Invoke("GetDanhSachMonHoc", new object[0]);
+            return ((MonHoc[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetDanhSachMonHocAsync() {
+            this.GetDanhSachMonHocAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetDanhSachMonHocAsync(object userState) {
+            if ((this.GetDanhSachMonHocOperationCompleted == null)) {
+                this.GetDanhSachMonHocOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetDanhSachMonHocOperationCompleted);
+            }
+            this.InvokeAsync("GetDanhSachMonHoc", new object[0], this.GetDanhSachMonHocOperationCompleted, userState);
+        }
+        
+        private void OnGetDanhSachMonHocOperationCompleted(object arg) {
+            if ((this.GetDanhSachMonHocCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetDanhSachMonHocCompleted(this, new GetDanhSachMonHocCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -879,12 +1079,12 @@ namespace TKB_G9.G9Service {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLop))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLoaiMonHoc))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfThoiKhoaBieu))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfPhong))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfMonHoc))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfGiaoVien))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLoaiPhong))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLoaiMonHoc))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfMonHoc))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLoaiTaiKhoan))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
@@ -987,12 +1187,12 @@ namespace TKB_G9.G9Service {
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReference))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLop))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLoaiMonHoc))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfThoiKhoaBieu))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfPhong))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfMonHoc))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfGiaoVien))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLoaiPhong))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLoaiMonHoc))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfMonHoc))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLoaiTaiKhoan))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
@@ -1006,10 +1206,10 @@ namespace TKB_G9.G9Service {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityObject))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaiKhoan))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ThoiKhoaBieu))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GiaoVien))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Phong))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MonHoc))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ChiTietTKB))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MonHoc))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GiaoVien))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Lop))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
@@ -1022,10 +1222,10 @@ namespace TKB_G9.G9Service {
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaiKhoan))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ThoiKhoaBieu))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GiaoVien))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Phong))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MonHoc))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ChiTietTKB))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MonHoc))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GiaoVien))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Lop))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
@@ -1107,121 +1307,6 @@ namespace TKB_G9.G9Service {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
-    public partial class GiaoVien : EntityObject {
-        
-        private int maGiaoVienField;
-        
-        private string tenGiaoVienField;
-        
-        private string gioiTinhField;
-        
-        private System.Nullable<System.DateTime> ngaySinhField;
-        
-        private string diaChiField;
-        
-        private string dienThoaiField;
-        
-        private string emailField;
-        
-        private EntityReferenceOfMonHoc monHocReferenceField;
-        
-        /// <remarks/>
-        public int MaGiaoVien {
-            get {
-                return this.maGiaoVienField;
-            }
-            set {
-                this.maGiaoVienField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string TenGiaoVien {
-            get {
-                return this.tenGiaoVienField;
-            }
-            set {
-                this.tenGiaoVienField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string GioiTinh {
-            get {
-                return this.gioiTinhField;
-            }
-            set {
-                this.gioiTinhField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<System.DateTime> NgaySinh {
-            get {
-                return this.ngaySinhField;
-            }
-            set {
-                this.ngaySinhField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string DiaChi {
-            get {
-                return this.diaChiField;
-            }
-            set {
-                this.diaChiField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string DienThoai {
-            get {
-                return this.dienThoaiField;
-            }
-            set {
-                this.dienThoaiField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Email {
-            get {
-                return this.emailField;
-            }
-            set {
-                this.emailField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public EntityReferenceOfMonHoc MonHocReference {
-            get {
-                return this.monHocReferenceField;
-            }
-            set {
-                this.monHocReferenceField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
-    public partial class EntityReferenceOfMonHoc : EntityReference {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
     public partial class Phong : EntityObject {
         
         private int maPhongField;
@@ -1293,123 +1378,6 @@ namespace TKB_G9.G9Service {
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
     public partial class EntityReferenceOfLoaiPhong : EntityReference {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
-    public partial class MonHoc : EntityObject {
-        
-        private int maMonHocField;
-        
-        private string tenMonHocField;
-        
-        private string moTaField;
-        
-        private System.Nullable<int> monChinhField;
-        
-        private System.Nullable<int> heSoMonHocField;
-        
-        private string ghiChuField;
-        
-        private System.Nullable<int> soTietField;
-        
-        private EntityReferenceOfLoaiMonHoc loaiMonHocReferenceField;
-        
-        /// <remarks/>
-        public int MaMonHoc {
-            get {
-                return this.maMonHocField;
-            }
-            set {
-                this.maMonHocField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string TenMonHoc {
-            get {
-                return this.tenMonHocField;
-            }
-            set {
-                this.tenMonHocField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string MoTa {
-            get {
-                return this.moTaField;
-            }
-            set {
-                this.moTaField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> MonChinh {
-            get {
-                return this.monChinhField;
-            }
-            set {
-                this.monChinhField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> HeSoMonHoc {
-            get {
-                return this.heSoMonHocField;
-            }
-            set {
-                this.heSoMonHocField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string GhiChu {
-            get {
-                return this.ghiChuField;
-            }
-            set {
-                this.ghiChuField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> SoTiet {
-            get {
-                return this.soTietField;
-            }
-            set {
-                this.soTietField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public EntityReferenceOfLoaiMonHoc LoaiMonHocReference {
-            get {
-                return this.loaiMonHocReferenceField;
-            }
-            set {
-                this.loaiMonHocReferenceField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
-    public partial class EntityReferenceOfLoaiMonHoc : EntityReference {
     }
     
     /// <remarks/>
@@ -1535,6 +1503,15 @@ namespace TKB_G9.G9Service {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
+    public partial class EntityReferenceOfMonHoc : EntityReference {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
     public partial class EntityReferenceOfPhong : EntityReference {
     }
     
@@ -1545,6 +1522,229 @@ namespace TKB_G9.G9Service {
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
     public partial class EntityReferenceOfThoiKhoaBieu : EntityReference {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
+    public partial class MonHoc : EntityObject {
+        
+        private int maMonHocField;
+        
+        private string tenMonHocField;
+        
+        private string moTaField;
+        
+        private System.Nullable<int> monChinhField;
+        
+        private System.Nullable<int> heSoMonHocField;
+        
+        private string ghiChuField;
+        
+        private System.Nullable<int> soTietField;
+        
+        private EntityReferenceOfLoaiMonHoc loaiMonHocReferenceField;
+        
+        /// <remarks/>
+        public int MaMonHoc {
+            get {
+                return this.maMonHocField;
+            }
+            set {
+                this.maMonHocField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string TenMonHoc {
+            get {
+                return this.tenMonHocField;
+            }
+            set {
+                this.tenMonHocField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string MoTa {
+            get {
+                return this.moTaField;
+            }
+            set {
+                this.moTaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> MonChinh {
+            get {
+                return this.monChinhField;
+            }
+            set {
+                this.monChinhField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> HeSoMonHoc {
+            get {
+                return this.heSoMonHocField;
+            }
+            set {
+                this.heSoMonHocField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string GhiChu {
+            get {
+                return this.ghiChuField;
+            }
+            set {
+                this.ghiChuField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> SoTiet {
+            get {
+                return this.soTietField;
+            }
+            set {
+                this.soTietField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public EntityReferenceOfLoaiMonHoc LoaiMonHocReference {
+            get {
+                return this.loaiMonHocReferenceField;
+            }
+            set {
+                this.loaiMonHocReferenceField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
+    public partial class EntityReferenceOfLoaiMonHoc : EntityReference {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
+    public partial class GiaoVien : EntityObject {
+        
+        private int maGiaoVienField;
+        
+        private string tenGiaoVienField;
+        
+        private string gioiTinhField;
+        
+        private System.Nullable<System.DateTime> ngaySinhField;
+        
+        private string diaChiField;
+        
+        private string dienThoaiField;
+        
+        private string emailField;
+        
+        private EntityReferenceOfMonHoc monHocReferenceField;
+        
+        /// <remarks/>
+        public int MaGiaoVien {
+            get {
+                return this.maGiaoVienField;
+            }
+            set {
+                this.maGiaoVienField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string TenGiaoVien {
+            get {
+                return this.tenGiaoVienField;
+            }
+            set {
+                this.tenGiaoVienField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string GioiTinh {
+            get {
+                return this.gioiTinhField;
+            }
+            set {
+                this.gioiTinhField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<System.DateTime> NgaySinh {
+            get {
+                return this.ngaySinhField;
+            }
+            set {
+                this.ngaySinhField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string DiaChi {
+            get {
+                return this.diaChiField;
+            }
+            set {
+                this.diaChiField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string DienThoai {
+            get {
+                return this.dienThoaiField;
+            }
+            set {
+                this.dienThoaiField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Email {
+            get {
+                return this.emailField;
+            }
+            set {
+                this.emailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public EntityReferenceOfMonHoc MonHocReference {
+            get {
+                return this.monHocReferenceField;
+            }
+            set {
+                this.monHocReferenceField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -1833,6 +2033,162 @@ namespace TKB_G9.G9Service {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetDanhSachGiaoVienCompletedEventHandler(object sender, GetDanhSachGiaoVienCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetDanhSachGiaoVienCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetDanhSachGiaoVienCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public GiaoVien[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((GiaoVien[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetGiaoVienCompletedEventHandler(object sender, GetGiaoVienCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetGiaoVienCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetGiaoVienCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public GiaoVien Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((GiaoVien)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void ThemGiaoVienCompletedEventHandler(object sender, ThemGiaoVienCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ThemGiaoVienCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ThemGiaoVienCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void XoaGiaoVienCompletedEventHandler(object sender, XoaGiaoVienCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class XoaGiaoVienCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal XoaGiaoVienCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void CapNhatGiaoVienCompletedEventHandler(object sender, CapNhatGiaoVienCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CapNhatGiaoVienCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CapNhatGiaoVienCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetDanhSachMonHocCompletedEventHandler(object sender, GetDanhSachMonHocCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetDanhSachMonHocCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetDanhSachMonHocCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public MonHoc[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((MonHoc[])(this.results[0]));
             }
         }
     }

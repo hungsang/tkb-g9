@@ -181,6 +181,134 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetDanhSachGiaoVien">
+        <s:complexType />
+      </s:element>
+      <s:complexType name="ArrayOfGiaoVien">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GiaoVien" nillable="true" type="tns:GiaoVien" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GiaoVien">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="MaGiaoVien" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="TenGiaoVien" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="GioiTinh" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="NgaySinh" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="DiaChi" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DienThoai" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MonHocReference" type="tns:EntityReferenceOfMonHoc" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityReferenceOfMonHoc">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityReference" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetDanhSachGiaoVienResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDanhSachGiaoVienResult" type="tns:ArrayOfGiaoVien" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGiaoVien">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="maGiaoVien" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGiaoVienResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGiaoVienResult" type="tns:GiaoVien" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThemGiaoVien">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gv" type="tns:GiaoVien" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThemGiaoVienResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ThemGiaoVienResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="XoaGiaoVien">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="maGiaoVien" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="XoaGiaoVienResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="XoaGiaoVienResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CapNhatGiaoVien">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GiaoVienClient" type="tns:GiaoVien" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CapNhatGiaoVienResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CapNhatGiaoVienResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDanhSachMonHoc">
+        <s:complexType />
+      </s:element>
+      <s:complexType name="ArrayOfMonHoc">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MonHoc" nillable="true" type="tns:MonHoc" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MonHoc">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="MaMonHoc" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="TenMonHoc" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MoTa" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="MonChinh" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="HeSoMonHoc" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="GhiChu" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="SoTiet" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="LoaiMonHocReference" type="tns:EntityReferenceOfLoaiMonHoc" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityReferenceOfLoaiMonHoc">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityReference" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetDanhSachMonHocResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDanhSachMonHocResult" type="tns:ArrayOfMonHoc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="getPhongByMaChiTietTKB">
         <s:complexType>
           <s:sequence>
@@ -260,11 +388,6 @@
           <s:extension base="tns:EntityReference" />
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="EntityReferenceOfMonHoc">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:EntityReference" />
-        </s:complexContent>
-      </s:complexType>
       <s:complexType name="EntityReferenceOfPhong">
         <s:complexContent mixed="false">
           <s:extension base="tns:EntityReference" />
@@ -299,57 +422,10 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfChiTietTKB" nillable="true" type="tns:ArrayOfChiTietTKB" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="ArrayOfMonHoc">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="MonHoc" nillable="true" type="tns:MonHoc" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="MonHoc">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:EntityObject">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="MaMonHoc" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="TenMonHoc" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="MoTa" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="MonChinh" nillable="true" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="HeSoMonHoc" nillable="true" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="GhiChu" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="SoTiet" nillable="true" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="LoaiMonHocReference" type="tns:EntityReferenceOfLoaiMonHoc" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="EntityReferenceOfLoaiMonHoc">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:EntityReference" />
-        </s:complexContent>
-      </s:complexType>
       <s:complexType name="ArrayOfPhong">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="Phong" nillable="true" type="tns:Phong" />
         </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfGiaoVien">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="GiaoVien" nillable="true" type="tns:GiaoVien" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="GiaoVien">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:EntityObject">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="MaGiaoVien" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="TenGiaoVien" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="GioiTinh" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="NgaySinh" nillable="true" type="s:dateTime" />
-              <s:element minOccurs="0" maxOccurs="1" name="DiaChi" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="DienThoai" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="MonHocReference" type="tns:EntityReferenceOfMonHoc" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
       </s:complexType>
       <s:element name="GenerateTKBResponse">
         <s:complexType>
@@ -552,6 +628,42 @@
   <wsdl:message name="CapNhatLopSoapOut">
     <wsdl:part name="parameters" element="tns:CapNhatLopResponse" />
   </wsdl:message>
+  <wsdl:message name="GetDanhSachGiaoVienSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDanhSachGiaoVien" />
+  </wsdl:message>
+  <wsdl:message name="GetDanhSachGiaoVienSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDanhSachGiaoVienResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGiaoVienSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGiaoVien" />
+  </wsdl:message>
+  <wsdl:message name="GetGiaoVienSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGiaoVienResponse" />
+  </wsdl:message>
+  <wsdl:message name="ThemGiaoVienSoapIn">
+    <wsdl:part name="parameters" element="tns:ThemGiaoVien" />
+  </wsdl:message>
+  <wsdl:message name="ThemGiaoVienSoapOut">
+    <wsdl:part name="parameters" element="tns:ThemGiaoVienResponse" />
+  </wsdl:message>
+  <wsdl:message name="XoaGiaoVienSoapIn">
+    <wsdl:part name="parameters" element="tns:XoaGiaoVien" />
+  </wsdl:message>
+  <wsdl:message name="XoaGiaoVienSoapOut">
+    <wsdl:part name="parameters" element="tns:XoaGiaoVienResponse" />
+  </wsdl:message>
+  <wsdl:message name="CapNhatGiaoVienSoapIn">
+    <wsdl:part name="parameters" element="tns:CapNhatGiaoVien" />
+  </wsdl:message>
+  <wsdl:message name="CapNhatGiaoVienSoapOut">
+    <wsdl:part name="parameters" element="tns:CapNhatGiaoVienResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDanhSachMonHocSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDanhSachMonHoc" />
+  </wsdl:message>
+  <wsdl:message name="GetDanhSachMonHocSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDanhSachMonHocResponse" />
+  </wsdl:message>
   <wsdl:message name="getPhongByMaChiTietTKBSoapIn">
     <wsdl:part name="parameters" element="tns:getPhongByMaChiTietTKB" />
   </wsdl:message>
@@ -662,6 +774,30 @@
     <wsdl:operation name="CapNhatLop">
       <wsdl:input message="tns:CapNhatLopSoapIn" />
       <wsdl:output message="tns:CapNhatLopSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDanhSachGiaoVien">
+      <wsdl:input message="tns:GetDanhSachGiaoVienSoapIn" />
+      <wsdl:output message="tns:GetDanhSachGiaoVienSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGiaoVien">
+      <wsdl:input message="tns:GetGiaoVienSoapIn" />
+      <wsdl:output message="tns:GetGiaoVienSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ThemGiaoVien">
+      <wsdl:input message="tns:ThemGiaoVienSoapIn" />
+      <wsdl:output message="tns:ThemGiaoVienSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="XoaGiaoVien">
+      <wsdl:input message="tns:XoaGiaoVienSoapIn" />
+      <wsdl:output message="tns:XoaGiaoVienSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CapNhatGiaoVien">
+      <wsdl:input message="tns:CapNhatGiaoVienSoapIn" />
+      <wsdl:output message="tns:CapNhatGiaoVienSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDanhSachMonHoc">
+      <wsdl:input message="tns:GetDanhSachMonHocSoapIn" />
+      <wsdl:output message="tns:GetDanhSachMonHocSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="getPhongByMaChiTietTKB">
       <wsdl:input message="tns:getPhongByMaChiTietTKBSoapIn" />
@@ -783,6 +919,60 @@
     </wsdl:operation>
     <wsdl:operation name="CapNhatLop">
       <soap:operation soapAction="http://abc.com/CapNhatLop" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDanhSachGiaoVien">
+      <soap:operation soapAction="http://abc.com/GetDanhSachGiaoVien" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGiaoVien">
+      <soap:operation soapAction="http://abc.com/GetGiaoVien" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemGiaoVien">
+      <soap:operation soapAction="http://abc.com/ThemGiaoVien" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XoaGiaoVien">
+      <soap:operation soapAction="http://abc.com/XoaGiaoVien" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CapNhatGiaoVien">
+      <soap:operation soapAction="http://abc.com/CapNhatGiaoVien" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDanhSachMonHoc">
+      <soap:operation soapAction="http://abc.com/GetDanhSachMonHoc" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -975,6 +1165,60 @@
     </wsdl:operation>
     <wsdl:operation name="CapNhatLop">
       <soap12:operation soapAction="http://abc.com/CapNhatLop" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDanhSachGiaoVien">
+      <soap12:operation soapAction="http://abc.com/GetDanhSachGiaoVien" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGiaoVien">
+      <soap12:operation soapAction="http://abc.com/GetGiaoVien" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemGiaoVien">
+      <soap12:operation soapAction="http://abc.com/ThemGiaoVien" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XoaGiaoVien">
+      <soap12:operation soapAction="http://abc.com/XoaGiaoVien" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CapNhatGiaoVien">
+      <soap12:operation soapAction="http://abc.com/CapNhatGiaoVien" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDanhSachMonHoc">
+      <soap12:operation soapAction="http://abc.com/GetDanhSachMonHoc" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
