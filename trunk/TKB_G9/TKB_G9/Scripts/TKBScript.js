@@ -21,7 +21,8 @@ function LoadChiTietTKBInfo(maChiTiet, thu, tiet) {
         strResult += "<div>Môn học: " + tenMH + "</div>";
         strResult += "<div>Giáo viên: " + tenGV + "</div>";
         strResult += "<div>Phòng: " + (maPhong == null ? "Chưa có" : tenPhong) + "</div>";
-        strResult += "<div><input type='submit' value='Thay đổi' onclick='LoadEditTKB(" + maChiTiet + "," + thu + "," + tiet + "," + maMH + "," + maGV + "," + maPhong + ")'/></div>";
+        strResult += "<input type='submit' value='Thay đổi' onclick='LoadEditTKB(" + maChiTiet + "," + thu + "," + tiet + "," + maMH + "," + maGV + "," + maPhong + ")'/>";
+        strResult += "<input type='submit' value='Bỏ qua' onclick='CanCelEditTKB()'/>";
         $("#divInfo").html(strResult);
         return true;
     } else {
@@ -34,8 +35,7 @@ function LoadEditTKB(maChiTiet, thu, tiet, maMH, maGV, phong) {
     LoadDanhSachMonHoc(maMH);
     LoadDanhSachPhong(phong);
     var strResult = "";
-    strResult += "<div>Thứ: " + thu + "</div>";
-    strResult += "<div>Tiết: " + tiet + "</div>";
+    strResult += "<div>Thứ: " + thu + " - Tiết: " + tiet + "</div>";
     strResult += "<div>Môn học:</div>";
     strResult += "<div id='dsMonHoc'></div>";
     strResult += "<div>Giáo viên:</div>";
@@ -43,8 +43,14 @@ function LoadEditTKB(maChiTiet, thu, tiet, maMH, maGV, phong) {
     strResult += "<div>Phòng:</div>";
     strResult += "<div id='dsPhong'></div>";
     strResult += "<input type='hidden' id='hdnMaGV' value='" + maGV + "'/>";
+    strResult += "<br/>";
     strResult += "<input type='submit' value='Lưu' onclick='UpdateTKB(" + maChiTiet + ")'/>";
+    strResult += "<input type='submit' value='Bỏ qua' onclick='CanCelEditTKB()'/>";
     $("#divInfo").html(strResult);
+}
+
+function CanCelEditTKB() {
+    $("#divInfo").html("");
 }
 
 function UpdateTKB(maChiTiet) {
@@ -200,8 +206,7 @@ function NewTKB(maTKB, thu, tiet) {
     LoadDanhSachPhong(0);
     LoadDanhSachMonHoc(0);
     var strResult = "";
-    strResult += "<div>Thứ: " + thu + "</div>";
-    strResult += "<div>Tiết: " + tiet + "</div>";
+    strResult += "<div>Thứ: " + thu + " - Tiết: " + tiet + "</div>";
     strResult += "<div>Môn học:</div>";
     strResult += "<div id='dsMonHoc'></div>";
     strResult += "<div>Giáo viên:</div>";
@@ -209,6 +214,7 @@ function NewTKB(maTKB, thu, tiet) {
     strResult += "<div>Phòng:</div>";
     strResult += "<div id='dsPhong'></div>";
     strResult += "<input type='submit' value='Lưu' onclick='SaveTKB(" + maTKB + "," + thu + "," + tiet + ")'/>";
+    strResult += "<input type='submit' value='Bỏ qua' onclick='CanCelEditTKB()'/>";
     $("#divInfo").html(strResult);
 }
 
