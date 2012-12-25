@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://abc.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://abc.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://abc.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://abc.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://abc.com/">
       <s:element name="HelloWorld">
@@ -214,6 +214,20 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="GetDanhSachGiaoVienResult" type="tns:ArrayOfGiaoVien" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDanhSachGiaoVienTheoMonHoc">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="maMonHoc" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDanhSachGiaoVienTheoMonHocResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDanhSachGiaoVienTheoMonHocResult" type="tns:ArrayOfGiaoVien" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -564,6 +578,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="maLop" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="namHoc" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -644,6 +659,71 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetPhongFromTKB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="maChiTiet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPhongFromTKBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPhongFromTKBResult" type="tns:Phong" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTKB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="maChiTiet" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maMH" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maGV" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maPhong" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTKBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateTKBResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NewTKB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="lop" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="namHoc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NewTKBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="NewTKBResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveChiTietTKB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="maTKB" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="thu" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="tiet" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maMH" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maGV" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maPhong" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveChiTietTKBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveChiTietTKBResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -699,6 +779,12 @@
   </wsdl:message>
   <wsdl:message name="GetDanhSachGiaoVienSoapOut">
     <wsdl:part name="parameters" element="tns:GetDanhSachGiaoVienResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDanhSachGiaoVienTheoMonHocSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDanhSachGiaoVienTheoMonHoc" />
+  </wsdl:message>
+  <wsdl:message name="GetDanhSachGiaoVienTheoMonHocSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDanhSachGiaoVienTheoMonHocResponse" />
   </wsdl:message>
   <wsdl:message name="GetGiaoVienSoapIn">
     <wsdl:part name="parameters" element="tns:GetGiaoVien" />
@@ -838,6 +924,30 @@
   <wsdl:message name="GetMonHocFromTKBSoapOut">
     <wsdl:part name="parameters" element="tns:GetMonHocFromTKBResponse" />
   </wsdl:message>
+  <wsdl:message name="GetPhongFromTKBSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPhongFromTKB" />
+  </wsdl:message>
+  <wsdl:message name="GetPhongFromTKBSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPhongFromTKBResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTKBSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateTKB" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTKBSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateTKBResponse" />
+  </wsdl:message>
+  <wsdl:message name="NewTKBSoapIn">
+    <wsdl:part name="parameters" element="tns:NewTKB" />
+  </wsdl:message>
+  <wsdl:message name="NewTKBSoapOut">
+    <wsdl:part name="parameters" element="tns:NewTKBResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveChiTietTKBSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveChiTietTKB" />
+  </wsdl:message>
+  <wsdl:message name="SaveChiTietTKBSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveChiTietTKBResponse" />
+  </wsdl:message>
   <wsdl:portType name="G9_ServiceSoap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -874,6 +984,10 @@
     <wsdl:operation name="GetDanhSachGiaoVien">
       <wsdl:input message="tns:GetDanhSachGiaoVienSoapIn" />
       <wsdl:output message="tns:GetDanhSachGiaoVienSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDanhSachGiaoVienTheoMonHoc">
+      <wsdl:input message="tns:GetDanhSachGiaoVienTheoMonHocSoapIn" />
+      <wsdl:output message="tns:GetDanhSachGiaoVienTheoMonHocSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetGiaoVien">
       <wsdl:input message="tns:GetGiaoVienSoapIn" />
@@ -967,6 +1081,22 @@
       <wsdl:input message="tns:GetMonHocFromTKBSoapIn" />
       <wsdl:output message="tns:GetMonHocFromTKBSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetPhongFromTKB">
+      <wsdl:input message="tns:GetPhongFromTKBSoapIn" />
+      <wsdl:output message="tns:GetPhongFromTKBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTKB">
+      <wsdl:input message="tns:UpdateTKBSoapIn" />
+      <wsdl:output message="tns:UpdateTKBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NewTKB">
+      <wsdl:input message="tns:NewTKBSoapIn" />
+      <wsdl:output message="tns:NewTKBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveChiTietTKB">
+      <wsdl:input message="tns:SaveChiTietTKBSoapIn" />
+      <wsdl:output message="tns:SaveChiTietTKBSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="G9_ServiceSoap" type="tns:G9_ServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1044,6 +1174,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetDanhSachGiaoVien">
       <soap:operation soapAction="http://abc.com/GetDanhSachGiaoVien" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDanhSachGiaoVienTheoMonHoc">
+      <soap:operation soapAction="http://abc.com/GetDanhSachGiaoVienTheoMonHoc" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1258,6 +1397,42 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetPhongFromTKB">
+      <soap:operation soapAction="http://abc.com/GetPhongFromTKB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTKB">
+      <soap:operation soapAction="http://abc.com/UpdateTKB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewTKB">
+      <soap:operation soapAction="http://abc.com/NewTKB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveChiTietTKB">
+      <soap:operation soapAction="http://abc.com/SaveChiTietTKB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="G9_ServiceSoap12" type="tns:G9_ServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1335,6 +1510,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetDanhSachGiaoVien">
       <soap12:operation soapAction="http://abc.com/GetDanhSachGiaoVien" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDanhSachGiaoVienTheoMonHoc">
+      <soap12:operation soapAction="http://abc.com/GetDanhSachGiaoVienTheoMonHoc" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1542,6 +1726,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetMonHocFromTKB">
       <soap12:operation soapAction="http://abc.com/GetMonHocFromTKB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPhongFromTKB">
+      <soap12:operation soapAction="http://abc.com/GetPhongFromTKB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTKB">
+      <soap12:operation soapAction="http://abc.com/UpdateTKB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewTKB">
+      <soap12:operation soapAction="http://abc.com/NewTKB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveChiTietTKB">
+      <soap12:operation soapAction="http://abc.com/SaveChiTietTKB" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
