@@ -1,0 +1,98 @@
+body {
+
+}
+
+ul.tkbInfo {
+	list-style: none;
+}
+ul {
+	margin: 0 auto; /*width: 600px;*/
+	list-style: none;
+}
+ul li.hder {
+	list-style: none outside none !important;
+	margin: 0;
+	padding: 0;
+}
+
+/******************USER LIST*****************/
+.user-tlb {
+}
+.user-tlb ul li ul li {
+	border: 1px solid #D4D4D4;
+	color: #666666;
+	float: left;
+	font-weight: bold;
+	margin: -1px 0 0 -1px;
+	padding: 10px;
+	text-align: center;
+}.user-tlb ul li ul li.tiet {
+	height: 15px;
+	width: 40px;
+}
+.user-tlb ul li ul li.t2 {
+	height: 15px;
+	width: 60px;
+}
+.user-tlb ul li ul li.t3 {
+	height: 15px;
+	width: 60px;
+}
+.user-tlb ul li ul li.t4 {
+	height: 15px;
+	width: 60px;
+}
+.user-tlb ul li ul li.t5 {
+	height: 15px;
+	width: 60px;
+}
+.user-tlb ul li ul li.t6 {
+	height: 15px;
+	width: 60px;
+}.user-tlb ul li ul li.t7 {
+	height: 15px;
+	width: 60px;
+}
+.user-tlb ul li ul li.cn {
+	height: 15px;
+	overflow: hidden;
+	width: 60px;
+}
+.user-tlb ul li.hder ul li {
+	background-color: #E0F4FF;
+	border: 1px solid #D4D4D4;
+	color: #666666;
+	float: left;
+	font-weight: bold;
+	margin: -1px 0 0 -1px;
+	padding: 10px;
+	text-align: center;
+}
+.user-tlb ul li.hder ul li.t2 {
+	height: 15px;
+	width: 60px;
+}
+.user-tlb ul li.hder ul li.t3 {
+	height: 15px;
+	width: 60px;
+}
+.user-tlb ul li.hder ul li.t4 {
+	height: 15px;
+	width: 60px;
+}
+.user-tlb ul li.hder ul li.t5 {
+	height: 15px;
+	width: 60px;
+}
+.user-tlb ul li.hder ul li.t6 {
+	height: 15px;
+	width: 60px;
+}
+.user-tlb ul li.hder ul li.t7 {
+	height: 15px;
+	width: 60px;
+}
+.user-tlb ul li.hder ul li.cn {
+	height: 15px;
+	width: 60px;
+}

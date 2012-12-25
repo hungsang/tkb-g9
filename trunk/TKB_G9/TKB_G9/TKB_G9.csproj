@@ -84,6 +84,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="TKB.ashx.cs">
+      <DependentUpon>TKB.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Views\TKB\Sua.aspx.cs">
       <DependentUpon>Sua.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -112,6 +115,7 @@
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\MasterpageScript.js" />
+    <Content Include="Content\tkbStyle.css" />
     <Content Include="Scripts\TKBScript.js" />
     <Content Include="Views\GiaoVien\XemThoiKhoaBieu.aspx" />
     <Content Include="Views\Lop\DanhSachLop.aspx" />
@@ -123,6 +127,7 @@
     </None>
     <Content Include="Views\Shared\Welcome.aspx" />
     <Content Include="Views\TKB\SapXep.aspx" />
+    <Content Include="TKB.ashx" />
     <None Include="Web References\G9Service\ChiTietTKB.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>

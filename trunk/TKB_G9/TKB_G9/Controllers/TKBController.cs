@@ -147,33 +147,38 @@ namespace TKB_G9.Controllers
             ThoiKhoaBieu tkb = sv.GetTKBFromLop(lop);
             Lop oLop = sv.GetLopFromTKB(tkb.MaTKB);
             ViewData["TenLop"] = oLop.TenLop;
-            temp += "<div id=\"div" + oLop.MaLop + "\" class=\"divTKB\">";
+            temp += "<div id=\"div" + oLop.MaLop + "\" class=\"divTKB user-tlb\">";
             temp += "<div><a href='~/TKB/Sua?lop=" + oLop.MaLop + "'>" + oLop.TenLop + "</a></div>";
             temp += "";
             temp += "";
-            temp += "        <table>";
-            temp += "            <tr>";
-            temp += "                <th></th>";
-            temp += "                <th>Hai</th>";
-            temp += "                <th>Ba</th>";
-            temp += "                <th>Tư</th>";
-            temp += "                <th>Năm</th>";
-            temp += "                <th>Sáu</th>";
-            temp += "                <th>Bảy</th>";
-            temp += "                <th>Chủ nhật</th>";
-            temp += "            </tr>";
+            temp += "<ul style='list-style: none;'>";
+            temp += "					<li class='hder'>";
+            temp += "						<ul style='list-style: none;'>";
+            temp += "							<li class='tiet'>&nbsp;</li>";
+            temp += "							<li class='t2'>Hai</li>";
+            temp += "							<li class='t3'>Ba</li>";
+            temp += "							<li class='t4'>Tư</li>";
+            temp += "							<li class='t5'>Năm</li>";
+            temp += "							<li class='t6'>Sáu</li>";
+            temp += "							<li class='t7'>Bảy</li>";
+            temp += "							<li class='cn'>CN</li>";
+            temp += "						</ul>";
+            temp += "					</li>";
             for (int j = 1; j < 13; j++)
             {
-                temp += "   <tr>";
-                temp += "       <td>Tiết " + j + "</td>";
-                for (int i = 2; i <= 8; i++)
+                temp += "   <li>";
+                temp += "		<ul style='list-style: none;'>";
+                temp += "       <li class='tiet'>Tiết " + j + "</li>";
+                for (int i = 2; i < 8; i++)
                 {
-                    temp += "       <td>&" + tkb.MaTKB + i + j + "&</td>";
+                    temp += "       <li class='t" + i + "' onclick='LoadGiaoVien(\"$"+ tkb.MaTKB + i + j +"$\")'>&" + tkb.MaTKB + i + j + "&</li>";
                 }
-                temp += "   </tr>";
+                temp += "       <li class='cn'>&" + tkb.MaTKB + '8' + j + "&</li>";
+                temp += "       </ul>";
+                temp += "   </li>";
             }
 
-            temp += "</table>";
+            temp += "</ul>";
             temp += "</div>";
             ChiTietTKB[] chiTiets = sv.GetDanhSachChiTietTKB(tkb.MaTKB);
 
@@ -182,14 +187,15 @@ namespace TKB_G9.Controllers
                 ChiTietTKB oChiTiet = sv.GetChiTietTKB(chiTiet.MaChiTietTKB);
                 MonHoc mh = sv.GetMonHocFromTKB(oChiTiet.MaChiTietTKB);
                 GiaoVien gv = sv.GetGiaoVienFromTKB(oChiTiet.MaChiTietTKB);
-                temp = temp.Replace(String.Format("&{0}{1}{2}&", tkb.MaTKB, oChiTiet.Thu, oChiTiet.TietBatDau), mh.TenMonHoc + "<br/>" + gv.TenGiaoVien);
+                temp = temp.Replace(String.Format("&{0}{1}{2}&", tkb.MaTKB, oChiTiet.Thu, oChiTiet.TietBatDau), mh.TenMonHoc);
+                temp = temp.Replace(String.Format("${0}{1}{2}$", tkb.MaTKB, oChiTiet.Thu, oChiTiet.TietBatDau), chiTiet.MaChiTietTKB.ToString());
             }
 
             for (int j = 1; j < 13; j++)
             {
                 for (int i = 2; i <= 8; i++)
                 {
-                    temp = temp.Replace(String.Format("&{0}{1}{2}&", tkb.MaTKB, i, j), "");
+                    temp = temp.Replace(String.Format("&{0}{1}{2}&", tkb.MaTKB, i, j), "&nbsp;");
                 }
             }
             ViewData["TKB"] = temp;
