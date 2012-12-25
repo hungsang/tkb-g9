@@ -67,13 +67,13 @@
                 <li class="sperator"></li>
                 <li><a href="#">Học sinh</a>
                     <ul style="visibility: hidden; display: block;">
-                        <li><a href="<%=Url.Content("~/Lop/DanhSachLop") %>">Danh sách lớp</a></li>
                         <li><a href="#">Xem thời khóa biểu</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Quản lý</a>
                     <ul style="visibility: hidden; display: block;">
                         <li><a href="<%=Url.Content("~/Lop/DanhSachLop") %>">Quản lý lớp</a></li>
+                        <li><a href="<%=Url.Content("~/GiaoVien/DanhSachGiaoVien") %>">Quản lý giáo viên</a></li>
                         <li><a href="<%=Url.Content("~/TKB/Lop") %>">Xem TKB theo lớp</a></li>
                         <li><a href="#">Xem TKB theo giáo viên</a></li>
                         <li><a href="<%=Url.Content("~/TKB/SapXep") %>">Sắp xếp TKB</a></li>

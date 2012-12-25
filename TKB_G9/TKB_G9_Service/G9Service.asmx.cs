@@ -57,7 +57,7 @@ namespace TKB_G9_Service
         public List<Lop> GetDanhSachLop()
         {
             TKBEntities db = new TKBEntities();
-            var list = db.Lops.OrderBy(sort => sort.MaLop).ToList();
+            var list = db.Lops.OrderBy(sort => sort.TenLop).ToList();
             return list;
         }
         [WebMethod]
@@ -86,6 +86,122 @@ namespace TKB_G9_Service
                 return false;
             }
         }
+        [WebMethod]
+        public bool XoaLop(int maLop)
+        {
+            try
+            {
+                using (var db = new TKBEntities())
+                {
+                    Lop lop = db.Lops.First(l => l.MaLop == maLop);
+                    db.DeleteObject(lop);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        [WebMethod]
+        public bool CapNhatLop(Lop lopClient)
+        {
+            try
+            {
+                using (var db = new TKBEntities())
+                {
+                    Lop lop = db.Lops.First(l => l.MaLop == lopClient.MaLop);
+                    lop.TenLop = lopClient.TenLop;
+                    lop.KhoiLop = lopClient.KhoiLop;
+                    lop.CaHoc = lopClient.CaHoc;
+                    lop.SiSo = lopClient.SiSo;
+                    lop.GhiChu = lopClient.GhiChu;
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /*****************GIAOVIEN*******************/
+        [WebMethod]
+        public List<GiaoVien> GetDanhSachGiaoVien()
+        {
+            TKBEntities db = new TKBEntities();
+            var list = db.GiaoViens.OrderBy(sort => sort.TenGiaoVien).ToList();
+            return list;
+        }
+        [WebMethod]
+        public GiaoVien GetGiaoVien(int maGiaoVien)
+        {
+            using (var db = new TKBEntities())
+            {
+                GiaoVien gv = db.GiaoViens.FirstOrDefault(l => l.MaGiaoVien == maGiaoVien);
+                return gv;
+            }
+        }
+        [WebMethod]
+        public bool ThemGiaoVien(GiaoVien gv)
+        {
+            try
+            {
+                using (var db = new TKBEntities())
+                {
+                    db.AddToGiaoViens(gv);
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        [WebMethod]
+        public bool XoaGiaoVien(int maGiaoVien)
+        {
+            try
+            {
+                using (var db = new TKBEntities())
+                {
+                    GiaoVien gv = db.GiaoViens.First(l => l.MaGiaoVien == maGiaoVien);
+                    db.DeleteObject(gv);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        [WebMethod]
+        public bool CapNhatGiaoVien(GiaoVien GiaoVienClient)
+        {
+            try
+            {
+                using (var db = new TKBEntities())
+                {
+                    GiaoVien gv = db.GiaoViens.First(l => l.MaGiaoVien == GiaoVienClient.MaGiaoVien);
+                    gv.TenGiaoVien = GiaoVienClient.TenGiaoVien;
+                    gv.GioiTinh = GiaoVienClient.GioiTinh;
+                    gv.NgaySinh = GiaoVienClient.NgaySinh;
+                    gv.DiaChi = GiaoVienClient.DiaChi;
+                    gv.DienThoai = GiaoVienClient.DienThoai;
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         /******************TKB******************/
         #region TKB
         //nhdanh add

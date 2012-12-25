@@ -90,5 +90,55 @@ namespace TKB_G9.Controllers
             ViewData["TKBGV"] = temp;
             return View();
         }
+
+        public ActionResult DanhSachGiaoVien()
+        {
+            G9Service.G9_Service sv = new G9Service.G9_Service();
+            G9Service.Lop[] list = sv.GetDanhSachLop();
+
+            if (list == null || list.Count() <= 0)
+            {
+                ViewData["DSGiaoVien"] = "Không có giáo viên";
+                return View();
+            }
+
+            string temp = "";
+
+            temp += "<div class=\"user-tlb\">";
+            temp += "    <ul style=\"list-style: none\">";
+            temp += "        <li class=\"hder\">";
+            temp += "            <ul>";
+            temp += "                <li class=\"stt\">STT</li>";
+            temp += "                <li class=\"account_name\">Họ tên</li>";
+            temp += "                <li class=\"user_type\">Giới tính</li>";
+            temp += "                <li class=\"active\">Ngày sinh</li>";
+            temp += "                <li class=\"edit\">Thao tác</li>";
+            temp += "            </ul>";
+            temp += "        </li>";
+            int i = 1;
+            foreach (G9Service.Lop lop in list)
+            {
+                if (lop.KhoiLop == j.ToString())
+                {
+                    temp += "    <li class=\"li-atv fl\">";
+                    temp += "        <ul>";
+                    temp += "            <li class=\"stt\">" + i + "</li>";
+                    temp += "            <li class=\"account_name\">" + lop.TenLop + "</li>";
+                    temp += "            <li class=\"user_type\">" + lop.KhoiLop + "</li>";
+                    temp += "            <li class=\"active\">" + lop.SiSo + "</li>";
+                    temp += "            <li class=\"edit\"><div style='padding-left:20px;'><a href='" + Url.Content("~/Lop/CapNhatLop?id=" + lop.MaLop) + "'><div class='btnEdit'></div></a>";
+                    temp += "            <a href='" + Url.Content("~/Lop/XoaLop?id=" + lop.MaLop) + "'><div style='margin-left:5px;' class='btnXoa'></div></a></div></li>";
+                    temp += "        </ul>";
+                    temp += "    </li>";
+                    i++;
+                }
+            }
+            temp += "</ul>";
+            temp += "</div><br />";
+            
+
+            ViewData["DSLop"] = temp;
+            return View();
+        }
     }
 }
