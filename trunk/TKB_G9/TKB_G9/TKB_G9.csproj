@@ -72,6 +72,7 @@
     <Compile Include="Controllers\GiaoVienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LopController.cs" />
+    <Compile Include="Controllers\PhongController.cs" />
     <Compile Include="Controllers\TKBController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -124,6 +125,9 @@
     <Content Include="Views\Lop\CapNhatLop.aspx" />
     <Content Include="Views\Lop\DanhSachLop.aspx" />
     <Content Include="Views\Lop\ThemLop.aspx" />
+    <Content Include="Views\Phong\CapNhatPhong.aspx" />
+    <Content Include="Views\Phong\DanhSachPhong.aspx" />
+    <Content Include="Views\Phong\ThemPhong.aspx" />
     <Content Include="Views\Shared\Login.aspx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
