@@ -189,9 +189,9 @@ namespace TKB_G9_Service
                     GiaoVien gv = db.GiaoViens.First(l => l.MaGiaoVien == GiaoVienClient.MaGiaoVien);
                     gv.TenGiaoVien = GiaoVienClient.TenGiaoVien;
                     gv.GioiTinh = GiaoVienClient.GioiTinh;
-                    gv.NgaySinh = GiaoVienClient.NgaySinh;
                     gv.DiaChi = GiaoVienClient.DiaChi;
                     gv.DienThoai = GiaoVienClient.DienThoai;
+                    gv.Email = GiaoVienClient.Email;
                     db.SaveChanges();
                     return true;
                 }
@@ -200,6 +200,15 @@ namespace TKB_G9_Service
             {
                 return false;
             }
+        }
+
+        /*****************MÔN HỌC*******************/
+        [WebMethod]
+        public List<MonHoc> GetDanhSachMonHoc()
+        {
+            TKBEntities db = new TKBEntities();
+            var list = db.MonHocs.OrderBy(sort => sort.TenMonHoc).ToList();
+            return list;
         }
 
         /******************TKB******************/

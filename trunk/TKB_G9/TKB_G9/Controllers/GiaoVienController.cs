@@ -54,11 +54,11 @@ namespace TKB_G9.Controllers
                     for (int i = 0; i < 7; i++)
                     {
                         String checkin = "";
-                        String tenlop = sv.getLopByMaChiTietTKB(cur.MaChiTietTKB).TenLop;
+                        String tenLop = sv.getLopByMaChiTietTKB(cur.MaChiTietTKB).TenLop;
                         String tenphong = sv.getPhongByMaChiTietTKB(cur.MaChiTietTKB).TenPhong;
                         if (j >= cur.TietBatDau && j <= cur.TietKetThuc && cur.Thu == i)
                         {
-                            checkin = tenlop + "/" + tenphong;
+                            checkin = tenLop + "/" + tenphong;
                             temp = temp.Replace("&" + i + "&" + j+"&", checkin);
                         }
                         else
@@ -94,7 +94,7 @@ namespace TKB_G9.Controllers
         public ActionResult DanhSachGiaoVien()
         {
             G9Service.G9_Service sv = new G9Service.G9_Service();
-            G9Service.Lop[] list = sv.GetDanhSachLop();
+            G9Service.GiaoVien[] list = sv.GetDanhSachGiaoVien();
 
             if (list == null || list.Count() <= 0)
             {
@@ -116,29 +116,130 @@ namespace TKB_G9.Controllers
             temp += "            </ul>";
             temp += "        </li>";
             int i = 1;
-            foreach (G9Service.Lop lop in list)
+            foreach (G9Service.GiaoVien gv in list)
             {
-                if (lop.KhoiLop == j.ToString())
-                {
-                    temp += "    <li class=\"li-atv fl\">";
-                    temp += "        <ul>";
-                    temp += "            <li class=\"stt\">" + i + "</li>";
-                    temp += "            <li class=\"account_name\">" + lop.TenLop + "</li>";
-                    temp += "            <li class=\"user_type\">" + lop.KhoiLop + "</li>";
-                    temp += "            <li class=\"active\">" + lop.SiSo + "</li>";
-                    temp += "            <li class=\"edit\"><div style='padding-left:20px;'><a href='" + Url.Content("~/Lop/CapNhatLop?id=" + lop.MaLop) + "'><div class='btnEdit'></div></a>";
-                    temp += "            <a href='" + Url.Content("~/Lop/XoaLop?id=" + lop.MaLop) + "'><div style='margin-left:5px;' class='btnXoa'></div></a></div></li>";
-                    temp += "        </ul>";
-                    temp += "    </li>";
-                    i++;
-                }
+                temp += "    <li class=\"li-atv fl\">";
+                temp += "        <ul>";
+                temp += "            <li class=\"stt\">" + i + "</li>";
+                temp += "            <li class=\"account_name\">" + gv.TenGiaoVien + "</li>";
+                temp += "            <li class=\"user_type\">" + gv.GioiTinh + "</li>";
+                temp += "            <li class=\"active\">" + gv.NgaySinh + "</li>";
+                temp += "            <li class=\"edit\"><div style='padding-left:20px;'><a href='" + Url.Content("~/GiaoVien/CapNhatGiaoVien?id=" + gv.MaGiaoVien) + "'><div class='btnEdit'></div></a>";
+                temp += "            <a href='" + Url.Content("~/GiaoVien/XoaGiaoVien?id=" + gv.MaGiaoVien) + "'><div style='margin-left:5px;' class='btnXoa'></div></a></div></li>";
+                temp += "        </ul>";
+                temp += "    </li>";
+                i++;
             }
             temp += "</ul>";
             temp += "</div><br />";
             
-
-            ViewData["DSLop"] = temp;
+            ViewData["DSGiaoVien"] = temp;
             return View();
         }
+
+        public ActionResult ThemGiaoVien()
+        {
+            G9Service.G9_Service ws = new G9Service.G9_Service();
+            G9Service.MonHoc[] mh = ws.GetDanhSachMonHoc();
+            ViewData["DSMonHoc"] = "";
+            foreach (MonHoc monHoc in mh)
+            {
+                ViewData["DSMonHoc"] += "<option id='Option' value='" + monHoc.MaMonHoc + "' >" + monHoc.TenMonHoc + "</option>";
+            }
+            ViewData["DSGiaoVien"] = "";
+            return View();
+        }
+        public ActionResult CapNhatGiaoVien()
+        {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("DanhSachGiaoVien", "GiaoVien");
+            }
+            if (HttpContext.Request["id"] == null || HttpContext.Request["id"].Equals(""))
+                return RedirectToAction("DanhSachGiaoVien", "GiaoVien");
+
+            int id = Int32.Parse(HttpContext.Request["id"]);
+            G9Service.G9_Service ws = new G9Service.G9_Service();
+            G9Service.GiaoVien gv = ws.GetGiaoVien(id);
+
+            ViewData["MaGiaoVien"] = id;
+            ViewData["TenGiaoVien"] = gv.TenGiaoVien;
+            if (gv.GioiTinh.Equals("Nam"))
+            {
+                ViewData["GioiTinh"] += "<option id='Option' selected value='Nam' >Nam</option>";
+                ViewData["GioiTinh"] += "<option id='Option' value='Nữ' >Nữ</option>";
+            }
+            else
+            {
+                ViewData["GioiTinh"] += "<option id='Option' value='Nam' >Nam</option>";
+                ViewData["GioiTinh"] += "<option id='Option' selected value='Nữ' >Nữ</option>";
+            }
+            ViewData["DiaChi"] = gv.DiaChi;
+            ViewData["DienThoai"] = gv.DienThoai;
+            ViewData["Email"] = gv.Email;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CapNhatGiaoVienPost()
+        {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("DanhSachGiaoVien", "GiaoVien");
+            }
+            G9Service.GiaoVien gv = new G9Service.GiaoVien();
+            gv.MaGiaoVien = Int32.Parse(HttpContext.Request["txtMaGiaoVien"]);
+            gv.TenGiaoVien = HttpContext.Request["txtTenGiaoVien"];
+            gv.GioiTinh = HttpContext.Request["txtGioiTinh"];
+            gv.DiaChi = HttpContext.Request["txtDiaChi"];
+            gv.DienThoai = HttpContext.Request["txtDienThoai"];
+            gv.Email = HttpContext.Request["txtEmail"];
+
+            G9Service.G9_Service ws = new G9Service.G9_Service();
+            bool result = ws.CapNhatGiaoVien(gv);
+
+            return (result == true) ? RedirectToAction("DanhSachGiaoVien", "GiaoVien") : RedirectToAction("CapNhatGiaoVien", "GiaoVien");
+        }
+
+        [HttpPost]
+        public ActionResult ThemGiaoVienPost()
+        {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("DanhSachGiaoVien", "GiaoVien");
+            }
+            G9Service.GiaoVien gv = new G9Service.GiaoVien();
+            gv.TenGiaoVien = HttpContext.Request["txtTenGiaoVien"];
+            gv.GioiTinh = HttpContext.Request["txtGioiTinh"];
+            gv.DiaChi = HttpContext.Request["txtDiaChi"];
+            gv.DienThoai = HttpContext.Request["txtDienThoai"];
+            gv.Email = HttpContext.Request["txtMonHoc"];
+
+            G9Service.G9_Service ws = new G9Service.G9_Service();
+            bool result = ws.ThemGiaoVien(gv);
+
+            return (result == true) ? RedirectToAction("DanhSachGiaoVien", "GiaoVien") : RedirectToAction("ThemGiaoVien", "GiaoVien");
+        }
+
+        public ActionResult XoaGiaoVien()
+        {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("DanhSachGiaoVien", "GiaoVien");
+            }
+            if (HttpContext.Request["id"] == null || HttpContext.Request["id"].Equals(""))
+                return RedirectToAction("DanhSachGiaoVien", "GiaoVien");
+
+            int id = Int32.Parse(HttpContext.Request["id"]);
+            G9Service.G9_Service ws = new G9Service.G9_Service();
+            bool result = ws.XoaGiaoVien(id);
+
+            return RedirectToAction("DanhSachGiaoVien", "GiaoVien");
+        }
+
+
+
+
     }
 }
