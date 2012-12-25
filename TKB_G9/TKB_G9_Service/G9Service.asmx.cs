@@ -201,6 +201,79 @@ namespace TKB_G9_Service
                 return false;
             }
         }
+        
+        /*****************PHONG*******************/
+        [WebMethod]
+        public List<Phong> GetDanhSachPhong()
+        {
+            TKBEntities db = new TKBEntities();
+            var list = db.Phongs.OrderBy(sort => sort.TenPhong).ToList();
+            return list;
+        }
+        [WebMethod]
+        public Phong GetPhong(int maPhong)
+        {
+            using (var db = new TKBEntities())
+            {
+                Phong gv = db.Phongs.FirstOrDefault(l => l.MaPhong == maPhong);
+                return gv;
+            }
+        }
+        [WebMethod]
+        public bool ThemPhong(Phong gv)
+        {
+            try
+            {
+                using (var db = new TKBEntities())
+                {
+                    db.AddToPhongs(gv);
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        [WebMethod]
+        public bool XoaPhong(int maPhong)
+        {
+            try
+            {
+                using (var db = new TKBEntities())
+                {
+                    Phong gv = db.Phongs.First(l => l.MaPhong == maPhong);
+                    db.DeleteObject(gv);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        [WebMethod]
+        public bool CapNhatPhong(Phong PhongClient)
+        {
+            try
+            {
+                using (var db = new TKBEntities())
+                {
+                    Phong gv = db.Phongs.First(l => l.MaPhong == PhongClient.MaPhong);
+                    gv.TenPhong = PhongClient.TenPhong;
+                    gv.TinhTrang = PhongClient.TinhTrang;
+                    gv.SucChua = PhongClient.SucChua;
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
         /*****************MÔN HỌC*******************/
         [WebMethod]
