@@ -19,22 +19,124 @@ namespace TKB_G9
             string method = context.Request.QueryString["method"];
             switch (method)
             {
-                case "getGiaoVien":
-                    GetGiaoVien(context);
+                case "getDanhSachMonHoc":
+                    GetDanhSachMonHoc(context);
+                    break;
+                case "getDanhSachGiaoVien":
+                    GetDanhSachGiaoVien(context);
+                    break;
+                case "getDanhSachPhong":
+                    GetDanhSachPhong(context);
+                    break;
+                case "updateTKB":
+                    UpdateTKB(context);
+                    break;
+                case "createTKB":
+                    CreateTKB(context);
+                    break;
+                case "saveTKB":
+                    SaveTKB(context);
                     break;
                 
             }
         }
-        public void GetGiaoVien(HttpContext context)
+
+        public void GetDanhSachMonHoc(HttpContext context)
         {
             try
             {
-                int maChiTiet = Int32.Parse(context.Request.QueryString["maChiTietTKB"]);
                 G9Service.G9_Service sv = new G9Service.G9_Service();
-                GiaoVien gv = sv.GetGiaoVienFromTKB(maChiTiet);
+                List<MonHoc> lstMonHoc = sv.GetDanhSachMonHoc().ToList();
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
-                string result = serializer.Serialize(gv);
+                string result = serializer.Serialize(lstMonHoc);
                 context.Response.Write(result);
+            }
+            catch (Exception ex) { context.Response.Write(ex.Message); }
+        }
+
+        public void GetDanhSachPhong(HttpContext context)
+        {
+            try
+            {
+                G9Service.G9_Service sv = new G9Service.G9_Service();
+                List<Phong> lstPhong = sv.GetDanhSachPhong().ToList();
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                string result = serializer.Serialize(lstPhong);
+                context.Response.Write(result);
+            }
+            catch (Exception ex) { context.Response.Write(ex.Message); }
+        }
+
+
+        public void GetDanhSachGiaoVien(HttpContext context)
+        {
+            try
+            {
+                int maMonHoc = Int32.Parse(context.Request.QueryString["maMonHoc"]);
+                G9Service.G9_Service sv = new G9Service.G9_Service();
+                List<GiaoVien> lstGiaoVien = sv.GetDanhSachGiaoVien(maMonHoc).ToList();
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                string result = serializer.Serialize(lstGiaoVien);
+                context.Response.Write(result);
+            }
+            catch (Exception ex) { context.Response.Write(ex.Message); }
+        }
+        public void UpdateTKB(HttpContext context)
+        {
+            try
+            {
+                int maChiTiet = Int32.Parse(context.Request.QueryString["maChiTiet"]);
+                int maMonHoc = Int32.Parse(context.Request.QueryString["maMonHoc"]);
+                int maGiaoVien = Int32.Parse(context.Request.QueryString["maGiaoVien"]);
+                int maPhong = Int32.Parse(context.Request.QueryString["maPhong"]);
+                G9Service.G9_Service sv = new G9Service.G9_Service();
+                bool success = sv.UpdateTKB(maChiTiet, maMonHoc, maGiaoVien, maPhong);
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                if (success)
+                {
+                    string result = serializer.Serialize(success);
+                    context.Response.Write(result);
+                }
+            }
+            catch (Exception ex) { context.Response.Write(ex.Message); }
+        }
+
+        public void CreateTKB(HttpContext context)
+        {
+            try
+            {
+                int lop = Int32.Parse(context.Request.QueryString["lop"]);
+                string namHoc = context.Request.QueryString["namHoc"];
+                G9Service.G9_Service sv = new G9Service.G9_Service();
+                bool success = sv.NewTKB(lop, namHoc);
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                if (success)
+                {
+                    string result = serializer.Serialize(success);
+                    context.Response.Write(result);
+                }
+            }
+            catch (Exception ex) { context.Response.Write(ex.Message); }
+        }
+
+        public void SaveTKB(HttpContext context)
+        {
+            try
+            {
+                int maTKB = Int32.Parse(context.Request.QueryString["maTKB"]);
+                int maMonHoc = Int32.Parse(context.Request.QueryString["maMonHoc"]);
+                int maGiaoVien = Int32.Parse(context.Request.QueryString["maGiaoVien"]);
+                int maPhong = Int32.Parse(context.Request.QueryString["maPhong"]);
+                int thu = Int32.Parse(context.Request.QueryString["thu"]);
+                int tiet = Int32.Parse(context.Request.QueryString["tiet"]);
+                G9Service.G9_Service sv = new G9Service.G9_Service();
+                bool success = sv.SaveChiTietTKB(maTKB,thu,tiet, maMonHoc, maGiaoVien, maPhong);
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                if (success)
+                {
+                    string result = serializer.Serialize(success);
+                    context.Response.Write(result);
+                }
             }
             catch (Exception ex) { context.Response.Write(ex.Message); }
         }
