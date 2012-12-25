@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="detailrow">
-        <span class="navheader"><a href="") %>">Học sinh
+        <span class="navheader"><a href="#">Học sinh
             </a>/ <a href="<%=Url.Content("~/Lop/ThemLop") %>">Thêm lớp</a> </span>
         <br />
         <p class="detailtitle">
@@ -16,13 +16,14 @@
         </p>
         <div class="lastnewsbox">
             <div class="GirdDiv">
+            <%--<form id="frmThemLop" action="<%=Url.Content("~/Lop/ThemLopPost")%>" method="post">--%>
+       <% using (Html.BeginForm("ThemLopPost", "Lop", FormMethod.Post))
+          { %>
                 <div>
                     <div class="ListHeader">
                         Tên lớp:
                     </div>
-                    <div>
                         <input type="text" id="txtTenLop" name="txtTenLop" />
-                    </div>
                 </div>
                 <div class="clear">
                 </div>
@@ -71,9 +72,12 @@
                         <input type="text" id="txtGhiChu" name="txtGhiChu" />
                     </div>
                 </div>
-                <a href="#"><input type="button" class="button" value="Thêm" style="margin-top:15px" /></a>
+                <input type="submit" class="button" value="Thêm" style="margin-top:15px" />
                 <div class="clear">
                 </div>
+                <%--</form>--%>
+                
+<% }%>
             </div>
         </div>
     </div>

@@ -19,7 +19,7 @@ namespace TKB_G9
             G9_Service sv = new G9_Service();
             var user = sv.getTaiKhoanByUserName(HttpContext.Current.User.Identity.Name);
             //Kiem tra quyen Giao Vien
-            if (!(user.MaTaiKhoan == 2))       // Dựa trên role có sẵn trong webconfig or dựa name method để phân quyền
+            if (user==null || !(user.MaTaiKhoan == 2))       // Dựa trên role có sẵn trong webconfig or dựa name method để phân quyền
                 filterContext.Result = new RedirectResult("../Home/Index");
         }
     }

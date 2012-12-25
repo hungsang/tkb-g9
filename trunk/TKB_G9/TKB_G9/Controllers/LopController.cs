@@ -10,7 +10,7 @@ namespace TKB_G9.Controllers
     {
         //
         // GET: /Lop/
-
+         [HttpPost]
         public ActionResult Index()
         {
             return View();
@@ -64,6 +64,26 @@ namespace TKB_G9.Controllers
         {
             ViewData["DSLop"] = "";
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult ThemLopPost()
+        {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("DanhSachLop", "Lop");
+            }
+            G9Service.Lop lop = new G9Service.Lop();
+            lop.TenLop = HttpContext.Request["txtTenLop"];
+            lop.KhoiLop = HttpContext.Request["cbKhoi"];
+            lop.CaHoc = HttpContext.Request["cbCaHoc"];
+            lop.SiSo = Int32.Parse(HttpContext.Request["txtSiSo"]);
+            lop.GhiChu = HttpContext.Request["txtGhiChu"];
+
+            G9Service.G9_Service ws = new G9Service.G9_Service();
+            bool result = ws.ThemLop(lop);
+
+            return (result==true) ? RedirectToAction("DanhSachLop", "Lop") : RedirectToAction("ThemLop", "Lop");
         }
     }
 }

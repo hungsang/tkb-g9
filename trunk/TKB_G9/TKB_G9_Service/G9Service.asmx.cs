@@ -60,7 +60,6 @@ namespace TKB_G9_Service
             var list = db.Lops.OrderBy(sort => sort.MaLop).ToList();
             return list;
         }
-
         [WebMethod]
         public Lop GetLop(int maLop)
         {
@@ -68,6 +67,23 @@ namespace TKB_G9_Service
             {
                 Lop lop = db.Lops.FirstOrDefault(l => l.MaLop == maLop);
                 return lop;
+            }
+        }
+        [WebMethod]
+        public bool ThemLop(Lop lop)
+        {
+            try
+            {
+                using (var db = new TKBEntities())
+                {
+                    db.AddToLops(lop);
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
         /******************TKB******************/
