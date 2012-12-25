@@ -95,6 +95,13 @@
     <Compile Include="Views\TKB\Sua.aspx.designer.cs">
       <DependentUpon>Sua.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\TKB\TaoMoi.aspx.cs">
+      <DependentUpon>TaoMoi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\TKB\TaoMoi.aspx.designer.cs">
+      <DependentUpon>TaoMoi.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Web References\G9Service\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,7 +131,9 @@
     <Content Include="Views\GiaoVien\XemThoiKhoaBieu.aspx" />
     <Content Include="Views\Lop\CapNhatLop.aspx" />
     <Content Include="Views\Lop\DanhSachLop.aspx" />
+    <Content Include="Views\Lop\Index.aspx" />
     <Content Include="Views\Lop\ThemLop.aspx" />
+    <Content Include="Views\Lop\ThemLopPost.aspx" />
     <Content Include="Views\Phong\CapNhatPhong.aspx" />
     <Content Include="Views\Phong\DanhSachPhong.aspx" />
     <Content Include="Views\Phong\ThemPhong.aspx" />
@@ -134,6 +143,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="Views\Shared\Welcome.aspx" />
+    <Content Include="Views\TKB\Index.aspx" />
     <Content Include="Views\TKB\SapXep.aspx" />
     <Content Include="TKB.ashx" />
     <None Include="Web References\G9Service\ChiTietTKB.datasource">
@@ -141,6 +151,7 @@
     </None>
     <None Include="Web References\G9Service\G9Service.disco" />
     <Content Include="Views\TKB\Sua.aspx" />
+    <Content Include="Views\TKB\TaoMoi.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

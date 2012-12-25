@@ -527,9 +527,14 @@ namespace TKB_G9_Service
         {
             using (var db = new TKBEntities())
             {
-                int maLop = (int)db.ThoiKhoaBieux.FirstOrDefault(p => p.MaTKB == maTKB).LopReference.EntityKey.EntityKeyValues[0].Value;
-                Lop lop = db.Lops.FirstOrDefault(p => p.MaLop == maLop);
-                return lop;
+                ThoiKhoaBieu tkb = db.ThoiKhoaBieux.FirstOrDefault(p => p.MaTKB == maTKB);
+                if (tkb.LopReference.EntityKey != null)
+                {
+                    int maLop = (int)tkb.LopReference.EntityKey.EntityKeyValues[0].Value;
+                    Lop lop = db.Lops.FirstOrDefault(p => p.MaLop == maLop);
+                    return lop;
+                }
+                return new Lop();
             }
         }
 
@@ -538,9 +543,14 @@ namespace TKB_G9_Service
         {
             using (var db = new TKBEntities())
             {
-                int maGV = (int)db.ChiTietTKBs.FirstOrDefault(p => p.MaChiTietTKB == maChiTiet).GiaoVienReference.EntityKey.EntityKeyValues[0].Value;
-                GiaoVien gv = db.GiaoViens.FirstOrDefault(p => p.MaGiaoVien == maGV);
-                return gv;
+                ChiTietTKB temp = db.ChiTietTKBs.FirstOrDefault(p => p.MaChiTietTKB == maChiTiet);
+                if (temp.GiaoVienReference.EntityKey != null)
+                {
+                    int maGV = (int)temp.GiaoVienReference.EntityKey.EntityKeyValues[0].Value;
+                    GiaoVien gv = db.GiaoViens.FirstOrDefault(p => p.MaGiaoVien == maGV);
+                    return gv;
+                }
+                return new GiaoVien();
             }
         }
 
@@ -549,9 +559,14 @@ namespace TKB_G9_Service
         {
             using (var db = new TKBEntities())
             {
-                int maMH = (int)db.ChiTietTKBs.FirstOrDefault(p => p.MaChiTietTKB == maChiTiet).MonHocReference.EntityKey.EntityKeyValues[0].Value;
-                MonHoc mh = db.MonHocs.FirstOrDefault(p => p.MaMonHoc == maMH);
-                return mh;
+                ChiTietTKB temp = db.ChiTietTKBs.FirstOrDefault(p => p.MaChiTietTKB == maChiTiet);
+                if (temp.MonHocReference.EntityKey != null)
+                {
+                    int maMonHoc = (int)temp.MonHocReference.EntityKey.EntityKeyValues[0].Value;
+                    MonHoc monHoc = db.MonHocs.FirstOrDefault(p => p.MaMonHoc == maMonHoc);
+                    return monHoc;
+                }
+                return new MonHoc();
             }
         }
 
@@ -560,9 +575,14 @@ namespace TKB_G9_Service
         {
             using (var db = new TKBEntities())
             {
-                int maPhong = (int)db.ChiTietTKBs.FirstOrDefault(p => p.MaChiTietTKB == maChiTiet).PhongReference.EntityKey.EntityKeyValues[0].Value;
-                Phong phong = db.Phongs.FirstOrDefault(p => p.MaPhong == maPhong);
-                return phong;
+                 ChiTietTKB temp = db.ChiTietTKBs.FirstOrDefault(p => p.MaChiTietTKB == maChiTiet);
+                 if (temp.PhongReference.EntityKey != null)
+                 {
+                     int maPhong = (int)temp.PhongReference.EntityKey.EntityKeyValues[0].Value;
+                     Phong phong = db.Phongs.FirstOrDefault(p => p.MaPhong == maPhong);
+                     return phong;
+                 }
+                 return new Phong();
             }
         }
 
