@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <link rel="stylesheet" type="text/css" href="<%=Url.Content("~/Content/tkbStyle.css")%>" />
 <div class="detailrow">
         <span class="navheader"><a href="#">Quản lý</a> / <a href="<%=Url.Content("~/TKB/SapXep") %>">
             Sắp xếp TKB</a> </span>

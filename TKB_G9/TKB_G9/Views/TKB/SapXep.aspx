@@ -13,7 +13,8 @@
         </p>
         <p class="itemsummary" style="line-height: 200%">
             <%= ViewData["menuLop"] %>
-            <% using (Html.BeginForm("SapXep", "TKB", FormMethod.Post)) { %>
+            <% using (Html.BeginForm("SapXep", "TKB", FormMethod.Post))
+               { %>
             <%= ViewData["NamHoc"]%>
             <%= ViewData["dsLop"]%>
             <% } %>
