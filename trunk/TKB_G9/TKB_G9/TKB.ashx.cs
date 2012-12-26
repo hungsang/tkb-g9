@@ -195,7 +195,7 @@ namespace TKB_G9
                 int maGiaoVien = Int32.Parse(context.Request.QueryString["maGiaoVien"]);
                 int maPhong = Int32.Parse(context.Request.QueryString["maPhong"]);
                 G9Service.G9_Service sv = new G9Service.G9_Service();
-                string success = sv.CheckSaveTKB(maTKB, thu, tiet, maMonHoc, maGiaoVien, maPhong);
+                string success = sv.CheckSaveTKB(maTKB, thu-2, tiet-1, maMonHoc, maGiaoVien, maPhong);
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
 
                 string result = serializer.Serialize(success);
