@@ -78,6 +78,7 @@
           <Property Name="DienThoai" Type="nvarchar" MaxLength="20" />
           <Property Name="Email" Type="nvarchar" MaxLength="200" />
           <Property Name="MaMonHoc" Type="int" />
+          <Property Name="TenTK" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="LoaiMonHoc">
           <Key>
@@ -259,13 +260,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-      warning 6013: The table/view 'TKB_G9.dbo.QuyDinh' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-      
-      <EntityType Name="QuyDinh">
-        <Property Name="TongSoTietSang" Type="int" />
-        <Property Name="TongSoTietChieu" Type="int" />
-      </EntityType>-->
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -344,6 +338,7 @@
           <Property Type="String" Name="Email" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ChiTietTKBs" Relationship="TKBModel.FK_ChiTietTKB_GiaoVien" FromRole="GiaoVien" ToRole="ChiTietTKB" />
           <NavigationProperty Name="MonHoc" Relationship="TKBModel.FK_GiaoVien_MonHoc" FromRole="GiaoVien" ToRole="MonHoc" />
+          <Property Type="String" Name="TenTK" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="LoaiMonHoc">
           <Key>
@@ -480,6 +475,7 @@
           <EntitySetMapping Name="GiaoViens">
             <EntityTypeMapping TypeName="TKBModel.GiaoVien">
               <MappingFragment StoreEntitySet="GiaoVien">
+                <ScalarProperty Name="TenTK" ColumnName="TenTK" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
                 <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />

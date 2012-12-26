@@ -20,7 +20,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TKBModel", "FK_TaiKhoan_LoaiTaiKhoan", "LoaiTaiKhoan", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TKB_G9_Service.LoaiTaiKhoan), "TaiKhoan", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TKB_G9_Service.TaiKhoan))]
 
 // Original file name:
-// Generation date: 12/24/2012 11:46:14 PM
+// Generation date: 12/26/2012 2:37:14 PM
 namespace TKB_G9_Service
 {
     
@@ -803,6 +803,33 @@ namespace TKB_G9_Service
         partial void OnEmailChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnEmailChanged();
+        /// <summary>
+        /// There are no comments for property TenTK in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string TenTK
+        {
+            get
+            {
+                return this._TenTK;
+            }
+            set
+            {
+                this.OnTenTKChanging(value);
+                this.ReportPropertyChanging("TenTK");
+                this._TenTK = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("TenTK");
+                this.OnTenTKChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _TenTK;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnTenTKChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnTenTKChanged();
         /// <summary>
         /// There are no comments for ChiTietTKBs in the schema.
         /// </summary>
