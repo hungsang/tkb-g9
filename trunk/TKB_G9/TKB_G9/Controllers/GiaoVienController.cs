@@ -65,20 +65,21 @@ namespace TKB_G9.Controllers
 
                 }
             }
-            foreach (var cur in list)
-            {
-                String checkin = "";
-                String tenLop = "";
-                if (sv.getLopByMaChiTietTKB(cur.MaChiTietTKB) != null)
-                    tenLop = sv.getLopByMaChiTietTKB(cur.MaChiTietTKB).TenLop;
-                String tenphong = "";
-                if (sv.getPhongByMaChiTietTKB(cur.MaChiTietTKB) != null)
-                    tenphong = sv.getPhongByMaChiTietTKB(cur.MaChiTietTKB).TenPhong;
+            else
+                foreach (var cur in list)
+                {
+                    String checkin = "";
+                    String tenLop = "";
+                    if (sv.getLopByMaChiTietTKB(cur.MaChiTietTKB) != null)
+                        tenLop = sv.getLopByMaChiTietTKB(cur.MaChiTietTKB).TenLop;
+                    String tenphong = "";
+                    if (sv.getPhongByMaChiTietTKB(cur.MaChiTietTKB) != null)
+                        tenphong = sv.getPhongByMaChiTietTKB(cur.MaChiTietTKB).TenPhong;
 
-                checkin = tenLop + "/" + tenphong;
-                temp = temp.Replace("&" + cur.TietBatDau + "&" + cur.Thu + "&", checkin);
-                
-            }
+                    checkin = tenLop + "/" + tenphong;
+                    temp = temp.Replace("&" + cur.Thu + "&" + cur.TietBatDau + "&", checkin);
+
+                }
             for (int j = 1; j < 13; j++)
             {
                 for (int i = 2; i < 9; i++)
@@ -87,7 +88,7 @@ namespace TKB_G9.Controllers
                 }
 
             }
-            
+
             return temp;
         }
         public ActionResult XemThoiKhoaBieuGiaoVien(String giaovien)
