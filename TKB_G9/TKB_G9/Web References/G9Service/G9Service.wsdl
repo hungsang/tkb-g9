@@ -705,6 +705,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="DeleteChiTietTKB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="maChiTiet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteChiTietTKBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteChiTietTKBResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="SaveChiTietTKB">
         <s:complexType>
           <s:sequence>
@@ -738,6 +752,25 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="CheckUpdateTKBResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckSaveTKB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="maTKB" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="thu" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="tiet" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maMH" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maGV" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maPhong" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckSaveTKBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckSaveTKBResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -959,6 +992,12 @@
   <wsdl:message name="NewTKBSoapOut">
     <wsdl:part name="parameters" element="tns:NewTKBResponse" />
   </wsdl:message>
+  <wsdl:message name="DeleteChiTietTKBSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteChiTietTKB" />
+  </wsdl:message>
+  <wsdl:message name="DeleteChiTietTKBSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteChiTietTKBResponse" />
+  </wsdl:message>
   <wsdl:message name="SaveChiTietTKBSoapIn">
     <wsdl:part name="parameters" element="tns:SaveChiTietTKB" />
   </wsdl:message>
@@ -970,6 +1009,12 @@
   </wsdl:message>
   <wsdl:message name="CheckUpdateTKBSoapOut">
     <wsdl:part name="parameters" element="tns:CheckUpdateTKBResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckSaveTKBSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckSaveTKB" />
+  </wsdl:message>
+  <wsdl:message name="CheckSaveTKBSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckSaveTKBResponse" />
   </wsdl:message>
   <wsdl:portType name="G9_ServiceSoap">
     <wsdl:operation name="HelloWorld">
@@ -1116,6 +1161,10 @@
       <wsdl:input message="tns:NewTKBSoapIn" />
       <wsdl:output message="tns:NewTKBSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="DeleteChiTietTKB">
+      <wsdl:input message="tns:DeleteChiTietTKBSoapIn" />
+      <wsdl:output message="tns:DeleteChiTietTKBSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="SaveChiTietTKB">
       <wsdl:input message="tns:SaveChiTietTKBSoapIn" />
       <wsdl:output message="tns:SaveChiTietTKBSoapOut" />
@@ -1123,6 +1172,10 @@
     <wsdl:operation name="CheckUpdateTKB">
       <wsdl:input message="tns:CheckUpdateTKBSoapIn" />
       <wsdl:output message="tns:CheckUpdateTKBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckSaveTKB">
+      <wsdl:input message="tns:CheckSaveTKBSoapIn" />
+      <wsdl:output message="tns:CheckSaveTKBSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="G9_ServiceSoap" type="tns:G9_ServiceSoap">
@@ -1451,6 +1504,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DeleteChiTietTKB">
+      <soap:operation soapAction="http://abc.com/DeleteChiTietTKB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SaveChiTietTKB">
       <soap:operation soapAction="http://abc.com/SaveChiTietTKB" style="document" />
       <wsdl:input>
@@ -1462,6 +1524,15 @@
     </wsdl:operation>
     <wsdl:operation name="CheckUpdateTKB">
       <soap:operation soapAction="http://abc.com/CheckUpdateTKB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckSaveTKB">
+      <soap:operation soapAction="http://abc.com/CheckSaveTKB" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1796,6 +1867,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DeleteChiTietTKB">
+      <soap12:operation soapAction="http://abc.com/DeleteChiTietTKB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SaveChiTietTKB">
       <soap12:operation soapAction="http://abc.com/SaveChiTietTKB" style="document" />
       <wsdl:input>
@@ -1807,6 +1887,15 @@
     </wsdl:operation>
     <wsdl:operation name="CheckUpdateTKB">
       <soap12:operation soapAction="http://abc.com/CheckUpdateTKB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckSaveTKB">
+      <soap12:operation soapAction="http://abc.com/CheckSaveTKB" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

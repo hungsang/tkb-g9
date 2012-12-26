@@ -22,6 +22,7 @@ function LoadChiTietTKBInfo(maChiTiet, thu, tiet) {
         strResult += "<div>Giáo viên: " + tenGV + "</div>";
         strResult += "<div>Phòng: " + (maPhong == null ? "Chưa có" : tenPhong) + "</div>";
         strResult += "<input type='submit' value='Thay đổi' onclick='LoadEditTKB(" + maChiTiet + "," + thu + "," + tiet + "," + maMH + "," + maGV + "," + maPhong + ")'/>";
+        strResult += "<input type='submit' value='Xóa' onclick='DeleteChiTietTKB(" + maChiTiet + ")'/>";
         strResult += "<input type='submit' value='Bỏ qua' onclick='CanCelEditTKB()'/>";
         $("#divInfo").html(strResult);
         return true;
@@ -29,6 +30,44 @@ function LoadChiTietTKBInfo(maChiTiet, thu, tiet) {
         NewTKB(maChiTiet, thu, tiet);
     }
     return false;
+}
+
+function DeleteChiTietTKB(maChiTiet) {
+    if (confirm("Bạn có chắc chắn muốn xóa chi tiết này không?")) {
+        ThucHienXoaChiTietTKB(maChiTiet);
+    }
+}
+
+function ThucHienXoaChiTietTKB(maChiTiet) {
+    var handlerPage = "/TKB.ashx";
+    var param = { method: "xoaChiTietTKB", maChiTiet: maChiTiet };
+
+    var isFailed = false;
+    var msgText = "";
+    var xhr = $.ajax({
+        type: "GET",
+        url: handlerPage,
+        data: param,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        timeout: 5000,
+        cache: false,
+        success: function (result) {
+            if (result != null) {
+                window.location = "Sua?lop=" + getURLParameter("lop") + "&namHoc=" + getURLParameter("namHoc");
+            } else {
+                alert("Không xóa được. Vui lòng thử lại sau.");
+            }
+        },
+        error: function () {
+            isFailed = true;
+            msgText = "<p>Cannot get data from server!</p>" + msgText;
+            $('#hdnErrorMsg').html(msgText);
+        }
+    });
+    if (isFailed) {
+        xhr.abort();
+    }
 }
 
 function LoadEditTKB(maChiTiet, thu, tiet, maMH, maGV, phong) {
@@ -294,6 +333,47 @@ function SaveTKB(maTKB, thu, tiet) {
     var maMH = $("#cbMonHoc").val();
     var maGV = $("#cbGiaoVien").val();
     var phong = $("#cbPhong").val();
+    KiemTraSaveTKB(maTKB, thu, tiet, maMH, maGV, phong);
+}
+
+function KiemTraSaveTKB(maTKB, thu, tiet, maMH, maGV, phong) {
+    var handlerPage = "/TKB.ashx";
+    var param = { method: "checkSaveTKB", maTKB: maTKB, thu: thu, tiet: tiet, maMonHoc: maMH, maGiaoVien: maGV, maPhong: phong };
+
+    var isFailed = false;
+    var msgText = "";
+    var xhr = $.ajax({
+        type: "GET",
+        url: handlerPage,
+        data: param,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        timeout: 5000,
+        cache: false,
+        success: function (result) {
+            if (result != null) {
+                if (result != "true") {
+                    alert(result);
+                }
+                else {
+                    ThucHienSaveTKB(maTKB, thu, tiet, maMH, maGV, phong);
+                }
+            } else {
+                alert("Không xử lý được. Vui lòng thử lại sau.");
+            }
+        },
+        error: function () {
+            isFailed = true;
+            msgText = "<p>Cannot get data from server!</p>" + msgText;
+            $('#hdnErrorMsg').html(msgText);
+        }
+    });
+    if (isFailed) {
+        xhr.abort();
+    }
+}
+
+function ThucHienSaveTKB(maTKB, thu, tiet, maMH, maGV, phong) {
     var handlerPage = "/TKB.ashx";
     var param = { method: "saveTKB", maTKB: maTKB, thu: thu, tiet: tiet, maMonHoc: maMH, maGiaoVien: maGV, maPhong: phong };
 
@@ -324,7 +404,17 @@ function SaveTKB(maTKB, thu, tiet) {
         xhr.abort();
     }
 }
+$(function () {
+    $('.checkallLop').click(function () {
+        $(this).parents('fieldset:eq(0)').find(':checkbox').attr('checked', this.checked);
+    });
+});
 
+function RedirectTaoMoi() {
+    var lop = $("input[type='radio']:checked").val();
+    var namHoc = $("#cbNamHoc").val();
+    window.location = "TaoMoi?lop=" + lop + "&namHoc=" + namHoc;
+}
 function getURLParameter(name) {
     return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;
 }

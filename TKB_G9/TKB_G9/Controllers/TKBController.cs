@@ -24,12 +24,17 @@ namespace TKB_G9.Controllers
             return View();
         }
 
-        public ActionResult SapXep()
+        public ActionResult SapXep(bool auto)
         {
+            string type = "";
+            if (auto)
+                type = "checkbox";
+            else
+                type = "radio";
             G9Service.G9_Service sv = new G9Service.G9_Service();
             string temp = "";
             temp += "Năm học";
-            temp += "<select name=\"namHoc\">";
+            temp += "<select name=\"namHoc\" id='cbNamHoc'>";
             for (int i = 0; i < 3; i++)
             {
                 temp += "<option value=\"" + (DateTime.Now.Year + i) + "\">" + (DateTime.Now.Year + i) + "</option>";
@@ -37,14 +42,16 @@ namespace TKB_G9.Controllers
             temp += "</select>";
             temp += "<br />";
             ViewData["NamHoc"] = temp;
-            temp = "<div>";
+            temp = "<fieldset>";
+            if (auto)
+                temp += "<div><input type='checkbox' class='checkallLop'/>Chọn hết</div><br/>";
             Lop[] dsLop = sv.GetDanhSachLop();
             foreach (Lop l in dsLop)
             {
-                temp += "<input type='checkbox' value='" + l.MaLop + "' id='chkLop" + l.MaLop + "' name='lops'/>" + l.TenLop + "<br/>";
+                temp += "<input type='" + type + "' value='" + l.MaLop + "' id='chkLop" + l.MaLop + "' name='lops'/>" + l.TenLop + "<br/>";
             }
-            temp += "</div>";
-            temp += "<input type=\"submit\" value=\"Sắp xếp\" />";
+            temp += "</fieldset>";
+                temp += "<input type=\"submit\" value=\"Sắp xếp\" "+(auto ? "" : "onclick='RedirectTaoMoi();return false;'")+"/>";
             ViewData["dsLop"] = temp;
             return View();
         }
@@ -177,7 +184,7 @@ namespace TKB_G9.Controllers
             int tietCuoi = Int32.Parse(ConfigurationManager.AppSettings["TongSoTietChieu"]) + tietDau;
             ViewData["TenLop"] = oLop.TenLop;
             temp += "<div id=\"div" + oLop.MaLop + "\" class=\"divTKB user-tlb\">";
-            temp += "<div><a href='Sua?lop=" + oLop.MaLop + "'&namHoc=" + namHoc + ">" + oLop.TenLop + "</a></div>";
+            temp += "<div><a href='Sua?lop=" + oLop.MaLop + "&namHoc=" + namHoc + "'>" + oLop.TenLop + "</a></div>";
             temp += "<div>Tổng số môn: $TongSoMon</div>";
             temp += "<div>Số môn chưa xếp: $TongSoConLai</div>";
             temp += "<ul style='list-style: none;'>";
@@ -219,7 +226,6 @@ namespace TKB_G9.Controllers
                 temp += "       </ul>";
                 temp += "   </li>";
             }
-            //onclick='NewTKB(" + tkb.MaTKB + "," + i + "," + j + ")'
             temp += "</ul>";
             temp += "</div>";
             ChiTietTKB[] chiTiets = sv.GetDanhSachChiTietTKB(tkb.MaTKB);
