@@ -19,9 +19,17 @@ namespace TKB_G9.Controllers
         [Group9Authorize]
         public ActionResult XemThoiKhoaBieu()
         {
-            G9Service.G9_Service sv = new G9Service.G9_Service();
 
-            var list = sv.getListTKBByGiaoVien(User.Identity.Name);
+            String gv = User.Identity.Name;
+            string temp = genTkb(gv);
+            ViewData["TKBGV"] = temp;
+            return View();
+        }
+
+        private static string genTkb(String gv)
+        {
+            G9Service.G9_Service sv = new G9Service.G9_Service();
+            var list = sv.getListTKBByGiaoVien(gv);
             string temp = "";
             temp += "        <table>";
             temp += "            <tr>";
@@ -34,63 +42,96 @@ namespace TKB_G9.Controllers
             temp += "                <th>Bảy</th>";
             temp += "                <th>Chủ nhật</th>";
             temp += "            </tr>";
-            for (int j = 0; j < 12; j++)
+            for (int j = 1; j < 13; j++)
             {
                 temp += "   <tr>";
                 temp += "       <td>Tiết " + j + "</td>";
-                for (int i = 0; i < 7; i++)
+                for (int i = 2; i < 9; i++)
                 {
 
                     temp += "       <td>&" + i + "&" + j + "&</td>";//tkb.MaTKB +
                 }
                 temp += "   </tr>";
             }
-
             temp += "</table>";
-            foreach (var cur in list)
+            if (list == null || list.Count() == 0)
             {
-                for (int j = 0; j < 12; j++)
+                for (int j = 1; j < 13; j++)
                 {
-                    for (int i = 0; i < 7; i++)
+                    for (int i = 2; i < 9; i++)
                     {
-                        String checkin = "";
-                        String tenLop = sv.getLopByMaChiTietTKB(cur.MaChiTietTKB).TenLop;
-                        String tenphong = sv.getPhongByMaChiTietTKB(cur.MaChiTietTKB).TenPhong;
-                        if (j >= cur.TietBatDau && j <= cur.TietKetThuc && cur.Thu == i)
-                        {
-                            checkin = tenLop + "/" + tenphong;
-                            temp = temp.Replace("&" + i + "&" + j+"&", checkin);
-                        }
-                        else
-                        {
-                            temp = temp.Replace("&" + i + "&" + j+"&", "");
-                        }
-                        //temp = temp.Replace("&" + i + "&" + j, "");
+                        temp = temp.Replace("&" + i + "&" + j + "&", "");
                     }
 
                 }
-
-                //ChiTietTKB[] chiTiets = sv.GetDanhSachChiTietTKB(tkb.MaTKB);
-
-                //foreach (ChiTietTKB chiTiet in chiTiets)
-                //{
-                //    ChiTietTKB oChiTiet = sv.GetChiTietTKB(chiTiet.MaChiTietTKB);
-                //    MonHoc mh = sv.GetMonHocFromTKB(oChiTiet.MaChiTietTKB);
-                //    temp = temp.Replace(String.Format("&{0}{1}{2}&", tkb.MaTKB, oChiTiet.Thu, oChiTiet.TietBatDau), mh.TenMonHoc);
-                //}
-
-                //for (int j = 0; j < 12; j++)
-                //{
-                //    for (int i = 0; i < 7; i++)
-                //    {
-                //        temp = temp.Replace(String.Format("&{0}{1}{2}&", tkb.MaTKB, i, j), "");
-                //    }
-                //}
             }
-            ViewData["TKBGV"] = temp;
-            return View();
-        }
+            foreach (var cur in list)
+            {
+                String checkin = "";
+                String tenLop = "";
+                if (sv.getLopByMaChiTietTKB(cur.MaChiTietTKB) != null)
+                    tenLop = sv.getLopByMaChiTietTKB(cur.MaChiTietTKB).TenLop;
+                String tenphong = "";
+                if (sv.getPhongByMaChiTietTKB(cur.MaChiTietTKB) != null)
+                    tenphong = sv.getPhongByMaChiTietTKB(cur.MaChiTietTKB).TenPhong;
 
+                checkin = tenLop + "/" + tenphong;
+                temp = temp.Replace("&" + cur.TietBatDau + "&" + cur.Thu + "&", checkin);
+                
+            }
+            for (int j = 1; j < 13; j++)
+            {
+                for (int i = 2; i < 9; i++)
+                {
+                    temp = temp.Replace("&" + i + "&" + j + "&", "");
+                }
+
+            }
+            
+            return temp;
+        }
+        public ActionResult XemThoiKhoaBieuGiaoVien(String giaovien)
+        {
+            try
+            {
+                String tmp = "<select id='cbbGiaoVien'>{0}</select>";
+                G9Service.G9_Service sv = new G9Service.G9_Service();
+                var lst = sv.GetDanhSachGiaoVien();
+                String tmpItem = "";
+                foreach (var cur in lst)
+                {
+                    String item = "<option value='{0}'>{1}</option>";
+                    item = String.Format(item, cur.MaGiaoVien, cur.TenGiaoVien);
+                    tmpItem += item;
+                }
+
+                tmp = String.Format(tmp, tmpItem);
+                ViewData["strCbbGiaoVien"] = tmp;
+
+                return View();
+            }
+            catch
+            {
+                return View("Error");
+            }
+        }
+        public String changeGiaoVienCbb(String giaovien)
+        {
+            try
+            {
+                if (giaovien != null)
+                {
+                    G9Service.G9_Service sv = new G9Service.G9_Service();
+                    String temp = genTkb(sv.GetGiaoVien(Convert.ToInt32(giaovien)).TenGiaoVien);
+                    return temp;
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
         public ActionResult DanhSachGiaoVien()
         {
             G9Service.G9_Service sv = new G9Service.G9_Service();
@@ -132,11 +173,10 @@ namespace TKB_G9.Controllers
             }
             temp += "</ul>";
             temp += "</div><br />";
-            
+
             ViewData["DSGiaoVien"] = temp;
             return View();
         }
-
         public ActionResult ThemGiaoVien()
         {
             G9Service.G9_Service ws = new G9Service.G9_Service();
@@ -180,7 +220,6 @@ namespace TKB_G9.Controllers
 
             return View();
         }
-
         [HttpPost]
         public ActionResult CapNhatGiaoVienPost()
         {

@@ -129,6 +129,7 @@
     <Content Include="Views\GiaoVien\DanhSachGiaoVien.aspx" />
     <Content Include="Views\GiaoVien\ThemGiaoVien.aspx" />
     <Content Include="Views\GiaoVien\XemThoiKhoaBieu.aspx" />
+    <Content Include="Views\GiaoVien\XemThoiKhoaBieuGiaoVien.aspx" />
     <Content Include="Views\Lop\CapNhatLop.aspx" />
     <Content Include="Views\Lop\DanhSachLop.aspx" />
     <Content Include="Views\Lop\Index.aspx" />
@@ -181,6 +182,9 @@
     <Content Include="Views\Web.config" />
     <None Include="Web References\G9Service\G9Service.wsdl" />
     <None Include="Web References\G9Service\GiaoVien.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\G9Service\LoaiTaiKhoan.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\G9Service\Lop.datasource">

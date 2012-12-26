@@ -15,12 +15,35 @@ namespace TKB_G9
         [Group9Authorize]
         public void OnAuthorization(AuthorizationContext filterContext)
         {
-            
-            G9_Service sv = new G9_Service();
-            var user = sv.getTaiKhoanByUserName(HttpContext.Current.User.Identity.Name);
-            //Kiem tra quyen Giao Vien
-            if (user==null || !(user.MaTaiKhoan == 2))       // Dựa trên role có sẵn trong webconfig or dựa name method để phân quyền
+
+            try
+            {
+                //G9_Service sv = new G9_Service();
+                //var userType = sv.getLoaiTaiKhoanByUserName(HttpContext.Current.User.Identity.Name);
+                ////Kiem tra quyen Giao Vien
+                //bool flag = false;
+                //if (userType != null)
+                //{
+                //    if (userType.MaLoaiTK == 1)       // Dựa trên role có sẵn trong webconfig or dựa name method để phân quyền
+                //    {
+                //        flag = true;
+                //    }
+
+                //    if (userType.MaLoaiTK == 2 && filterContext.ActionDescriptor.ControllerDescriptor.ControllerName == "GiaoVien")
+                //    {
+                //        flag = true;
+                //    }
+                //}
+                //if (!flag)
+                //{
+                //    filterContext.Result = new RedirectResult("../Home/Index");
+
+                //}
+            }
+            catch
+            {
                 filterContext.Result = new RedirectResult("../Home/Index");
+            }
         }
     }
 

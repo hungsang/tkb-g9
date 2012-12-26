@@ -25,6 +25,7 @@ namespace TKB_G9_Service
         }
 
         /****************TÀI KHOẢN**************/
+
         [WebMethod]
         public TaiKhoan getTaiKhoanByUserName(String userName)
         {
@@ -33,6 +34,21 @@ namespace TKB_G9_Service
                 TKBEntities db = new TKBEntities();
                 var result = db.TaiKhoans.Where(us => us.TenTaiKhoan == userName).FirstOrDefault();
                 return result;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        [WebMethod]
+        public LoaiTaiKhoan getLoaiTaiKhoanByUserName(String userName)
+        {
+            try
+            {
+                TKBEntities db = new TKBEntities();
+                var result = db.TaiKhoans.Where(us => us.TenTaiKhoan == userName).FirstOrDefault();
+                result.LoaiTaiKhoanReference.Load();
+                return result.LoaiTaiKhoan;
             }
             catch
             {
@@ -131,9 +147,16 @@ namespace TKB_G9_Service
         [WebMethod]
         public List<GiaoVien> GetDanhSachGiaoVien()
         {
-            TKBEntities db = new TKBEntities();
-            var list = db.GiaoViens.OrderBy(sort => sort.TenGiaoVien).ToList();
-            return list;
+            try
+            {
+                TKBEntities db = new TKBEntities();
+                var list = db.GiaoViens.OrderBy(sort => sort.TenGiaoVien).ToList();
+                return list;
+            }
+            catch
+            {
+                return null;
+            }
         }
         [WebMethod]
         public List<GiaoVien> GetDanhSachGiaoVienTheoMonHoc(int maMonHoc)
@@ -339,7 +362,7 @@ namespace TKB_G9_Service
                 {
                     cur.GiaoVienReference.Load();
                 }
-                var result = db.ChiTietTKBs.Where(ct => ct.GiaoVien.TenGiaoVien == tenTaiKhoan).ToList();
+                var result = db.ChiTietTKBs.Where(ct => ct.GiaoVien.TenTK == tenTaiKhoan).ToList();
                 return result;
             }
             catch
