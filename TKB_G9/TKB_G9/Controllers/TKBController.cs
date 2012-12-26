@@ -21,6 +21,21 @@ namespace TKB_G9.Controllers
 
         public ActionResult Lop()
         {
+            //gv.MaGiaoVien = Int32.Parse(HttpContext.Request["txtMaGiaoVien"]);
+            string namHoc = HttpContext.Request["namHoc"];
+            ViewData["Nam"] = namHoc;
+            G9Service.G9_Service sv = new G9Service.G9_Service();
+            string temp = "";
+            temp += "Năm học";
+            temp += "<select name=\"namHoc\" id='cbNamHoc'>";
+            for (int i = 0; i < 3; i++)
+            {
+                temp += "<option value=\"" + (DateTime.Now.Year + i) + "\">" + (DateTime.Now.Year + i) + "</option>";
+            }
+            temp += "</select>";
+            temp += "";
+            ViewData["NamHoc"] = temp;
+            ViewData["TKB"] = XemTKB(namHoc);
             return View();
         }
 
