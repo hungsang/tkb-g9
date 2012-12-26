@@ -694,9 +694,9 @@ namespace TKB_G9_Service
                         foreach (ChiTietTKB ct in lstChiTiet)
                         {
                             int maMonHoc = (int)ct.MonHocReference.EntityKey.EntityKeyValues[0].Value;
-                            int maGiaoVien =  (int)ct.GiaoVienReference.EntityKey.EntityKeyValues[0].Value;
+                            int maGiaoVien = (int)ct.GiaoVienReference.EntityKey.EntityKeyValues[0].Value;
                             arrTKB[(int)ct.Thu - 2][(int)ct.TietBatDau - 1].MonHoc = db.MonHocs.FirstOrDefault(p => p.MaMonHoc == maMonHoc);
-                            arrTKB[(int)ct.Thu - 2][(int)ct.TietBatDau - 1].GiaoVien = db.GiaoViens.FirstOrDefault(p => p.MaGiaoVien ==maGiaoVien);
+                            arrTKB[(int)ct.Thu - 2][(int)ct.TietBatDau - 1].GiaoVien = db.GiaoViens.FirstOrDefault(p => p.MaGiaoVien == maGiaoVien);
                         }
                         MonHoc mh = db.MonHocs.FirstOrDefault(o => o.MaMonHoc == maMH);
                         if (KiemTraMonHoc(arrTKB, mh, (int)chiTiet.Thu, (int)chiTiet.TietBatDau))
@@ -863,7 +863,20 @@ namespace TKB_G9_Service
                 }
             }
             if (dem < mh.SoTiet && (tiet < 2 || (tiet >= 2 && (arrTKB[thu][tiet - 2].MonHoc == null || (arrTKB[thu][tiet - 2].MonHoc != null && arrTKB[thu][tiet - 2].MonHoc.MaMonHoc != mh.MaMonHoc)))))
-                return true;
+            {
+                try
+                {
+                    if (tiet >= 9 || tiet < 2 || (tiet >= 2 && tiet < 9 && (arrTKB[thu][tiet + 2].MonHoc == null || (arrTKB[thu][tiet + 2].MonHoc != null && arrTKB[thu][tiet + 2].MonHoc.MaMonHoc != mh.MaMonHoc))))
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+                return false;
+            }
             return false;
         }
 
@@ -890,10 +903,13 @@ namespace TKB_G9_Service
                 {
                     if (tiet < 2 || (tiet >= 2 && (arrTKB[thu][tiet - 2].MonHoc == null || (arrTKB[thu][tiet - 2].MonHoc != null && arrTKB[thu][tiet - 2].MonHoc.MaMonHoc != maMonHoc))))
                     {
-                        if (KiemTraTKBLopKhac(lstTKB, dsGiaoVien[i], thu, tiet, maMonHoc))
+                        if (tiet >= 9 || tiet < 2 || (tiet >= 2 && tiet < 9 && (arrTKB[thu][tiet + 2].MonHoc == null || (arrTKB[thu][tiet + 2].MonHoc != null && arrTKB[thu][tiet + 2].MonHoc.MaMonHoc != maMonHoc))))
                         {
-                            giaoVien = dsGiaoVien[i];
-                            return true;
+                            if (KiemTraTKBLopKhac(lstTKB, dsGiaoVien[i], thu, tiet, maMonHoc))
+                            {
+                                giaoVien = dsGiaoVien[i];
+                                return true;
+                            }
                         }
                     }
                 }
