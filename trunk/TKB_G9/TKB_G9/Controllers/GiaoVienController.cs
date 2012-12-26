@@ -122,7 +122,7 @@ namespace TKB_G9.Controllers
                 if (giaovien != null)
                 {
                     G9Service.G9_Service sv = new G9Service.G9_Service();
-                    String temp = genTkb(sv.GetGiaoVien(Convert.ToInt32(giaovien)).TenGiaoVien);
+                    String temp = genTkb(sv.GetGiaoVien(Convert.ToInt32(giaovien)).TenTK);
                     return temp;
                 }
                 return null;

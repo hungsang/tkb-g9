@@ -2208,6 +2208,8 @@ namespace TKB_G9.G9Service {
         
         private string emailField;
         
+        private string tenTKField;
+        
         private EntityReferenceOfMonHoc monHocReferenceField;
         
         /// <remarks/>
@@ -2278,6 +2280,16 @@ namespace TKB_G9.G9Service {
             }
             set {
                 this.emailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string TenTK {
+            get {
+                return this.tenTKField;
+            }
+            set {
+                this.tenTKField = value;
             }
         }
         
@@ -3341,7 +3353,7 @@ namespace TKB_G9.G9Service {
     public delegate void DeleteChiTietTKBCompletedEventHandler(object sender, DeleteChiTietTKBCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DeleteChiTietTKBCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -3363,7 +3375,7 @@ namespace TKB_G9.G9Service {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
     public delegate void SaveChiTietTKBCompletedEventHandler(object sender, SaveChiTietTKBCompletedEventArgs e);
     
     /// <remarks/>
@@ -3415,11 +3427,11 @@ namespace TKB_G9.G9Service {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
     public delegate void CheckSaveTKBCompletedEventHandler(object sender, CheckSaveTKBCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class CheckSaveTKBCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
