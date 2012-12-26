@@ -104,9 +104,13 @@ namespace TKB_G9.G9Service {
         
         private System.Threading.SendOrPostCallback NewTKBOperationCompleted;
         
+        private System.Threading.SendOrPostCallback DeleteChiTietTKBOperationCompleted;
+        
         private System.Threading.SendOrPostCallback SaveChiTietTKBOperationCompleted;
         
         private System.Threading.SendOrPostCallback CheckUpdateTKBOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CheckSaveTKBOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -255,10 +259,16 @@ namespace TKB_G9.G9Service {
         public event NewTKBCompletedEventHandler NewTKBCompleted;
         
         /// <remarks/>
+        public event DeleteChiTietTKBCompletedEventHandler DeleteChiTietTKBCompleted;
+        
+        /// <remarks/>
         public event SaveChiTietTKBCompletedEventHandler SaveChiTietTKBCompleted;
         
         /// <remarks/>
         public event CheckUpdateTKBCompletedEventHandler CheckUpdateTKBCompleted;
+        
+        /// <remarks/>
+        public event CheckSaveTKBCompletedEventHandler CheckSaveTKBCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/HelloWorld", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1317,6 +1327,35 @@ namespace TKB_G9.G9Service {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/DeleteChiTietTKB", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool DeleteChiTietTKB(int maChiTiet) {
+            object[] results = this.Invoke("DeleteChiTietTKB", new object[] {
+                        maChiTiet});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DeleteChiTietTKBAsync(int maChiTiet) {
+            this.DeleteChiTietTKBAsync(maChiTiet, null);
+        }
+        
+        /// <remarks/>
+        public void DeleteChiTietTKBAsync(int maChiTiet, object userState) {
+            if ((this.DeleteChiTietTKBOperationCompleted == null)) {
+                this.DeleteChiTietTKBOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteChiTietTKBOperationCompleted);
+            }
+            this.InvokeAsync("DeleteChiTietTKB", new object[] {
+                        maChiTiet}, this.DeleteChiTietTKBOperationCompleted, userState);
+        }
+        
+        private void OnDeleteChiTietTKBOperationCompleted(object arg) {
+            if ((this.DeleteChiTietTKBCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteChiTietTKBCompleted(this, new DeleteChiTietTKBCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/SaveChiTietTKB", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public bool SaveChiTietTKB(int maTKB, int thu, int tiet, int maMH, int maGV, int maPhong) {
             object[] results = this.Invoke("SaveChiTietTKB", new object[] {
@@ -1387,6 +1426,45 @@ namespace TKB_G9.G9Service {
             if ((this.CheckUpdateTKBCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.CheckUpdateTKBCompleted(this, new CheckUpdateTKBCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/CheckSaveTKB", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string CheckSaveTKB(int maTKB, int thu, int tiet, int maMH, int maGV, int maPhong) {
+            object[] results = this.Invoke("CheckSaveTKB", new object[] {
+                        maTKB,
+                        thu,
+                        tiet,
+                        maMH,
+                        maGV,
+                        maPhong});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CheckSaveTKBAsync(int maTKB, int thu, int tiet, int maMH, int maGV, int maPhong) {
+            this.CheckSaveTKBAsync(maTKB, thu, tiet, maMH, maGV, maPhong, null);
+        }
+        
+        /// <remarks/>
+        public void CheckSaveTKBAsync(int maTKB, int thu, int tiet, int maMH, int maGV, int maPhong, object userState) {
+            if ((this.CheckSaveTKBOperationCompleted == null)) {
+                this.CheckSaveTKBOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCheckSaveTKBOperationCompleted);
+            }
+            this.InvokeAsync("CheckSaveTKB", new object[] {
+                        maTKB,
+                        thu,
+                        tiet,
+                        maMH,
+                        maGV,
+                        maPhong}, this.CheckSaveTKBOperationCompleted, userState);
+        }
+        
+        private void OnCheckSaveTKBOperationCompleted(object arg) {
+            if ((this.CheckSaveTKBCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CheckSaveTKBCompleted(this, new CheckSaveTKBCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3165,6 +3243,32 @@ namespace TKB_G9.G9Service {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void DeleteChiTietTKBCompletedEventHandler(object sender, DeleteChiTietTKBCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DeleteChiTietTKBCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DeleteChiTietTKBCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     public delegate void SaveChiTietTKBCompletedEventHandler(object sender, SaveChiTietTKBCompletedEventArgs e);
     
     /// <remarks/>
@@ -3202,6 +3306,32 @@ namespace TKB_G9.G9Service {
         private object[] results;
         
         internal CheckUpdateTKBCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void CheckSaveTKBCompletedEventHandler(object sender, CheckSaveTKBCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CheckSaveTKBCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CheckSaveTKBCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
