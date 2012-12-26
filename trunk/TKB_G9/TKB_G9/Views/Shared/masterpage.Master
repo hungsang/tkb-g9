@@ -22,9 +22,28 @@
 <body>
     <!-- HEADER -->
     <div id="header">
-        <div class="top">
+
+        <!--[if !IE]> -->
+            <object type="application/x-shockwave-flash" data="../../image/banner_header.swf"
+                width="995" height="193">
+                <!-- <![endif]-->
+                <!--[if IE]>
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
+width="995" height="193">
+<param name="movie" value="../../image/banner_header.swf"" />
+<!-->
+                <!---->
+                <param name="loop" value="true" />
+                <param name="menu" value="false" />
+                <p>
+                    This is alternative content.</p>
+            </object>
+            <!-- <![endif]-->
+        <!--<div class="top">
             <%--<a href="#" target="_blank" title="Trang chủ">Đăng ký</a> | <a href="#" target="_blank"
                 title="Giới thiệu">Đăng nhập</a>--%>
+            
         </div>
         <div class="content" id="featured">
             <ul class="ui-tabs-nav ui-tabs-hide ">
@@ -32,24 +51,24 @@
                 <li class="" id="nav-fragment-2"><a href="#fragment-2">2</a></li>
                 <li class="" id="nav-fragment-3"><a href="#fragment-3">2</a></li>
             </ul>
-            <div id="fragment-1" class="ui-tabs-panel" style="">
-                <h1 class="larger" style="color:#4B4B4B">
+            <!-- <div id="fragment-1" class="ui-tabs-panel" style="">
+                <h1 class="larger" style="color: #4B4B4B">
                     Website Trường THPT Windy</h1>
                 <h3>
-                    </h3>
+                </h3>
             </div>
-            <div style="" id="fragment-2" class="ui-tabs-panel ui-tabs-hide">
-                <h1 class="larger" style="color:#4B4B4B">
+           <div style="" id="fragment-2" class="ui-tabs-panel ui-tabs-hide">
+                <h1 class="larger" style="color: #4B4B4B">
                     Website Trường THPT Windy</h1>
                 <h3>
-                    </h3>
+                </h3>
             </div>
             <div style="" id="fragment-3" class="ui-tabs-panel ui-tabs-hide">
-                <h1 class="larger" style="color:#4B4B4B">
+                <h1 class="larger" style="color: #4B4B4B">
                     Website Trường THPT Windy</h1>
                 <h3>
-                    </h3>
-            </div>
+                </h3>
+            </div>-->
         </div>
     </div>
     <!-- END HEADER -->
@@ -76,7 +95,8 @@
                         <li><a href="<%=Url.Content("~/GiaoVien/DanhSachGiaoVien") %>">Quản lý giáo viên</a></li>
                         <li><a href="<%=Url.Content("~/Phong/DanhSachPhong") %>">Quản lý phòng</a></li>
                         <li><a href="<%=Url.Content("~/TKB/Lop?namhoc=2012") %>">Xem TKB theo lớp</a></li>
-                        <li><a href="<%=Url.Content("~/GiaoVien/XemThoiKhoaBieuGiaoVien") %>">Xem TKB theo giáo viên</a></li>
+                        <li><a href="<%=Url.Content("~/GiaoVien/XemThoiKhoaBieuGiaoVien") %>">Xem TKB theo giáo
+                            viên</a></li>
                         <li><a href="<%=Url.Content("~/TKB/SapXep?auto=true") %>">Xếp TKB tự động</a></li>
                         <li><a href="<%=Url.Content("~/TKB/SapXep?auto=false") %>">Xếp TKB bằng tay</a></li>
                     </ul>
@@ -93,7 +113,6 @@
             <br />
             <br />
             <div class="lastnews" id="frameLogin">
-               
             </div>
             <%--<div class="lastnews">
                 <h1 style="margin-bottom: 20px;">
@@ -139,7 +158,7 @@
             </div>--%>
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
-       <%-- <div id="template">
+        <%-- <div id="template">
             <h1>
                 <a href="#" title="Đối tác">Đối tác</a></h1>
             <div class="topborder">
@@ -151,14 +170,14 @@
         </div>--%>
         <div id="footer">
             Copyright ©2012
-            <br/>
+            <br />
             Địa chỉ: 123 Middle of Nowhere
-            <br/>
+            <br />
             Điện thoại: 1900 1560 - Fax: 00-1234-5678
-            <br/>
+            <br />
             Email: support@windy.com.vn
         </div>
-        <br/>
+        <br />
     </div>
     <div id="mainfooter" style="height: 30px; text-indent: 10px;">
     </div>
