@@ -75,7 +75,7 @@
                         <li><a href="<%=Url.Content("~/Lop/DanhSachLop") %>">Quản lý lớp</a></li>
                         <li><a href="<%=Url.Content("~/GiaoVien/DanhSachGiaoVien") %>">Quản lý giáo viên</a></li>
                         <li><a href="<%=Url.Content("~/Phong/DanhSachPhong") %>">Quản lý phòng</a></li>
-                        <li><a href="<%=Url.Content("~/TKB/Lop") %>">Xem TKB theo lớp</a></li>
+                        <li><a href="<%=Url.Content("~/TKB/Lop?namhoc=2012") %>">Xem TKB theo lớp</a></li>
                         <li><a href="#">Xem TKB theo giáo viên</a></li>
                         <li><a href="<%=Url.Content("~/TKB/SapXep?auto=true") %>">Xếp TKB tự động</a></li>
                         <li><a href="<%=Url.Content("~/TKB/SapXep?auto=false") %>">Xếp TKB bằng tay</a></li>

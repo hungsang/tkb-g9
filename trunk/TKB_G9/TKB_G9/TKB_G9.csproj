@@ -144,6 +144,7 @@
     </None>
     <Content Include="Views\Shared\Welcome.aspx" />
     <Content Include="Views\TKB\Index.aspx" />
+    <Content Include="Views\TKB\Lop.aspx" />
     <Content Include="Views\TKB\SapXep.aspx" />
     <Content Include="TKB.ashx" />
     <None Include="Web References\G9Service\ChiTietTKB.datasource">
