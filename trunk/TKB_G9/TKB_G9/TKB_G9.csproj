@@ -143,6 +143,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="Views\Shared\Warning.aspx" />
     <Content Include="Views\Shared\Welcome.aspx" />
     <Content Include="Views\TKB\Index.aspx" />
     <Content Include="Views\TKB\Lop.aspx" />
@@ -191,6 +192,9 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\G9Service\MonHoc.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\G9Service\PermissionUser.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\G9Service\Phong.datasource">

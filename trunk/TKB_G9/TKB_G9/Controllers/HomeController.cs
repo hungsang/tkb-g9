@@ -42,6 +42,10 @@ namespace TKB_G9.Controllers
         {
             FormsAuthentication.SignOut();
         }
+        public ActionResult Warning()
+        {
+            return View("Warning");
+        }
 
 
     }

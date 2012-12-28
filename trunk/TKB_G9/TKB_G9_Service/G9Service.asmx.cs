@@ -25,7 +25,27 @@ namespace TKB_G9_Service
         }
 
         /****************TÀI KHOẢN**************/
-
+        [WebMethod]
+        public List<PermissionUser> getListPermissionByRole(int idRole)
+        {
+            try{
+                TKBEntities db = new TKBEntities();
+                foreach( var cur in db.LoaiTaiKhoans)
+                {
+                    if (cur.MaLoaiTK == idRole)
+                    {
+                        cur.PermissionUsers.Load();
+                        var result = cur.PermissionUsers;
+                        return result.ToList();
+                    }                 
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
         [WebMethod]
         public TaiKhoan getTaiKhoanByUserName(String userName)
         {
