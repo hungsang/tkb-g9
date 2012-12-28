@@ -91,6 +91,7 @@ namespace TKB_G9.Controllers
 
             return temp;
         }
+        [Group9Authorize]
         public ActionResult XemThoiKhoaBieuGiaoVien(String giaovien)
         {
             try
@@ -116,6 +117,7 @@ namespace TKB_G9.Controllers
                 return View("Error");
             }
         }
+        [Group9Authorize]
         public String changeGiaoVienCbb(String giaovien)
         {
             try
@@ -133,6 +135,7 @@ namespace TKB_G9.Controllers
                 return null;
             }
         }
+        [Group9Authorize]
         public ActionResult DanhSachGiaoVien()
         {
             G9Service.G9_Service sv = new G9Service.G9_Service();
@@ -178,6 +181,7 @@ namespace TKB_G9.Controllers
             ViewData["DSGiaoVien"] = temp;
             return View();
         }
+        [Group9Authorize]
         public ActionResult ThemGiaoVien()
         {
             G9Service.G9_Service ws = new G9Service.G9_Service();
@@ -189,7 +193,7 @@ namespace TKB_G9.Controllers
             }
             ViewData["DSGiaoVien"] = "";
             return View();
-        }
+        }        
         public ActionResult CapNhatGiaoVien()
         {
             if (!HttpContext.User.Identity.IsAuthenticated)
@@ -221,7 +225,7 @@ namespace TKB_G9.Controllers
 
             return View();
         }
-        [HttpPost]
+        [HttpPost,Group9Authorize]
         public ActionResult CapNhatGiaoVienPost()
         {
             if (!HttpContext.User.Identity.IsAuthenticated)
@@ -242,7 +246,7 @@ namespace TKB_G9.Controllers
             return (result == true) ? RedirectToAction("DanhSachGiaoVien", "GiaoVien") : RedirectToAction("CapNhatGiaoVien", "GiaoVien");
         }
 
-        [HttpPost]
+        [HttpPost,Group9Authorize]
         public ActionResult ThemGiaoVienPost()
         {
             if (!HttpContext.User.Identity.IsAuthenticated)
@@ -261,7 +265,7 @@ namespace TKB_G9.Controllers
 
             return (result == true) ? RedirectToAction("DanhSachGiaoVien", "GiaoVien") : RedirectToAction("ThemGiaoVien", "GiaoVien");
         }
-
+        [Group9Authorize]
         public ActionResult XoaGiaoVien()
         {
             if (!HttpContext.User.Identity.IsAuthenticated)

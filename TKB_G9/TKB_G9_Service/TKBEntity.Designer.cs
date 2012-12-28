@@ -18,9 +18,10 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TKBModel", "FK_Phong_LoaiPhong", "LoaiPhong", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TKB_G9_Service.LoaiPhong), "Phong", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TKB_G9_Service.Phong))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TKBModel", "FK_ThoiKhoaBieu_Lop", "Lop", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TKB_G9_Service.Lop), "ThoiKhoaBieu", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TKB_G9_Service.ThoiKhoaBieu))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TKBModel", "FK_TaiKhoan_LoaiTaiKhoan", "LoaiTaiKhoan", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TKB_G9_Service.LoaiTaiKhoan), "TaiKhoan", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TKB_G9_Service.TaiKhoan))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TKBModel", "TaiKhoan_PermissionUser", "PermissionUser", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TKB_G9_Service.PermissionUser), "LoaiTaiKhoan", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TKB_G9_Service.LoaiTaiKhoan))]
 
 // Original file name:
-// Generation date: 12/26/2012 2:37:14 PM
+// Generation date: 12/28/2012 9:32:19 AM
 namespace TKB_G9_Service
 {
     
@@ -225,6 +226,23 @@ namespace TKB_G9_Service
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         private global::System.Data.Objects.ObjectQuery<TaiKhoan> _TaiKhoans;
         /// <summary>
+        /// There are no comments for PermissionUsers in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Data.Objects.ObjectQuery<PermissionUser> PermissionUsers
+        {
+            get
+            {
+                if ((this._PermissionUsers == null))
+                {
+                    this._PermissionUsers = base.CreateQuery<PermissionUser>("[PermissionUsers]");
+                }
+                return this._PermissionUsers;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Data.Objects.ObjectQuery<PermissionUser> _PermissionUsers;
+        /// <summary>
         /// There are no comments for ChiTietTKBs in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
@@ -303,6 +321,14 @@ namespace TKB_G9_Service
         public void AddToTaiKhoans(TaiKhoan taiKhoan)
         {
             base.AddObject("TaiKhoans", taiKhoan);
+        }
+        /// <summary>
+        /// There are no comments for PermissionUsers in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public void AddToPermissionUsers(PermissionUser permissionUser)
+        {
+            base.AddObject("PermissionUsers", permissionUser);
         }
     }
     /// <summary>
@@ -2020,6 +2046,28 @@ namespace TKB_G9_Service
                 }
             }
         }
+        /// <summary>
+        /// There are no comments for PermissionUsers in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TKBModel", "TaiKhoan_PermissionUser", "PermissionUser")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<PermissionUser> PermissionUsers
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<PermissionUser>("TKBModel.TaiKhoan_PermissionUser", "PermissionUser");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PermissionUser>("TKBModel.TaiKhoan_PermissionUser", "PermissionUser", value);
+                }
+            }
+        }
     }
     /// <summary>
     /// There are no comments for TKBModel.TaiKhoan in the schema.
@@ -2160,6 +2208,132 @@ namespace TKB_G9_Service
                 if ((value != null))
                 {
                     ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<LoaiTaiKhoan>("TKBModel.FK_TaiKhoan_LoaiTaiKhoan", "LoaiTaiKhoan", value);
+                }
+            }
+        }
+    }
+    /// <summary>
+    /// There are no comments for TKBModel.PermissionUser in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// ControllerName
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="TKBModel", Name="PermissionUser")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class PermissionUser : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// Create a new PermissionUser object.
+        /// </summary>
+        /// <param name="controllerName">Initial value of ControllerName.</param>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public static PermissionUser CreatePermissionUser(string controllerName)
+        {
+            PermissionUser permissionUser = new PermissionUser();
+            permissionUser.ControllerName = controllerName;
+            return permissionUser;
+        }
+        /// <summary>
+        /// There are no comments for property ControllerName in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string ControllerName
+        {
+            get
+            {
+                return this._ControllerName;
+            }
+            set
+            {
+                this.OnControllerNameChanging(value);
+                this.ReportPropertyChanging("ControllerName");
+                this._ControllerName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("ControllerName");
+                this.OnControllerNameChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _ControllerName;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnControllerNameChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnControllerNameChanged();
+        /// <summary>
+        /// There are no comments for property Name in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                this.OnNameChanging(value);
+                this.ReportPropertyChanging("Name");
+                this._Name = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Name");
+                this.OnNameChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _Name;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnNameChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnNameChanged();
+        /// <summary>
+        /// There are no comments for property Description in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string Description
+        {
+            get
+            {
+                return this._Description;
+            }
+            set
+            {
+                this.OnDescriptionChanging(value);
+                this.ReportPropertyChanging("Description");
+                this._Description = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Description");
+                this.OnDescriptionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _Description;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDescriptionChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDescriptionChanged();
+        /// <summary>
+        /// There are no comments for LoaiTaiKhoans in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TKBModel", "TaiKhoan_PermissionUser", "LoaiTaiKhoan")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<LoaiTaiKhoan> LoaiTaiKhoans
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<LoaiTaiKhoan>("TKBModel.TaiKhoan_PermissionUser", "LoaiTaiKhoan");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<LoaiTaiKhoan>("TKBModel.TaiKhoan_PermissionUser", "LoaiTaiKhoan", value);
                 }
             }
         }

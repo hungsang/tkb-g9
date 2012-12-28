@@ -29,10 +29,13 @@ namespace TKB_G9.G9Service {
     [System.Web.Services.WebServiceBindingAttribute(Name="G9_ServiceSoap", Namespace="http://abc.com/")]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(RelatedEnd))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(StructuralObject))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PermissionUser[]))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityKeyMember[]))]
     public partial class G9_Service : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback HelloWorldOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getListPermissionByRoleOperationCompleted;
         
         private System.Threading.SendOrPostCallback getTaiKhoanByUserNameOperationCompleted;
         
@@ -154,6 +157,9 @@ namespace TKB_G9.G9Service {
         
         /// <remarks/>
         public event HelloWorldCompletedEventHandler HelloWorldCompleted;
+        
+        /// <remarks/>
+        public event getListPermissionByRoleCompletedEventHandler getListPermissionByRoleCompleted;
         
         /// <remarks/>
         public event getTaiKhoanByUserNameCompletedEventHandler getTaiKhoanByUserNameCompleted;
@@ -299,6 +305,35 @@ namespace TKB_G9.G9Service {
             if ((this.HelloWorldCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.HelloWorldCompleted(this, new HelloWorldCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://abc.com/getListPermissionByRole", RequestNamespace="http://abc.com/", ResponseNamespace="http://abc.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public PermissionUser[] getListPermissionByRole(int idRole) {
+            object[] results = this.Invoke("getListPermissionByRole", new object[] {
+                        idRole});
+            return ((PermissionUser[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getListPermissionByRoleAsync(int idRole) {
+            this.getListPermissionByRoleAsync(idRole, null);
+        }
+        
+        /// <remarks/>
+        public void getListPermissionByRoleAsync(int idRole, object userState) {
+            if ((this.getListPermissionByRoleOperationCompleted == null)) {
+                this.getListPermissionByRoleOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetListPermissionByRoleOperationCompleted);
+            }
+            this.InvokeAsync("getListPermissionByRole", new object[] {
+                        idRole}, this.getListPermissionByRoleOperationCompleted, userState);
+        }
+        
+        private void OngetListPermissionByRoleOperationCompleted(object arg) {
+            if ((this.getListPermissionByRoleCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getListPermissionByRoleCompleted(this, new getListPermissionByRoleCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1527,81 +1562,61 @@ namespace TKB_G9.G9Service {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
-    public partial class TaiKhoan : EntityObject {
+    public partial class PermissionUser : EntityObject {
         
-        private int maTaiKhoanField;
+        private string controllerNameField;
         
-        private string tenTaiKhoanField;
+        private string nameField;
         
-        private string matKhauField;
-        
-        private EntityReferenceOfLoaiTaiKhoan loaiTaiKhoanReferenceField;
+        private string descriptionField;
         
         /// <remarks/>
-        public int MaTaiKhoan {
+        public string ControllerName {
             get {
-                return this.maTaiKhoanField;
+                return this.controllerNameField;
             }
             set {
-                this.maTaiKhoanField = value;
+                this.controllerNameField = value;
             }
         }
         
         /// <remarks/>
-        public string TenTaiKhoan {
+        public string Name {
             get {
-                return this.tenTaiKhoanField;
+                return this.nameField;
             }
             set {
-                this.tenTaiKhoanField = value;
+                this.nameField = value;
             }
         }
         
         /// <remarks/>
-        public string MatKhau {
+        public string Description {
             get {
-                return this.matKhauField;
+                return this.descriptionField;
             }
             set {
-                this.matKhauField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public EntityReferenceOfLoaiTaiKhoan LoaiTaiKhoanReference {
-            get {
-                return this.loaiTaiKhoanReferenceField;
-            }
-            set {
-                this.loaiTaiKhoanReferenceField = value;
+                this.descriptionField = value;
             }
         }
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LoaiTaiKhoan))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaiKhoan))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ThoiKhoaBieu))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ChiTietTKB))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MonHoc))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Phong))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GiaoVien))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Lop))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PermissionUser))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
-    public partial class EntityReferenceOfLoaiTaiKhoan : EntityReference {
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLop))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfThoiKhoaBieu))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfPhong))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfGiaoVien))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLoaiMonHoc))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLoaiPhong))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfMonHoc))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLoaiTaiKhoan))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
-    public abstract partial class EntityReference : RelatedEnd {
+    public abstract partial class EntityObject : StructuralObject {
         
         private EntityKey entityKeyField;
         
@@ -1713,38 +1728,20 @@ namespace TKB_G9.G9Service {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityObject))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LoaiTaiKhoan))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaiKhoan))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ThoiKhoaBieu))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ChiTietTKB))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MonHoc))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Phong))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GiaoVien))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Lop))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLop))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfThoiKhoaBieu))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfPhong))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfGiaoVien))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLoaiMonHoc))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLoaiPhong))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfMonHoc))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLoaiTaiKhoan))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
-    public abstract partial class StructuralObject {
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LoaiTaiKhoan))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaiKhoan))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ThoiKhoaBieu))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ChiTietTKB))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MonHoc))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Phong))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GiaoVien))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Lop))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
-    public abstract partial class EntityObject : StructuralObject {
+    public abstract partial class EntityReference : RelatedEnd {
         
         private EntityKey entityKeyField;
         
@@ -1757,6 +1754,97 @@ namespace TKB_G9.G9Service {
                 this.entityKeyField = value;
             }
         }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
+    public partial class EntityReferenceOfLop : EntityReference {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
+    public partial class EntityReferenceOfThoiKhoaBieu : EntityReference {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
+    public partial class EntityReferenceOfPhong : EntityReference {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
+    public partial class EntityReferenceOfGiaoVien : EntityReference {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
+    public partial class EntityReferenceOfLoaiMonHoc : EntityReference {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
+    public partial class EntityReferenceOfLoaiPhong : EntityReference {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
+    public partial class EntityReferenceOfMonHoc : EntityReference {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
+    public partial class EntityReferenceOfLoaiTaiKhoan : EntityReference {
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityObject))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LoaiTaiKhoan))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaiKhoan))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ThoiKhoaBieu))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ChiTietTKB))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MonHoc))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Phong))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GiaoVien))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Lop))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PermissionUser))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
+    public abstract partial class StructuralObject {
     }
     
     /// <remarks/>
@@ -1788,6 +1876,63 @@ namespace TKB_G9.G9Service {
             }
             set {
                 this.tenLoaiTKField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
+    public partial class TaiKhoan : EntityObject {
+        
+        private int maTaiKhoanField;
+        
+        private string tenTaiKhoanField;
+        
+        private string matKhauField;
+        
+        private EntityReferenceOfLoaiTaiKhoan loaiTaiKhoanReferenceField;
+        
+        /// <remarks/>
+        public int MaTaiKhoan {
+            get {
+                return this.maTaiKhoanField;
+            }
+            set {
+                this.maTaiKhoanField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string TenTaiKhoan {
+            get {
+                return this.tenTaiKhoanField;
+            }
+            set {
+                this.tenTaiKhoanField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string MatKhau {
+            get {
+                return this.matKhauField;
+            }
+            set {
+                this.matKhauField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public EntityReferenceOfLoaiTaiKhoan LoaiTaiKhoanReference {
+            get {
+                return this.loaiTaiKhoanReferenceField;
+            }
+            set {
+                this.loaiTaiKhoanReferenceField = value;
             }
         }
     }
@@ -1835,15 +1980,6 @@ namespace TKB_G9.G9Service {
                 this.lopReferenceField = value;
             }
         }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
-    public partial class EntityReferenceOfLop : EntityReference {
     }
     
     /// <remarks/>
@@ -1960,42 +2096,6 @@ namespace TKB_G9.G9Service {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
-    public partial class EntityReferenceOfGiaoVien : EntityReference {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
-    public partial class EntityReferenceOfMonHoc : EntityReference {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
-    public partial class EntityReferenceOfPhong : EntityReference {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
-    public partial class EntityReferenceOfThoiKhoaBieu : EntityReference {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
     public partial class MonHoc : EntityObject {
         
         private int maMonHocField;
@@ -2104,15 +2204,6 @@ namespace TKB_G9.G9Service {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
-    public partial class EntityReferenceOfLoaiMonHoc : EntityReference {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
     public partial class Phong : EntityObject {
         
         private int maPhongField;
@@ -2175,15 +2266,6 @@ namespace TKB_G9.G9Service {
                 this.loaiPhongReferenceField = value;
             }
         }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://abc.com/")]
-    public partial class EntityReferenceOfLoaiPhong : EntityReference {
     }
     
     /// <remarks/>
@@ -2408,6 +2490,32 @@ namespace TKB_G9.G9Service {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void getListPermissionByRoleCompletedEventHandler(object sender, getListPermissionByRoleCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getListPermissionByRoleCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getListPermissionByRoleCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public PermissionUser[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((PermissionUser[])(this.results[0]));
             }
         }
     }

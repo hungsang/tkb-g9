@@ -18,31 +18,25 @@ namespace TKB_G9
 
             try
             {
-                //G9_Service sv = new G9_Service();
-                //var userType = sv.getLoaiTaiKhoanByUserName(HttpContext.Current.User.Identity.Name);
-                ////Kiem tra quyen Giao Vien
-                //bool flag = false;
-                //if (userType != null)
-                //{
-                //    if (userType.MaLoaiTK == 1)       // Dựa trên role có sẵn trong webconfig or dựa name method để phân quyền
-                //    {
-                //        flag = true;
-                //    }
-
-                //    if (userType.MaLoaiTK == 2 && filterContext.ActionDescriptor.ControllerDescriptor.ControllerName == "GiaoVien")
-                //    {
-                //        flag = true;
-                //    }
-                //}
-                //if (!flag)
-                //{
-                //    filterContext.Result = new RedirectResult("../Home/Index");
-
-                //}
+                G9_Service sv = new G9_Service();
+                var userType = sv.getLoaiTaiKhoanByUserName(HttpContext.Current.User.Identity.Name);
+                bool flag = false;
+                var listPer = sv.getListPermissionByRole(userType.MaLoaiTK);
+                String textAction = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName + "_" + filterContext.ActionDescriptor.ActionName;
+                foreach (var cur in listPer)
+                {
+                    if (textAction == cur.ControllerName)
+                    {
+                        flag = true;
+                        break;
+                    }
+                }
+                if (!flag)
+                    filterContext.Result = new RedirectResult("../Home/Warning");
             }
             catch
             {
-                filterContext.Result = new RedirectResult("../Home/Index");
+                filterContext.Result = new RedirectResult("../Home/Warning");
             }
         }
     }

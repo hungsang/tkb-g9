@@ -12,28 +12,32 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="getTaiKhoanByUserName">
+      <s:element name="getListPermissionByRole">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idRole" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="getTaiKhoanByUserNameResponse">
+      <s:element name="getListPermissionByRoleResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="getTaiKhoanByUserNameResult" type="tns:TaiKhoan" />
+            <s:element minOccurs="0" maxOccurs="1" name="getListPermissionByRoleResult" type="tns:ArrayOfPermissionUser" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="TaiKhoan">
+      <s:complexType name="ArrayOfPermissionUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PermissionUser" nillable="true" type="tns:PermissionUser" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PermissionUser">
         <s:complexContent mixed="false">
           <s:extension base="tns:EntityObject">
             <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="MaTaiKhoan" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="TenTaiKhoan" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="MatKhau" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="LoaiTaiKhoanReference" type="tns:EntityReferenceOfLoaiTaiKhoan" />
+              <s:element minOccurs="0" maxOccurs="1" name="ControllerName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -66,11 +70,14 @@
           <s:element minOccurs="0" maxOccurs="1" name="Value" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="EntityReferenceOfLoaiTaiKhoan">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:EntityReference" />
-        </s:complexContent>
-      </s:complexType>
+      <s:element name="getTaiKhoanByUserName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RelatedEnd" abstract="true" />
       <s:complexType name="EntityReference" abstract="true">
         <s:complexContent mixed="false">
           <s:extension base="tns:RelatedEnd">
@@ -80,7 +87,30 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="RelatedEnd" abstract="true" />
+      <s:complexType name="EntityReferenceOfLoaiTaiKhoan">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityReference" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="getTaiKhoanByUserNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTaiKhoanByUserNameResult" type="tns:TaiKhoan" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TaiKhoan">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="MaTaiKhoan" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="TenTaiKhoan" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MatKhau" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="LoaiTaiKhoanReference" type="tns:EntityReferenceOfLoaiTaiKhoan" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
       <s:element name="getLoaiTaiKhoanByUserName">
         <s:complexType>
           <s:sequence>
@@ -807,6 +837,12 @@
   <wsdl:message name="HelloWorldSoapOut">
     <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
   </wsdl:message>
+  <wsdl:message name="getListPermissionByRoleSoapIn">
+    <wsdl:part name="parameters" element="tns:getListPermissionByRole" />
+  </wsdl:message>
+  <wsdl:message name="getListPermissionByRoleSoapOut">
+    <wsdl:part name="parameters" element="tns:getListPermissionByRoleResponse" />
+  </wsdl:message>
   <wsdl:message name="getTaiKhoanByUserNameSoapIn">
     <wsdl:part name="parameters" element="tns:getTaiKhoanByUserName" />
   </wsdl:message>
@@ -1052,6 +1088,10 @@
       <wsdl:input message="tns:HelloWorldSoapIn" />
       <wsdl:output message="tns:HelloWorldSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="getListPermissionByRole">
+      <wsdl:input message="tns:getListPermissionByRoleSoapIn" />
+      <wsdl:output message="tns:getListPermissionByRoleSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="getTaiKhoanByUserName">
       <wsdl:input message="tns:getTaiKhoanByUserNameSoapIn" />
       <wsdl:output message="tns:getTaiKhoanByUserNameSoapOut" />
@@ -1217,6 +1257,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="HelloWorld">
       <soap:operation soapAction="http://abc.com/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListPermissionByRole">
+      <soap:operation soapAction="http://abc.com/getListPermissionByRole" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1589,6 +1638,15 @@
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="HelloWorld">
       <soap12:operation soapAction="http://abc.com/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListPermissionByRole">
+      <soap12:operation soapAction="http://abc.com/getListPermissionByRole" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
