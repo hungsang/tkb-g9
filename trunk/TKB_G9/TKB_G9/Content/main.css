@@ -21,7 +21,7 @@ h5 {font-weight: normal; font-size: 14px; color: #555555}
 #featured .ui-tabs-hide{display:none;}
 
 #menu{float: left; color: #fff; height: 35px; margin-bottom: 10px; width: 995px; clear: both; line-height: 35px;}
-#menu .content{float: left; height: 35px; width: 995px; border-radius: 5px;background-image: -ms-linear-gradient(bottom, #C32222 0%, #E03434 100%);background-image: -moz-linear-gradient(bottom, #C32222 0%, #E03434 100%);background-image: -o-linear-gradient(bottom, #C32222 0%, #E03434 100%);background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #C32222), color-stop(1, #E03434));background-image: -webkit-linear-gradient(bottom, #C32222 0%, #E03434 100%);background-image: linear-gradient(to top, #C32222 0%, #E03434 100%);}
+#menu .content{float: left; height: 35px; width: 995px;  border-radius: 5px;background-image: -ms-linear-gradient(bottom, #C32222 0%, #E03434 100%);background-image: -moz-linear-gradient(bottom, #C32222 0%, #E03434 100%);background-image: -o-linear-gradient(bottom, #C32222 0%, #E03434 100%);background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #C32222), color-stop(1, #E03434));background-image: -webkit-linear-gradient(bottom, #C32222 0%, #E03434 100%);background-image: linear-gradient(to top, #C32222 0%, #E03434 100%);}
 
 #nav, #nav ul {  list-style:  none;  position: relative; line-height: 35px; text-align: left}
 #nav ul {line-height: 28px; border-left: solid 1px #ddd}
