@@ -1,23 +1,29 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/masterpage.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/masterpage.Master"
+    Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Danh sách giáo viên
+    Danh sách giáo viên
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<div class="detailrow">
-<span class="navheader"><a href="#">Quản lý</a> / <a href="<%=Url.Content("~/GiaoVien/DanhSachGiaoVien") %>">Danh sách giáo viên</a>
-            </span>
-            <br />
-<p class="detailtitle">
-                <span>DANH SÁCH GIÁO VIÊN</span>
-</p>
-
-<p class="itemsummary" style="line-height: 200%">
-<a href="<%=Url.Content("~/GiaoVien/ThemGiaoVien") %>"><input type="button" class="button" value="Thêm" /></a>
-
-    <%=  ViewData["DSGiaoVien"]%>
-
-</p>
-</div>  
+    <div class="detailrow">
+        <span class="navheader"><a href="#">Quản lý</a> / <a href="<%=Url.Content("~/GiaoVien/DanhSachGiaoVien") %>">
+            Danh sách giáo viên</a> </span>
+        <br />
+        <table width="100%" border="0" style="border: 0px;">
+            <tr style="border: 0px;">
+                <td style="width: 40%; padding: 0px; border: 0px;">
+                    <p class="detailtitle">
+                        <span>Danh Sách Giáo Viên</span>
+                    </p>
+                </td>
+                <td align="right" style="padding-right: 40px; border: 0px;">
+                    <a href="<%=Url.Content("~/GiaoVien/ThemGiaoVien") %>">
+                        <input type="button" class="button" value="Thêm" /></a>
+                </td>
+            </tr>
+        </table>
+        <p class="itemsummary" style="line-height: 200%">
+            <%=  ViewData["DSGiaoVien"]%>
+        </p>
+    </div>
 </asp:Content>
