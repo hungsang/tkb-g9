@@ -81,13 +81,28 @@ body
 }*/
 .button 
 {
-	background: url(../image/button.png) no-repeat;
+	background: url(../image/button_textture.png) repeat-x;
 	width: 81px;
-	height: 32px;
+	height: 24px;
 	border-style: none;
 	margin: 2px 2px;
 	color: White;
     cursor: pointer;
+    display:inline-block;
+    border-color: rgba(0, 0, 0, 0.35);
+	border-radius: 2px 2px 2px 2px;
+    font-size: 11px;
+	font-weight: bold;
+	line-height: 13px;
+	padding: 2px 6px;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: top;
+	white-space: nowrap;
+}
+.button:hover
+{
+	background: url(../image/button_textture_hover.png) repeat-x;
 }
 .talign_left
 {
