@@ -10,7 +10,7 @@ h1 a{text-decoration: none; color: #4B4B4B ;}
 h1 a:hover{text-decoration: underline; color: #4B4B4B ; }
 h3{font-weight: normal; font-size: 18px; color: #555555}
 h5 {font-weight: normal; font-size: 14px; color: #555555}
-#header{text-align : left; float:left; line-height: 200%; height : 140px ; padding: 0px 10px 0px 350px; width: 635px;clear: both;  background: #DCE1E4; overflow: hidden; }
+#header{text-align : left; float:left; line-height: 200%; height : 193px ; padding: 0px 10px 3px 0px; width: 995px;clear: both;  background: #DCE1E4; overflow: hidden; }
 #header .top{width: 635px; height: 35px; text-align: right; color: #777; line-height: 25px;  float: left;}
 #header .content{width: 635px; height: 110px; line-height: 25px; float: left; clear: both;}
 #header .top a{padding: 0px 5px;}
@@ -21,7 +21,7 @@ h5 {font-weight: normal; font-size: 14px; color: #555555}
 #featured .ui-tabs-hide{display:none;}
 
 #menu{float: left; color: #fff; height: 35px; margin-bottom: 10px; width: 995px; clear: both; line-height: 35px;}
-#menu .content{float: left; height: 35px; width: 995px;  border-radius: 5px;background-image: -ms-linear-gradient(bottom, #C32222 0%, #E03434 100%);background-image: -moz-linear-gradient(bottom, #C32222 0%, #E03434 100%);background-image: -o-linear-gradient(bottom, #C32222 0%, #E03434 100%);background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #C32222), color-stop(1, #E03434));background-image: -webkit-linear-gradient(bottom, #C32222 0%, #E03434 100%);background-image: linear-gradient(to top, #C32222 0%, #E03434 100%);}
+#menu .content{float: left; height: 35px; width: 995px; border-radius: 5px;background-image: -ms-linear-gradient(bottom, #C32222 0%, #E03434 100%);background-image: -moz-linear-gradient(bottom, #C32222 0%, #E03434 100%);background-image: -o-linear-gradient(bottom, #C32222 0%, #E03434 100%);background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #C32222), color-stop(1, #E03434));background-image: -webkit-linear-gradient(bottom, #C32222 0%, #E03434 100%);background-image: linear-gradient(to top, #C32222 0%, #E03434 100%);}
 
 #nav, #nav ul {  list-style:  none;  position: relative; line-height: 35px; text-align: left}
 #nav ul {line-height: 28px; border-left: solid 1px #ddd}
